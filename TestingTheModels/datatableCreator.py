@@ -455,9 +455,82 @@ def plot_condition_vs_eqr(df, condition, title, filename):
 # )
 
 # styled.to_html("turb_vs_atm_change.html")
+def color_condition(value):
+    if value == "Atm":
+        return "background-color: #d9f2d9"
+    elif value == "Turb":
+        return "background-color: #ffd9d9"
+    elif value == "Cold":
+        return "background-color: #d9eaff"
+    return ""
+
+def color_by_condition(col):
+    condition = col.name[1]   # (Fuel Ratio, Condition, Equi Ratio)
+
+    if condition == "Atm":
+        color = "background-color: #eef9ee"   # light green
+    elif condition == "Turb":
+        color = "background-color: #fdeeee"   # light red
+    elif condition == "Cold":
+        color = "background-color: #eef4ff"   # light blue
+    else:
+        color = ""
+
+    return [color] * len(col)
 
 filename = "tableWithColdTurbine.html"
-df.to_html(filename)
+# styled = (
+#     df.style
+#       .apply(color_by_condition, axis=0)
+#       .set_table_styles([
+#           {"selector": "table",
+#            "props": [("border-collapse", "collapse")]},
+#           {"selector": "th",
+#            "props": [("border", "1px solid black")]},
+#           {"selector": "td",
+#            "props": [("border", "1px solid black")]},
+#       ])
+#       .map_index(color_condition, axis=1, level="Condition")
+# )
+import matplotlib.colors as mcolors
+import numpy as np
+import pandas as pd
+
+cold = df.xs("Cold", axis=1, level="Condition")
+atm = df.xs("Atm", axis=1, level="Condition")
+turb = df.xs("Turb", axis=1, level="Condition")
+
+change_atm = cold.abs() - atm.abs()
+change_turb = cold.abs() - turb.abs()
+
+# combine into one table, adding "Condition" back as a column level
+change = pd.concat([change_atm, change_turb], axis=1, keys=["Atm", "Turb"], names=["Condition"])
+change = change.reorder_levels(["Fuel Ratio", "Condition", "Equi Ratio"], axis=1)
+change = change.reindex(columns=FUEL, level="Fuel Ratio")
+change = change.reindex(columns=CONDITION, level="Condition")
+
+change.index = change.index.droplevel("Metric")   # rows now just Molecule
+change = change.reindex(index=MOLECULES)
+
+cmap = mcolors.LinearSegmentedColormap.from_list("green_white_blue", ["lightgreen", "white", "lightblue"])
+vmax = np.nanpercentile(change.abs().values, 90)
+
+styled = (
+    change.style
+    .format(lambda v: f"{v:+.1f}")
+    .background_gradient(cmap=cmap, vmin=-vmax, vmax=vmax)
+    .set_table_styles([
+        {"selector": "table", "props": [("border-collapse", "collapse")]},
+        {"selector": "th", "props": [("border", "1px solid black")]},
+        {"selector": "td", "props": [("border", "1px solid black")]},
+    ])
+)
+styled.to_html("cold_vs_atm_turb_change.html")
+
+# styled.to_html(filename)
+
+
+#df.to_html(filename)
 #print(df)
 #df.to_excel(f"{filename.split(".")[0]}.xlsx", merge_cells=True)
 

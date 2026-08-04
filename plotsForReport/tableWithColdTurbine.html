@@ -1,734 +1,763 @@
-<table border="1" class="dataframe">
+<style type="text/css">
+#T_dc893 table {
+  border-collapse: collapse;
+}
+#T_dc893 th {
+  border: 1px solid black;
+}
+#T_dc893 td {
+  border: 1px solid black;
+}
+#T_dc893_row0_col0, #T_dc893_row0_col1, #T_dc893_row0_col2, #T_dc893_row0_col9, #T_dc893_row0_col10, #T_dc893_row0_col11, #T_dc893_row0_col18, #T_dc893_row0_col19, #T_dc893_row0_col20, #T_dc893_row0_col27, #T_dc893_row0_col28, #T_dc893_row0_col29, #T_dc893_row0_col36, #T_dc893_row0_col37, #T_dc893_row0_col38, #T_dc893_row0_col45, #T_dc893_row0_col46, #T_dc893_row0_col47, #T_dc893_row0_col54, #T_dc893_row0_col55, #T_dc893_row0_col56, #T_dc893_row0_col63, #T_dc893_row0_col64, #T_dc893_row0_col65, #T_dc893_row0_col72, #T_dc893_row0_col73, #T_dc893_row0_col74, #T_dc893_row0_col81, #T_dc893_row0_col82, #T_dc893_row0_col83, #T_dc893_row0_col90, #T_dc893_row0_col91, #T_dc893_row0_col92, #T_dc893_row0_col99, #T_dc893_row0_col100, #T_dc893_row0_col101, #T_dc893_row1_col0, #T_dc893_row1_col1, #T_dc893_row1_col2, #T_dc893_row1_col9, #T_dc893_row1_col10, #T_dc893_row1_col11, #T_dc893_row1_col18, #T_dc893_row1_col19, #T_dc893_row1_col20, #T_dc893_row1_col27, #T_dc893_row1_col28, #T_dc893_row1_col29, #T_dc893_row1_col36, #T_dc893_row1_col37, #T_dc893_row1_col38, #T_dc893_row1_col45, #T_dc893_row1_col46, #T_dc893_row1_col47, #T_dc893_row1_col54, #T_dc893_row1_col55, #T_dc893_row1_col56, #T_dc893_row1_col63, #T_dc893_row1_col64, #T_dc893_row1_col65, #T_dc893_row1_col72, #T_dc893_row1_col73, #T_dc893_row1_col74, #T_dc893_row1_col81, #T_dc893_row1_col82, #T_dc893_row1_col83, #T_dc893_row1_col90, #T_dc893_row1_col91, #T_dc893_row1_col92, #T_dc893_row1_col99, #T_dc893_row1_col100, #T_dc893_row1_col101, #T_dc893_row2_col0, #T_dc893_row2_col1, #T_dc893_row2_col2, #T_dc893_row2_col9, #T_dc893_row2_col10, #T_dc893_row2_col11, #T_dc893_row2_col18, #T_dc893_row2_col19, #T_dc893_row2_col20, #T_dc893_row2_col27, #T_dc893_row2_col28, #T_dc893_row2_col29, #T_dc893_row2_col36, #T_dc893_row2_col37, #T_dc893_row2_col38, #T_dc893_row2_col45, #T_dc893_row2_col46, #T_dc893_row2_col47, #T_dc893_row2_col54, #T_dc893_row2_col55, #T_dc893_row2_col56, #T_dc893_row2_col63, #T_dc893_row2_col64, #T_dc893_row2_col65, #T_dc893_row2_col72, #T_dc893_row2_col73, #T_dc893_row2_col74, #T_dc893_row2_col81, #T_dc893_row2_col82, #T_dc893_row2_col83, #T_dc893_row2_col90, #T_dc893_row2_col91, #T_dc893_row2_col92, #T_dc893_row2_col99, #T_dc893_row2_col100, #T_dc893_row2_col101, #T_dc893_row3_col0, #T_dc893_row3_col1, #T_dc893_row3_col2, #T_dc893_row3_col9, #T_dc893_row3_col10, #T_dc893_row3_col11, #T_dc893_row3_col18, #T_dc893_row3_col19, #T_dc893_row3_col20, #T_dc893_row3_col27, #T_dc893_row3_col28, #T_dc893_row3_col29, #T_dc893_row3_col36, #T_dc893_row3_col37, #T_dc893_row3_col38, #T_dc893_row3_col45, #T_dc893_row3_col46, #T_dc893_row3_col47, #T_dc893_row3_col54, #T_dc893_row3_col55, #T_dc893_row3_col56, #T_dc893_row3_col63, #T_dc893_row3_col64, #T_dc893_row3_col65, #T_dc893_row3_col72, #T_dc893_row3_col73, #T_dc893_row3_col74, #T_dc893_row3_col81, #T_dc893_row3_col82, #T_dc893_row3_col83, #T_dc893_row3_col90, #T_dc893_row3_col91, #T_dc893_row3_col92, #T_dc893_row3_col99, #T_dc893_row3_col100, #T_dc893_row3_col101 {
+  background-color: #eef9ee;
+}
+#T_dc893_row0_col3, #T_dc893_row0_col4, #T_dc893_row0_col5, #T_dc893_row0_col12, #T_dc893_row0_col13, #T_dc893_row0_col14, #T_dc893_row0_col21, #T_dc893_row0_col22, #T_dc893_row0_col23, #T_dc893_row0_col30, #T_dc893_row0_col31, #T_dc893_row0_col32, #T_dc893_row0_col39, #T_dc893_row0_col40, #T_dc893_row0_col41, #T_dc893_row0_col48, #T_dc893_row0_col49, #T_dc893_row0_col50, #T_dc893_row0_col57, #T_dc893_row0_col58, #T_dc893_row0_col59, #T_dc893_row0_col66, #T_dc893_row0_col67, #T_dc893_row0_col68, #T_dc893_row0_col75, #T_dc893_row0_col76, #T_dc893_row0_col77, #T_dc893_row0_col84, #T_dc893_row0_col85, #T_dc893_row0_col86, #T_dc893_row0_col93, #T_dc893_row0_col94, #T_dc893_row0_col95, #T_dc893_row0_col102, #T_dc893_row0_col103, #T_dc893_row0_col104, #T_dc893_row1_col3, #T_dc893_row1_col4, #T_dc893_row1_col5, #T_dc893_row1_col12, #T_dc893_row1_col13, #T_dc893_row1_col14, #T_dc893_row1_col21, #T_dc893_row1_col22, #T_dc893_row1_col23, #T_dc893_row1_col30, #T_dc893_row1_col31, #T_dc893_row1_col32, #T_dc893_row1_col39, #T_dc893_row1_col40, #T_dc893_row1_col41, #T_dc893_row1_col48, #T_dc893_row1_col49, #T_dc893_row1_col50, #T_dc893_row1_col57, #T_dc893_row1_col58, #T_dc893_row1_col59, #T_dc893_row1_col66, #T_dc893_row1_col67, #T_dc893_row1_col68, #T_dc893_row1_col75, #T_dc893_row1_col76, #T_dc893_row1_col77, #T_dc893_row1_col84, #T_dc893_row1_col85, #T_dc893_row1_col86, #T_dc893_row1_col93, #T_dc893_row1_col94, #T_dc893_row1_col95, #T_dc893_row1_col102, #T_dc893_row1_col103, #T_dc893_row1_col104, #T_dc893_row2_col3, #T_dc893_row2_col4, #T_dc893_row2_col5, #T_dc893_row2_col12, #T_dc893_row2_col13, #T_dc893_row2_col14, #T_dc893_row2_col21, #T_dc893_row2_col22, #T_dc893_row2_col23, #T_dc893_row2_col30, #T_dc893_row2_col31, #T_dc893_row2_col32, #T_dc893_row2_col39, #T_dc893_row2_col40, #T_dc893_row2_col41, #T_dc893_row2_col48, #T_dc893_row2_col49, #T_dc893_row2_col50, #T_dc893_row2_col57, #T_dc893_row2_col58, #T_dc893_row2_col59, #T_dc893_row2_col66, #T_dc893_row2_col67, #T_dc893_row2_col68, #T_dc893_row2_col75, #T_dc893_row2_col76, #T_dc893_row2_col77, #T_dc893_row2_col84, #T_dc893_row2_col85, #T_dc893_row2_col86, #T_dc893_row2_col93, #T_dc893_row2_col94, #T_dc893_row2_col95, #T_dc893_row2_col102, #T_dc893_row2_col103, #T_dc893_row2_col104, #T_dc893_row3_col3, #T_dc893_row3_col4, #T_dc893_row3_col5, #T_dc893_row3_col12, #T_dc893_row3_col13, #T_dc893_row3_col14, #T_dc893_row3_col21, #T_dc893_row3_col22, #T_dc893_row3_col23, #T_dc893_row3_col30, #T_dc893_row3_col31, #T_dc893_row3_col32, #T_dc893_row3_col39, #T_dc893_row3_col40, #T_dc893_row3_col41, #T_dc893_row3_col48, #T_dc893_row3_col49, #T_dc893_row3_col50, #T_dc893_row3_col57, #T_dc893_row3_col58, #T_dc893_row3_col59, #T_dc893_row3_col66, #T_dc893_row3_col67, #T_dc893_row3_col68, #T_dc893_row3_col75, #T_dc893_row3_col76, #T_dc893_row3_col77, #T_dc893_row3_col84, #T_dc893_row3_col85, #T_dc893_row3_col86, #T_dc893_row3_col93, #T_dc893_row3_col94, #T_dc893_row3_col95, #T_dc893_row3_col102, #T_dc893_row3_col103, #T_dc893_row3_col104 {
+  background-color: #fdeeee;
+}
+#T_dc893_row0_col6, #T_dc893_row0_col7, #T_dc893_row0_col8, #T_dc893_row0_col15, #T_dc893_row0_col16, #T_dc893_row0_col17, #T_dc893_row0_col24, #T_dc893_row0_col25, #T_dc893_row0_col26, #T_dc893_row0_col33, #T_dc893_row0_col34, #T_dc893_row0_col35, #T_dc893_row0_col42, #T_dc893_row0_col43, #T_dc893_row0_col44, #T_dc893_row0_col51, #T_dc893_row0_col52, #T_dc893_row0_col53, #T_dc893_row0_col60, #T_dc893_row0_col61, #T_dc893_row0_col62, #T_dc893_row0_col69, #T_dc893_row0_col70, #T_dc893_row0_col71, #T_dc893_row0_col78, #T_dc893_row0_col79, #T_dc893_row0_col80, #T_dc893_row0_col87, #T_dc893_row0_col88, #T_dc893_row0_col89, #T_dc893_row0_col96, #T_dc893_row0_col97, #T_dc893_row0_col98, #T_dc893_row0_col105, #T_dc893_row0_col106, #T_dc893_row0_col107, #T_dc893_row1_col6, #T_dc893_row1_col7, #T_dc893_row1_col8, #T_dc893_row1_col15, #T_dc893_row1_col16, #T_dc893_row1_col17, #T_dc893_row1_col24, #T_dc893_row1_col25, #T_dc893_row1_col26, #T_dc893_row1_col33, #T_dc893_row1_col34, #T_dc893_row1_col35, #T_dc893_row1_col42, #T_dc893_row1_col43, #T_dc893_row1_col44, #T_dc893_row1_col51, #T_dc893_row1_col52, #T_dc893_row1_col53, #T_dc893_row1_col60, #T_dc893_row1_col61, #T_dc893_row1_col62, #T_dc893_row1_col69, #T_dc893_row1_col70, #T_dc893_row1_col71, #T_dc893_row1_col78, #T_dc893_row1_col79, #T_dc893_row1_col80, #T_dc893_row1_col87, #T_dc893_row1_col88, #T_dc893_row1_col89, #T_dc893_row1_col96, #T_dc893_row1_col97, #T_dc893_row1_col98, #T_dc893_row1_col105, #T_dc893_row1_col106, #T_dc893_row1_col107, #T_dc893_row2_col6, #T_dc893_row2_col7, #T_dc893_row2_col8, #T_dc893_row2_col15, #T_dc893_row2_col16, #T_dc893_row2_col17, #T_dc893_row2_col24, #T_dc893_row2_col25, #T_dc893_row2_col26, #T_dc893_row2_col33, #T_dc893_row2_col34, #T_dc893_row2_col35, #T_dc893_row2_col42, #T_dc893_row2_col43, #T_dc893_row2_col44, #T_dc893_row2_col51, #T_dc893_row2_col52, #T_dc893_row2_col53, #T_dc893_row2_col60, #T_dc893_row2_col61, #T_dc893_row2_col62, #T_dc893_row2_col69, #T_dc893_row2_col70, #T_dc893_row2_col71, #T_dc893_row2_col78, #T_dc893_row2_col79, #T_dc893_row2_col80, #T_dc893_row2_col87, #T_dc893_row2_col88, #T_dc893_row2_col89, #T_dc893_row2_col96, #T_dc893_row2_col97, #T_dc893_row2_col98, #T_dc893_row2_col105, #T_dc893_row2_col106, #T_dc893_row2_col107, #T_dc893_row3_col6, #T_dc893_row3_col7, #T_dc893_row3_col8, #T_dc893_row3_col15, #T_dc893_row3_col16, #T_dc893_row3_col17, #T_dc893_row3_col24, #T_dc893_row3_col25, #T_dc893_row3_col26, #T_dc893_row3_col33, #T_dc893_row3_col34, #T_dc893_row3_col35, #T_dc893_row3_col42, #T_dc893_row3_col43, #T_dc893_row3_col44, #T_dc893_row3_col51, #T_dc893_row3_col52, #T_dc893_row3_col53, #T_dc893_row3_col60, #T_dc893_row3_col61, #T_dc893_row3_col62, #T_dc893_row3_col69, #T_dc893_row3_col70, #T_dc893_row3_col71, #T_dc893_row3_col78, #T_dc893_row3_col79, #T_dc893_row3_col80, #T_dc893_row3_col87, #T_dc893_row3_col88, #T_dc893_row3_col89, #T_dc893_row3_col96, #T_dc893_row3_col97, #T_dc893_row3_col98, #T_dc893_row3_col105, #T_dc893_row3_col106, #T_dc893_row3_col107 {
+  background-color: #eef4ff;
+}
+#T_dc893_level1_col0, #T_dc893_level1_col9, #T_dc893_level1_col18, #T_dc893_level1_col27, #T_dc893_level1_col36, #T_dc893_level1_col45, #T_dc893_level1_col54, #T_dc893_level1_col63, #T_dc893_level1_col72, #T_dc893_level1_col81, #T_dc893_level1_col90, #T_dc893_level1_col99 {
+  background-color: #d9f2d9;
+}
+#T_dc893_level1_col3, #T_dc893_level1_col12, #T_dc893_level1_col21, #T_dc893_level1_col30, #T_dc893_level1_col39, #T_dc893_level1_col48, #T_dc893_level1_col57, #T_dc893_level1_col66, #T_dc893_level1_col75, #T_dc893_level1_col84, #T_dc893_level1_col93, #T_dc893_level1_col102 {
+  background-color: #ffd9d9;
+}
+#T_dc893_level1_col6, #T_dc893_level1_col15, #T_dc893_level1_col24, #T_dc893_level1_col33, #T_dc893_level1_col42, #T_dc893_level1_col51, #T_dc893_level1_col60, #T_dc893_level1_col69, #T_dc893_level1_col78, #T_dc893_level1_col87, #T_dc893_level1_col96, #T_dc893_level1_col105 {
+  background-color: #d9eaff;
+}
+</style>
+<table id="T_dc893">
   <thead>
     <tr>
-      <th></th>
-      <th>Fuel Ratio</th>
-      <th colspan="9" halign="left">NH3</th>
-      <th colspan="9" halign="left">95-5</th>
-      <th colspan="9" halign="left">90-10</th>
-      <th colspan="9" halign="left">85-15</th>
-      <th colspan="9" halign="left">80-20</th>
-      <th colspan="9" halign="left">70-30</th>
-      <th colspan="9" halign="left">60-40</th>
-      <th colspan="9" halign="left">40-60</th>
-      <th colspan="9" halign="left">20-80</th>
-      <th colspan="9" halign="left">10-90</th>
-      <th colspan="9" halign="left">5-95</th>
-      <th colspan="9" halign="left">H2</th>
+      <th class="blank" >&nbsp;</th>
+      <th class="index_name level0" >Fuel Ratio</th>
+      <th id="T_dc893_level0_col0" class="col_heading level0 col0" colspan="9">NH3</th>
+      <th id="T_dc893_level0_col9" class="col_heading level0 col9" colspan="9">95-5</th>
+      <th id="T_dc893_level0_col18" class="col_heading level0 col18" colspan="9">90-10</th>
+      <th id="T_dc893_level0_col27" class="col_heading level0 col27" colspan="9">85-15</th>
+      <th id="T_dc893_level0_col36" class="col_heading level0 col36" colspan="9">80-20</th>
+      <th id="T_dc893_level0_col45" class="col_heading level0 col45" colspan="9">70-30</th>
+      <th id="T_dc893_level0_col54" class="col_heading level0 col54" colspan="9">60-40</th>
+      <th id="T_dc893_level0_col63" class="col_heading level0 col63" colspan="9">40-60</th>
+      <th id="T_dc893_level0_col72" class="col_heading level0 col72" colspan="9">20-80</th>
+      <th id="T_dc893_level0_col81" class="col_heading level0 col81" colspan="9">10-90</th>
+      <th id="T_dc893_level0_col90" class="col_heading level0 col90" colspan="9">5-95</th>
+      <th id="T_dc893_level0_col99" class="col_heading level0 col99" colspan="9">H2</th>
     </tr>
     <tr>
-      <th></th>
-      <th>Condition</th>
-      <th colspan="3" halign="left">Atm</th>
-      <th colspan="3" halign="left">Turb</th>
-      <th colspan="3" halign="left">Cold</th>
-      <th colspan="3" halign="left">Atm</th>
-      <th colspan="3" halign="left">Turb</th>
-      <th colspan="3" halign="left">Cold</th>
-      <th colspan="3" halign="left">Atm</th>
-      <th colspan="3" halign="left">Turb</th>
-      <th colspan="3" halign="left">Cold</th>
-      <th colspan="3" halign="left">Atm</th>
-      <th colspan="3" halign="left">Turb</th>
-      <th colspan="3" halign="left">Cold</th>
-      <th colspan="3" halign="left">Atm</th>
-      <th colspan="3" halign="left">Turb</th>
-      <th colspan="3" halign="left">Cold</th>
-      <th colspan="3" halign="left">Atm</th>
-      <th colspan="3" halign="left">Turb</th>
-      <th colspan="3" halign="left">Cold</th>
-      <th colspan="3" halign="left">Atm</th>
-      <th colspan="3" halign="left">Turb</th>
-      <th colspan="3" halign="left">Cold</th>
-      <th colspan="3" halign="left">Atm</th>
-      <th colspan="3" halign="left">Turb</th>
-      <th colspan="3" halign="left">Cold</th>
-      <th colspan="3" halign="left">Atm</th>
-      <th colspan="3" halign="left">Turb</th>
-      <th colspan="3" halign="left">Cold</th>
-      <th colspan="3" halign="left">Atm</th>
-      <th colspan="3" halign="left">Turb</th>
-      <th colspan="3" halign="left">Cold</th>
-      <th colspan="3" halign="left">Atm</th>
-      <th colspan="3" halign="left">Turb</th>
-      <th colspan="3" halign="left">Cold</th>
-      <th colspan="3" halign="left">Atm</th>
-      <th colspan="3" halign="left">Turb</th>
-      <th colspan="3" halign="left">Cold</th>
+      <th class="blank" >&nbsp;</th>
+      <th class="index_name level1" >Condition</th>
+      <th id="T_dc893_level1_col0" class="col_heading level1 col0" colspan="3">Atm</th>
+      <th id="T_dc893_level1_col3" class="col_heading level1 col3" colspan="3">Turb</th>
+      <th id="T_dc893_level1_col6" class="col_heading level1 col6" colspan="3">Cold</th>
+      <th id="T_dc893_level1_col9" class="col_heading level1 col9" colspan="3">Atm</th>
+      <th id="T_dc893_level1_col12" class="col_heading level1 col12" colspan="3">Turb</th>
+      <th id="T_dc893_level1_col15" class="col_heading level1 col15" colspan="3">Cold</th>
+      <th id="T_dc893_level1_col18" class="col_heading level1 col18" colspan="3">Atm</th>
+      <th id="T_dc893_level1_col21" class="col_heading level1 col21" colspan="3">Turb</th>
+      <th id="T_dc893_level1_col24" class="col_heading level1 col24" colspan="3">Cold</th>
+      <th id="T_dc893_level1_col27" class="col_heading level1 col27" colspan="3">Atm</th>
+      <th id="T_dc893_level1_col30" class="col_heading level1 col30" colspan="3">Turb</th>
+      <th id="T_dc893_level1_col33" class="col_heading level1 col33" colspan="3">Cold</th>
+      <th id="T_dc893_level1_col36" class="col_heading level1 col36" colspan="3">Atm</th>
+      <th id="T_dc893_level1_col39" class="col_heading level1 col39" colspan="3">Turb</th>
+      <th id="T_dc893_level1_col42" class="col_heading level1 col42" colspan="3">Cold</th>
+      <th id="T_dc893_level1_col45" class="col_heading level1 col45" colspan="3">Atm</th>
+      <th id="T_dc893_level1_col48" class="col_heading level1 col48" colspan="3">Turb</th>
+      <th id="T_dc893_level1_col51" class="col_heading level1 col51" colspan="3">Cold</th>
+      <th id="T_dc893_level1_col54" class="col_heading level1 col54" colspan="3">Atm</th>
+      <th id="T_dc893_level1_col57" class="col_heading level1 col57" colspan="3">Turb</th>
+      <th id="T_dc893_level1_col60" class="col_heading level1 col60" colspan="3">Cold</th>
+      <th id="T_dc893_level1_col63" class="col_heading level1 col63" colspan="3">Atm</th>
+      <th id="T_dc893_level1_col66" class="col_heading level1 col66" colspan="3">Turb</th>
+      <th id="T_dc893_level1_col69" class="col_heading level1 col69" colspan="3">Cold</th>
+      <th id="T_dc893_level1_col72" class="col_heading level1 col72" colspan="3">Atm</th>
+      <th id="T_dc893_level1_col75" class="col_heading level1 col75" colspan="3">Turb</th>
+      <th id="T_dc893_level1_col78" class="col_heading level1 col78" colspan="3">Cold</th>
+      <th id="T_dc893_level1_col81" class="col_heading level1 col81" colspan="3">Atm</th>
+      <th id="T_dc893_level1_col84" class="col_heading level1 col84" colspan="3">Turb</th>
+      <th id="T_dc893_level1_col87" class="col_heading level1 col87" colspan="3">Cold</th>
+      <th id="T_dc893_level1_col90" class="col_heading level1 col90" colspan="3">Atm</th>
+      <th id="T_dc893_level1_col93" class="col_heading level1 col93" colspan="3">Turb</th>
+      <th id="T_dc893_level1_col96" class="col_heading level1 col96" colspan="3">Cold</th>
+      <th id="T_dc893_level1_col99" class="col_heading level1 col99" colspan="3">Atm</th>
+      <th id="T_dc893_level1_col102" class="col_heading level1 col102" colspan="3">Turb</th>
+      <th id="T_dc893_level1_col105" class="col_heading level1 col105" colspan="3">Cold</th>
     </tr>
     <tr>
-      <th></th>
-      <th>Equi Ratio</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
-      <th>E0.7</th>
-      <th>E1.0</th>
-      <th>E1.4</th>
+      <th class="blank" >&nbsp;</th>
+      <th class="index_name level2" >Equi Ratio</th>
+      <th id="T_dc893_level2_col0" class="col_heading level2 col0" >E0.7</th>
+      <th id="T_dc893_level2_col1" class="col_heading level2 col1" >E1.0</th>
+      <th id="T_dc893_level2_col2" class="col_heading level2 col2" >E1.4</th>
+      <th id="T_dc893_level2_col3" class="col_heading level2 col3" >E0.7</th>
+      <th id="T_dc893_level2_col4" class="col_heading level2 col4" >E1.0</th>
+      <th id="T_dc893_level2_col5" class="col_heading level2 col5" >E1.4</th>
+      <th id="T_dc893_level2_col6" class="col_heading level2 col6" >E0.7</th>
+      <th id="T_dc893_level2_col7" class="col_heading level2 col7" >E1.0</th>
+      <th id="T_dc893_level2_col8" class="col_heading level2 col8" >E1.4</th>
+      <th id="T_dc893_level2_col9" class="col_heading level2 col9" >E0.7</th>
+      <th id="T_dc893_level2_col10" class="col_heading level2 col10" >E1.0</th>
+      <th id="T_dc893_level2_col11" class="col_heading level2 col11" >E1.4</th>
+      <th id="T_dc893_level2_col12" class="col_heading level2 col12" >E0.7</th>
+      <th id="T_dc893_level2_col13" class="col_heading level2 col13" >E1.0</th>
+      <th id="T_dc893_level2_col14" class="col_heading level2 col14" >E1.4</th>
+      <th id="T_dc893_level2_col15" class="col_heading level2 col15" >E0.7</th>
+      <th id="T_dc893_level2_col16" class="col_heading level2 col16" >E1.0</th>
+      <th id="T_dc893_level2_col17" class="col_heading level2 col17" >E1.4</th>
+      <th id="T_dc893_level2_col18" class="col_heading level2 col18" >E0.7</th>
+      <th id="T_dc893_level2_col19" class="col_heading level2 col19" >E1.0</th>
+      <th id="T_dc893_level2_col20" class="col_heading level2 col20" >E1.4</th>
+      <th id="T_dc893_level2_col21" class="col_heading level2 col21" >E0.7</th>
+      <th id="T_dc893_level2_col22" class="col_heading level2 col22" >E1.0</th>
+      <th id="T_dc893_level2_col23" class="col_heading level2 col23" >E1.4</th>
+      <th id="T_dc893_level2_col24" class="col_heading level2 col24" >E0.7</th>
+      <th id="T_dc893_level2_col25" class="col_heading level2 col25" >E1.0</th>
+      <th id="T_dc893_level2_col26" class="col_heading level2 col26" >E1.4</th>
+      <th id="T_dc893_level2_col27" class="col_heading level2 col27" >E0.7</th>
+      <th id="T_dc893_level2_col28" class="col_heading level2 col28" >E1.0</th>
+      <th id="T_dc893_level2_col29" class="col_heading level2 col29" >E1.4</th>
+      <th id="T_dc893_level2_col30" class="col_heading level2 col30" >E0.7</th>
+      <th id="T_dc893_level2_col31" class="col_heading level2 col31" >E1.0</th>
+      <th id="T_dc893_level2_col32" class="col_heading level2 col32" >E1.4</th>
+      <th id="T_dc893_level2_col33" class="col_heading level2 col33" >E0.7</th>
+      <th id="T_dc893_level2_col34" class="col_heading level2 col34" >E1.0</th>
+      <th id="T_dc893_level2_col35" class="col_heading level2 col35" >E1.4</th>
+      <th id="T_dc893_level2_col36" class="col_heading level2 col36" >E0.7</th>
+      <th id="T_dc893_level2_col37" class="col_heading level2 col37" >E1.0</th>
+      <th id="T_dc893_level2_col38" class="col_heading level2 col38" >E1.4</th>
+      <th id="T_dc893_level2_col39" class="col_heading level2 col39" >E0.7</th>
+      <th id="T_dc893_level2_col40" class="col_heading level2 col40" >E1.0</th>
+      <th id="T_dc893_level2_col41" class="col_heading level2 col41" >E1.4</th>
+      <th id="T_dc893_level2_col42" class="col_heading level2 col42" >E0.7</th>
+      <th id="T_dc893_level2_col43" class="col_heading level2 col43" >E1.0</th>
+      <th id="T_dc893_level2_col44" class="col_heading level2 col44" >E1.4</th>
+      <th id="T_dc893_level2_col45" class="col_heading level2 col45" >E0.7</th>
+      <th id="T_dc893_level2_col46" class="col_heading level2 col46" >E1.0</th>
+      <th id="T_dc893_level2_col47" class="col_heading level2 col47" >E1.4</th>
+      <th id="T_dc893_level2_col48" class="col_heading level2 col48" >E0.7</th>
+      <th id="T_dc893_level2_col49" class="col_heading level2 col49" >E1.0</th>
+      <th id="T_dc893_level2_col50" class="col_heading level2 col50" >E1.4</th>
+      <th id="T_dc893_level2_col51" class="col_heading level2 col51" >E0.7</th>
+      <th id="T_dc893_level2_col52" class="col_heading level2 col52" >E1.0</th>
+      <th id="T_dc893_level2_col53" class="col_heading level2 col53" >E1.4</th>
+      <th id="T_dc893_level2_col54" class="col_heading level2 col54" >E0.7</th>
+      <th id="T_dc893_level2_col55" class="col_heading level2 col55" >E1.0</th>
+      <th id="T_dc893_level2_col56" class="col_heading level2 col56" >E1.4</th>
+      <th id="T_dc893_level2_col57" class="col_heading level2 col57" >E0.7</th>
+      <th id="T_dc893_level2_col58" class="col_heading level2 col58" >E1.0</th>
+      <th id="T_dc893_level2_col59" class="col_heading level2 col59" >E1.4</th>
+      <th id="T_dc893_level2_col60" class="col_heading level2 col60" >E0.7</th>
+      <th id="T_dc893_level2_col61" class="col_heading level2 col61" >E1.0</th>
+      <th id="T_dc893_level2_col62" class="col_heading level2 col62" >E1.4</th>
+      <th id="T_dc893_level2_col63" class="col_heading level2 col63" >E0.7</th>
+      <th id="T_dc893_level2_col64" class="col_heading level2 col64" >E1.0</th>
+      <th id="T_dc893_level2_col65" class="col_heading level2 col65" >E1.4</th>
+      <th id="T_dc893_level2_col66" class="col_heading level2 col66" >E0.7</th>
+      <th id="T_dc893_level2_col67" class="col_heading level2 col67" >E1.0</th>
+      <th id="T_dc893_level2_col68" class="col_heading level2 col68" >E1.4</th>
+      <th id="T_dc893_level2_col69" class="col_heading level2 col69" >E0.7</th>
+      <th id="T_dc893_level2_col70" class="col_heading level2 col70" >E1.0</th>
+      <th id="T_dc893_level2_col71" class="col_heading level2 col71" >E1.4</th>
+      <th id="T_dc893_level2_col72" class="col_heading level2 col72" >E0.7</th>
+      <th id="T_dc893_level2_col73" class="col_heading level2 col73" >E1.0</th>
+      <th id="T_dc893_level2_col74" class="col_heading level2 col74" >E1.4</th>
+      <th id="T_dc893_level2_col75" class="col_heading level2 col75" >E0.7</th>
+      <th id="T_dc893_level2_col76" class="col_heading level2 col76" >E1.0</th>
+      <th id="T_dc893_level2_col77" class="col_heading level2 col77" >E1.4</th>
+      <th id="T_dc893_level2_col78" class="col_heading level2 col78" >E0.7</th>
+      <th id="T_dc893_level2_col79" class="col_heading level2 col79" >E1.0</th>
+      <th id="T_dc893_level2_col80" class="col_heading level2 col80" >E1.4</th>
+      <th id="T_dc893_level2_col81" class="col_heading level2 col81" >E0.7</th>
+      <th id="T_dc893_level2_col82" class="col_heading level2 col82" >E1.0</th>
+      <th id="T_dc893_level2_col83" class="col_heading level2 col83" >E1.4</th>
+      <th id="T_dc893_level2_col84" class="col_heading level2 col84" >E0.7</th>
+      <th id="T_dc893_level2_col85" class="col_heading level2 col85" >E1.0</th>
+      <th id="T_dc893_level2_col86" class="col_heading level2 col86" >E1.4</th>
+      <th id="T_dc893_level2_col87" class="col_heading level2 col87" >E0.7</th>
+      <th id="T_dc893_level2_col88" class="col_heading level2 col88" >E1.0</th>
+      <th id="T_dc893_level2_col89" class="col_heading level2 col89" >E1.4</th>
+      <th id="T_dc893_level2_col90" class="col_heading level2 col90" >E0.7</th>
+      <th id="T_dc893_level2_col91" class="col_heading level2 col91" >E1.0</th>
+      <th id="T_dc893_level2_col92" class="col_heading level2 col92" >E1.4</th>
+      <th id="T_dc893_level2_col93" class="col_heading level2 col93" >E0.7</th>
+      <th id="T_dc893_level2_col94" class="col_heading level2 col94" >E1.0</th>
+      <th id="T_dc893_level2_col95" class="col_heading level2 col95" >E1.4</th>
+      <th id="T_dc893_level2_col96" class="col_heading level2 col96" >E0.7</th>
+      <th id="T_dc893_level2_col97" class="col_heading level2 col97" >E1.0</th>
+      <th id="T_dc893_level2_col98" class="col_heading level2 col98" >E1.4</th>
+      <th id="T_dc893_level2_col99" class="col_heading level2 col99" >E0.7</th>
+      <th id="T_dc893_level2_col100" class="col_heading level2 col100" >E1.0</th>
+      <th id="T_dc893_level2_col101" class="col_heading level2 col101" >E1.4</th>
+      <th id="T_dc893_level2_col102" class="col_heading level2 col102" >E0.7</th>
+      <th id="T_dc893_level2_col103" class="col_heading level2 col103" >E1.0</th>
+      <th id="T_dc893_level2_col104" class="col_heading level2 col104" >E1.4</th>
+      <th id="T_dc893_level2_col105" class="col_heading level2 col105" >E0.7</th>
+      <th id="T_dc893_level2_col106" class="col_heading level2 col106" >E1.0</th>
+      <th id="T_dc893_level2_col107" class="col_heading level2 col107" >E1.4</th>
     </tr>
     <tr>
-      <th>Molecule</th>
-      <th>Metric</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th class="index_name level0" >Molecule</th>
+      <th class="index_name level1" >Metric</th>
+      <th class="blank col0" >&nbsp;</th>
+      <th class="blank col1" >&nbsp;</th>
+      <th class="blank col2" >&nbsp;</th>
+      <th class="blank col3" >&nbsp;</th>
+      <th class="blank col4" >&nbsp;</th>
+      <th class="blank col5" >&nbsp;</th>
+      <th class="blank col6" >&nbsp;</th>
+      <th class="blank col7" >&nbsp;</th>
+      <th class="blank col8" >&nbsp;</th>
+      <th class="blank col9" >&nbsp;</th>
+      <th class="blank col10" >&nbsp;</th>
+      <th class="blank col11" >&nbsp;</th>
+      <th class="blank col12" >&nbsp;</th>
+      <th class="blank col13" >&nbsp;</th>
+      <th class="blank col14" >&nbsp;</th>
+      <th class="blank col15" >&nbsp;</th>
+      <th class="blank col16" >&nbsp;</th>
+      <th class="blank col17" >&nbsp;</th>
+      <th class="blank col18" >&nbsp;</th>
+      <th class="blank col19" >&nbsp;</th>
+      <th class="blank col20" >&nbsp;</th>
+      <th class="blank col21" >&nbsp;</th>
+      <th class="blank col22" >&nbsp;</th>
+      <th class="blank col23" >&nbsp;</th>
+      <th class="blank col24" >&nbsp;</th>
+      <th class="blank col25" >&nbsp;</th>
+      <th class="blank col26" >&nbsp;</th>
+      <th class="blank col27" >&nbsp;</th>
+      <th class="blank col28" >&nbsp;</th>
+      <th class="blank col29" >&nbsp;</th>
+      <th class="blank col30" >&nbsp;</th>
+      <th class="blank col31" >&nbsp;</th>
+      <th class="blank col32" >&nbsp;</th>
+      <th class="blank col33" >&nbsp;</th>
+      <th class="blank col34" >&nbsp;</th>
+      <th class="blank col35" >&nbsp;</th>
+      <th class="blank col36" >&nbsp;</th>
+      <th class="blank col37" >&nbsp;</th>
+      <th class="blank col38" >&nbsp;</th>
+      <th class="blank col39" >&nbsp;</th>
+      <th class="blank col40" >&nbsp;</th>
+      <th class="blank col41" >&nbsp;</th>
+      <th class="blank col42" >&nbsp;</th>
+      <th class="blank col43" >&nbsp;</th>
+      <th class="blank col44" >&nbsp;</th>
+      <th class="blank col45" >&nbsp;</th>
+      <th class="blank col46" >&nbsp;</th>
+      <th class="blank col47" >&nbsp;</th>
+      <th class="blank col48" >&nbsp;</th>
+      <th class="blank col49" >&nbsp;</th>
+      <th class="blank col50" >&nbsp;</th>
+      <th class="blank col51" >&nbsp;</th>
+      <th class="blank col52" >&nbsp;</th>
+      <th class="blank col53" >&nbsp;</th>
+      <th class="blank col54" >&nbsp;</th>
+      <th class="blank col55" >&nbsp;</th>
+      <th class="blank col56" >&nbsp;</th>
+      <th class="blank col57" >&nbsp;</th>
+      <th class="blank col58" >&nbsp;</th>
+      <th class="blank col59" >&nbsp;</th>
+      <th class="blank col60" >&nbsp;</th>
+      <th class="blank col61" >&nbsp;</th>
+      <th class="blank col62" >&nbsp;</th>
+      <th class="blank col63" >&nbsp;</th>
+      <th class="blank col64" >&nbsp;</th>
+      <th class="blank col65" >&nbsp;</th>
+      <th class="blank col66" >&nbsp;</th>
+      <th class="blank col67" >&nbsp;</th>
+      <th class="blank col68" >&nbsp;</th>
+      <th class="blank col69" >&nbsp;</th>
+      <th class="blank col70" >&nbsp;</th>
+      <th class="blank col71" >&nbsp;</th>
+      <th class="blank col72" >&nbsp;</th>
+      <th class="blank col73" >&nbsp;</th>
+      <th class="blank col74" >&nbsp;</th>
+      <th class="blank col75" >&nbsp;</th>
+      <th class="blank col76" >&nbsp;</th>
+      <th class="blank col77" >&nbsp;</th>
+      <th class="blank col78" >&nbsp;</th>
+      <th class="blank col79" >&nbsp;</th>
+      <th class="blank col80" >&nbsp;</th>
+      <th class="blank col81" >&nbsp;</th>
+      <th class="blank col82" >&nbsp;</th>
+      <th class="blank col83" >&nbsp;</th>
+      <th class="blank col84" >&nbsp;</th>
+      <th class="blank col85" >&nbsp;</th>
+      <th class="blank col86" >&nbsp;</th>
+      <th class="blank col87" >&nbsp;</th>
+      <th class="blank col88" >&nbsp;</th>
+      <th class="blank col89" >&nbsp;</th>
+      <th class="blank col90" >&nbsp;</th>
+      <th class="blank col91" >&nbsp;</th>
+      <th class="blank col92" >&nbsp;</th>
+      <th class="blank col93" >&nbsp;</th>
+      <th class="blank col94" >&nbsp;</th>
+      <th class="blank col95" >&nbsp;</th>
+      <th class="blank col96" >&nbsp;</th>
+      <th class="blank col97" >&nbsp;</th>
+      <th class="blank col98" >&nbsp;</th>
+      <th class="blank col99" >&nbsp;</th>
+      <th class="blank col100" >&nbsp;</th>
+      <th class="blank col101" >&nbsp;</th>
+      <th class="blank col102" >&nbsp;</th>
+      <th class="blank col103" >&nbsp;</th>
+      <th class="blank col104" >&nbsp;</th>
+      <th class="blank col105" >&nbsp;</th>
+      <th class="blank col106" >&nbsp;</th>
+      <th class="blank col107" >&nbsp;</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>Y-OH</th>
-      <th>%Diff</th>
-      <td>-25.8</td>
-      <td>-20.4</td>
-      <td>-41.9</td>
-      <td>-25.2</td>
-      <td>-29.2</td>
-      <td>-55.4</td>
-      <td>-34.5</td>
-      <td>-42.4</td>
-      <td>-66.6</td>
-      <td>-17.3</td>
-      <td>-15.8</td>
-      <td>-35.6</td>
-      <td>-21.9</td>
-      <td>-25.6</td>
-      <td>-51.5</td>
-      <td>-32.3</td>
-      <td>-36.0</td>
-      <td>-60.6</td>
-      <td>-8.4</td>
-      <td>-12.2</td>
-      <td>-42.6</td>
-      <td>-22.5</td>
-      <td>-23.3</td>
-      <td>-50.1</td>
-      <td>-28.0</td>
-      <td>-33.4</td>
-      <td>-57.8</td>
-      <td>-4.4</td>
-      <td>-8.7</td>
-      <td>-62.2</td>
-      <td>-20.0</td>
-      <td>-20.5</td>
-      <td>-47.0</td>
-      <td>-26.3</td>
-      <td>-31.3</td>
-      <td>-50.3</td>
-      <td>-3.0</td>
-      <td>-6.1</td>
-      <td>-70.7</td>
-      <td>-17.3</td>
-      <td>-18.3</td>
-      <td>-43.5</td>
-      <td>-29.8</td>
-      <td>-27.9</td>
-      <td>-41.9</td>
-      <td>-1.2</td>
-      <td>-1.9</td>
-      <td>-6.1</td>
-      <td>-10.4</td>
-      <td>-13.7</td>
-      <td>-24.8</td>
-      <td>-17.8</td>
-      <td>-19.6</td>
-      <td>-22.6</td>
-      <td>-0.8</td>
-      <td>-0.9</td>
-      <td>-2.3</td>
-      <td>-10.0</td>
-      <td>-11.9</td>
-      <td>-19.9</td>
-      <td>-17.3</td>
-      <td>-18.7</td>
-      <td>-24.1</td>
-      <td>-0.5</td>
-      <td>-0.4</td>
-      <td>-0.8</td>
-      <td>-9.4</td>
-      <td>-10.8</td>
-      <td>-17.5</td>
-      <td>-16.9</td>
-      <td>-17.8</td>
-      <td>-24.4</td>
-      <td>-0.4</td>
-      <td>-0.1</td>
-      <td>-0.2</td>
-      <td>-9.1</td>
-      <td>-10.2</td>
-      <td>-16.4</td>
-      <td>-16.2</td>
-      <td>-17.0</td>
-      <td>-24.0</td>
-      <td>-0.3</td>
-      <td>-0.0</td>
-      <td>0.2</td>
-      <td>-8.8</td>
-      <td>-9.7</td>
-      <td>-15.5</td>
-      <td>-15.3</td>
-      <td>-16.1</td>
-      <td>-23.4</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th id="T_dc893_level0_row0" class="row_heading level0 row0" >Y-OH</th>
+      <th id="T_dc893_level1_row0" class="row_heading level1 row0" >%Diff</th>
+      <td id="T_dc893_row0_col0" class="data row0 col0" >-25.797133</td>
+      <td id="T_dc893_row0_col1" class="data row0 col1" >-20.382096</td>
+      <td id="T_dc893_row0_col2" class="data row0 col2" >-41.872880</td>
+      <td id="T_dc893_row0_col3" class="data row0 col3" >-25.197624</td>
+      <td id="T_dc893_row0_col4" class="data row0 col4" >-29.227746</td>
+      <td id="T_dc893_row0_col5" class="data row0 col5" >-55.372483</td>
+      <td id="T_dc893_row0_col6" class="data row0 col6" >-34.502458</td>
+      <td id="T_dc893_row0_col7" class="data row0 col7" >-42.400955</td>
+      <td id="T_dc893_row0_col8" class="data row0 col8" >-66.581123</td>
+      <td id="T_dc893_row0_col9" class="data row0 col9" >-17.255105</td>
+      <td id="T_dc893_row0_col10" class="data row0 col10" >-15.833602</td>
+      <td id="T_dc893_row0_col11" class="data row0 col11" >-35.578525</td>
+      <td id="T_dc893_row0_col12" class="data row0 col12" >-21.867810</td>
+      <td id="T_dc893_row0_col13" class="data row0 col13" >-25.556381</td>
+      <td id="T_dc893_row0_col14" class="data row0 col14" >-51.468456</td>
+      <td id="T_dc893_row0_col15" class="data row0 col15" >-32.276840</td>
+      <td id="T_dc893_row0_col16" class="data row0 col16" >-36.047030</td>
+      <td id="T_dc893_row0_col17" class="data row0 col17" >-60.633124</td>
+      <td id="T_dc893_row0_col18" class="data row0 col18" >-8.434423</td>
+      <td id="T_dc893_row0_col19" class="data row0 col19" >-12.171881</td>
+      <td id="T_dc893_row0_col20" class="data row0 col20" >-42.554958</td>
+      <td id="T_dc893_row0_col21" class="data row0 col21" >-22.455323</td>
+      <td id="T_dc893_row0_col22" class="data row0 col22" >-23.254558</td>
+      <td id="T_dc893_row0_col23" class="data row0 col23" >-50.104769</td>
+      <td id="T_dc893_row0_col24" class="data row0 col24" >-28.030290</td>
+      <td id="T_dc893_row0_col25" class="data row0 col25" >-33.432333</td>
+      <td id="T_dc893_row0_col26" class="data row0 col26" >-57.839067</td>
+      <td id="T_dc893_row0_col27" class="data row0 col27" >-4.390294</td>
+      <td id="T_dc893_row0_col28" class="data row0 col28" >-8.708893</td>
+      <td id="T_dc893_row0_col29" class="data row0 col29" >-62.174530</td>
+      <td id="T_dc893_row0_col30" class="data row0 col30" >-19.955161</td>
+      <td id="T_dc893_row0_col31" class="data row0 col31" >-20.524582</td>
+      <td id="T_dc893_row0_col32" class="data row0 col32" >-47.045972</td>
+      <td id="T_dc893_row0_col33" class="data row0 col33" >-26.259218</td>
+      <td id="T_dc893_row0_col34" class="data row0 col34" >-31.268836</td>
+      <td id="T_dc893_row0_col35" class="data row0 col35" >-50.321476</td>
+      <td id="T_dc893_row0_col36" class="data row0 col36" >-3.036940</td>
+      <td id="T_dc893_row0_col37" class="data row0 col37" >-6.149984</td>
+      <td id="T_dc893_row0_col38" class="data row0 col38" >-70.655608</td>
+      <td id="T_dc893_row0_col39" class="data row0 col39" >-17.332544</td>
+      <td id="T_dc893_row0_col40" class="data row0 col40" >-18.282957</td>
+      <td id="T_dc893_row0_col41" class="data row0 col41" >-43.516842</td>
+      <td id="T_dc893_row0_col42" class="data row0 col42" >-29.752583</td>
+      <td id="T_dc893_row0_col43" class="data row0 col43" >-27.919658</td>
+      <td id="T_dc893_row0_col44" class="data row0 col44" >-41.945246</td>
+      <td id="T_dc893_row0_col45" class="data row0 col45" >-1.198467</td>
+      <td id="T_dc893_row0_col46" class="data row0 col46" >-1.891042</td>
+      <td id="T_dc893_row0_col47" class="data row0 col47" >-6.087734</td>
+      <td id="T_dc893_row0_col48" class="data row0 col48" >-10.407105</td>
+      <td id="T_dc893_row0_col49" class="data row0 col49" >-13.731560</td>
+      <td id="T_dc893_row0_col50" class="data row0 col50" >-24.753812</td>
+      <td id="T_dc893_row0_col51" class="data row0 col51" >-17.805668</td>
+      <td id="T_dc893_row0_col52" class="data row0 col52" >-19.597669</td>
+      <td id="T_dc893_row0_col53" class="data row0 col53" >-22.598400</td>
+      <td id="T_dc893_row0_col54" class="data row0 col54" >-0.766823</td>
+      <td id="T_dc893_row0_col55" class="data row0 col55" >-0.876491</td>
+      <td id="T_dc893_row0_col56" class="data row0 col56" >-2.258618</td>
+      <td id="T_dc893_row0_col57" class="data row0 col57" >-9.969154</td>
+      <td id="T_dc893_row0_col58" class="data row0 col58" >-11.916365</td>
+      <td id="T_dc893_row0_col59" class="data row0 col59" >-19.948307</td>
+      <td id="T_dc893_row0_col60" class="data row0 col60" >-17.301879</td>
+      <td id="T_dc893_row0_col61" class="data row0 col61" >-18.678998</td>
+      <td id="T_dc893_row0_col62" class="data row0 col62" >-24.090382</td>
+      <td id="T_dc893_row0_col63" class="data row0 col63" >-0.534430</td>
+      <td id="T_dc893_row0_col64" class="data row0 col64" >-0.373187</td>
+      <td id="T_dc893_row0_col65" class="data row0 col65" >-0.843292</td>
+      <td id="T_dc893_row0_col66" class="data row0 col66" >-9.441017</td>
+      <td id="T_dc893_row0_col67" class="data row0 col67" >-10.759148</td>
+      <td id="T_dc893_row0_col68" class="data row0 col68" >-17.517652</td>
+      <td id="T_dc893_row0_col69" class="data row0 col69" >-16.862926</td>
+      <td id="T_dc893_row0_col70" class="data row0 col70" >-17.803385</td>
+      <td id="T_dc893_row0_col71" class="data row0 col71" >-24.446424</td>
+      <td id="T_dc893_row0_col72" class="data row0 col72" >-0.418240</td>
+      <td id="T_dc893_row0_col73" class="data row0 col73" >-0.148966</td>
+      <td id="T_dc893_row0_col74" class="data row0 col74" >-0.157793</td>
+      <td id="T_dc893_row0_col75" class="data row0 col75" >-9.134127</td>
+      <td id="T_dc893_row0_col76" class="data row0 col76" >-10.188824</td>
+      <td id="T_dc893_row0_col77" class="data row0 col77" >-16.378876</td>
+      <td id="T_dc893_row0_col78" class="data row0 col78" >-16.210667</td>
+      <td id="T_dc893_row0_col79" class="data row0 col79" >-17.026095</td>
+      <td id="T_dc893_row0_col80" class="data row0 col80" >-24.006245</td>
+      <td id="T_dc893_row0_col81" class="data row0 col81" >-0.331884</td>
+      <td id="T_dc893_row0_col82" class="data row0 col82" >-0.011443</td>
+      <td id="T_dc893_row0_col83" class="data row0 col83" >0.239820</td>
+      <td id="T_dc893_row0_col84" class="data row0 col84" >-8.837234</td>
+      <td id="T_dc893_row0_col85" class="data row0 col85" >-9.653537</td>
+      <td id="T_dc893_row0_col86" class="data row0 col86" >-15.471910</td>
+      <td id="T_dc893_row0_col87" class="data row0 col87" >-15.259130</td>
+      <td id="T_dc893_row0_col88" class="data row0 col88" >-16.067595</td>
+      <td id="T_dc893_row0_col89" class="data row0 col89" >-23.434984</td>
+      <td id="T_dc893_row0_col90" class="data row0 col90" >nan</td>
+      <td id="T_dc893_row0_col91" class="data row0 col91" >nan</td>
+      <td id="T_dc893_row0_col92" class="data row0 col92" >nan</td>
+      <td id="T_dc893_row0_col93" class="data row0 col93" >nan</td>
+      <td id="T_dc893_row0_col94" class="data row0 col94" >nan</td>
+      <td id="T_dc893_row0_col95" class="data row0 col95" >nan</td>
+      <td id="T_dc893_row0_col96" class="data row0 col96" >nan</td>
+      <td id="T_dc893_row0_col97" class="data row0 col97" >nan</td>
+      <td id="T_dc893_row0_col98" class="data row0 col98" >nan</td>
+      <td id="T_dc893_row0_col99" class="data row0 col99" >nan</td>
+      <td id="T_dc893_row0_col100" class="data row0 col100" >nan</td>
+      <td id="T_dc893_row0_col101" class="data row0 col101" >nan</td>
+      <td id="T_dc893_row0_col102" class="data row0 col102" >nan</td>
+      <td id="T_dc893_row0_col103" class="data row0 col103" >nan</td>
+      <td id="T_dc893_row0_col104" class="data row0 col104" >nan</td>
+      <td id="T_dc893_row0_col105" class="data row0 col105" >nan</td>
+      <td id="T_dc893_row0_col106" class="data row0 col106" >nan</td>
+      <td id="T_dc893_row0_col107" class="data row0 col107" >nan</td>
     </tr>
     <tr>
-      <th>Y-NO2</th>
-      <th>%Diff</th>
-      <td>-86.9</td>
-      <td>-127.3</td>
-      <td>-141.0</td>
-      <td>-48.4</td>
-      <td>-21.2</td>
-      <td>-6.5</td>
-      <td>-81.6</td>
-      <td>-45.5</td>
-      <td>-42.1</td>
-      <td>-145.7</td>
-      <td>-165.6</td>
-      <td>-167.2</td>
-      <td>-142.6</td>
-      <td>-143.5</td>
-      <td>-144.3</td>
-      <td>-127.0</td>
-      <td>-134.9</td>
-      <td>-142.6</td>
-      <td>-147.6</td>
-      <td>-160.8</td>
-      <td>-162.8</td>
-      <td>-115.1</td>
-      <td>-114.5</td>
-      <td>-112.4</td>
-      <td>-116.5</td>
-      <td>-119.9</td>
-      <td>-117.9</td>
-      <td>-146.0</td>
-      <td>-153.5</td>
-      <td>-156.4</td>
-      <td>-79.0</td>
-      <td>-83.8</td>
-      <td>-85.1</td>
-      <td>-82.4</td>
-      <td>-90.5</td>
-      <td>-89.3</td>
-      <td>-136.9</td>
-      <td>-144.8</td>
-      <td>-148.6</td>
-      <td>-57.4</td>
-      <td>-63.7</td>
-      <td>-66.6</td>
-      <td>-56.3</td>
-      <td>-67.8</td>
-      <td>-70.0</td>
-      <td>-67.5</td>
-      <td>-70.3</td>
-      <td>-74.3</td>
-      <td>-11.3</td>
-      <td>-8.9</td>
-      <td>-4.2</td>
-      <td>-19.7</td>
-      <td>-22.8</td>
-      <td>-24.0</td>
-      <td>-51.9</td>
-      <td>-53.2</td>
-      <td>-55.9</td>
-      <td>-11.7</td>
-      <td>-6.5</td>
-      <td>4.1</td>
-      <td>-11.9</td>
-      <td>-11.4</td>
-      <td>-4.5</td>
-      <td>-50.9</td>
-      <td>-50.6</td>
-      <td>-51.5</td>
-      <td>-28.5</td>
-      <td>-23.1</td>
-      <td>-11.8</td>
-      <td>-22.8</td>
-      <td>-24.0</td>
-      <td>-14.7</td>
-      <td>-54.1</td>
-      <td>-51.5</td>
-      <td>-50.1</td>
-      <td>-42.1</td>
-      <td>-37.3</td>
-      <td>-26.4</td>
-      <td>-36.4</td>
-      <td>-39.5</td>
-      <td>-30.8</td>
-      <td>0.4</td>
-      <td>1.5</td>
-      <td>NaN</td>
-      <td>0.0</td>
-      <td>0.1</td>
-      <td>NaN</td>
-      <td>0.4</td>
-      <td>1.8</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th id="T_dc893_level0_row1" class="row_heading level0 row1" >Y-NO2</th>
+      <th id="T_dc893_level1_row1" class="row_heading level1 row1" >%Diff</th>
+      <td id="T_dc893_row1_col0" class="data row1 col0" >-86.947920</td>
+      <td id="T_dc893_row1_col1" class="data row1 col1" >-127.285437</td>
+      <td id="T_dc893_row1_col2" class="data row1 col2" >-140.967913</td>
+      <td id="T_dc893_row1_col3" class="data row1 col3" >-48.420305</td>
+      <td id="T_dc893_row1_col4" class="data row1 col4" >-21.153515</td>
+      <td id="T_dc893_row1_col5" class="data row1 col5" >-6.499593</td>
+      <td id="T_dc893_row1_col6" class="data row1 col6" >-81.616075</td>
+      <td id="T_dc893_row1_col7" class="data row1 col7" >-45.513813</td>
+      <td id="T_dc893_row1_col8" class="data row1 col8" >-42.105846</td>
+      <td id="T_dc893_row1_col9" class="data row1 col9" >-145.734815</td>
+      <td id="T_dc893_row1_col10" class="data row1 col10" >-165.601399</td>
+      <td id="T_dc893_row1_col11" class="data row1 col11" >-167.192423</td>
+      <td id="T_dc893_row1_col12" class="data row1 col12" >-142.645219</td>
+      <td id="T_dc893_row1_col13" class="data row1 col13" >-143.457658</td>
+      <td id="T_dc893_row1_col14" class="data row1 col14" >-144.346694</td>
+      <td id="T_dc893_row1_col15" class="data row1 col15" >-127.041916</td>
+      <td id="T_dc893_row1_col16" class="data row1 col16" >-134.875272</td>
+      <td id="T_dc893_row1_col17" class="data row1 col17" >-142.581156</td>
+      <td id="T_dc893_row1_col18" class="data row1 col18" >-147.599722</td>
+      <td id="T_dc893_row1_col19" class="data row1 col19" >-160.790916</td>
+      <td id="T_dc893_row1_col20" class="data row1 col20" >-162.812933</td>
+      <td id="T_dc893_row1_col21" class="data row1 col21" >-115.112569</td>
+      <td id="T_dc893_row1_col22" class="data row1 col22" >-114.494016</td>
+      <td id="T_dc893_row1_col23" class="data row1 col23" >-112.406512</td>
+      <td id="T_dc893_row1_col24" class="data row1 col24" >-116.488145</td>
+      <td id="T_dc893_row1_col25" class="data row1 col25" >-119.859051</td>
+      <td id="T_dc893_row1_col26" class="data row1 col26" >-117.873645</td>
+      <td id="T_dc893_row1_col27" class="data row1 col27" >-146.024450</td>
+      <td id="T_dc893_row1_col28" class="data row1 col28" >-153.450984</td>
+      <td id="T_dc893_row1_col29" class="data row1 col29" >-156.367810</td>
+      <td id="T_dc893_row1_col30" class="data row1 col30" >-78.988048</td>
+      <td id="T_dc893_row1_col31" class="data row1 col31" >-83.819438</td>
+      <td id="T_dc893_row1_col32" class="data row1 col32" >-85.061807</td>
+      <td id="T_dc893_row1_col33" class="data row1 col33" >-82.403265</td>
+      <td id="T_dc893_row1_col34" class="data row1 col34" >-90.547951</td>
+      <td id="T_dc893_row1_col35" class="data row1 col35" >-89.298133</td>
+      <td id="T_dc893_row1_col36" class="data row1 col36" >-136.909015</td>
+      <td id="T_dc893_row1_col37" class="data row1 col37" >-144.766027</td>
+      <td id="T_dc893_row1_col38" class="data row1 col38" >-148.571155</td>
+      <td id="T_dc893_row1_col39" class="data row1 col39" >-57.417967</td>
+      <td id="T_dc893_row1_col40" class="data row1 col40" >-63.686729</td>
+      <td id="T_dc893_row1_col41" class="data row1 col41" >-66.637657</td>
+      <td id="T_dc893_row1_col42" class="data row1 col42" >-56.270799</td>
+      <td id="T_dc893_row1_col43" class="data row1 col43" >-67.811824</td>
+      <td id="T_dc893_row1_col44" class="data row1 col44" >-70.048983</td>
+      <td id="T_dc893_row1_col45" class="data row1 col45" >-67.487675</td>
+      <td id="T_dc893_row1_col46" class="data row1 col46" >-70.260435</td>
+      <td id="T_dc893_row1_col47" class="data row1 col47" >-74.330489</td>
+      <td id="T_dc893_row1_col48" class="data row1 col48" >-11.255174</td>
+      <td id="T_dc893_row1_col49" class="data row1 col49" >-8.877938</td>
+      <td id="T_dc893_row1_col50" class="data row1 col50" >-4.154293</td>
+      <td id="T_dc893_row1_col51" class="data row1 col51" >-19.718511</td>
+      <td id="T_dc893_row1_col52" class="data row1 col52" >-22.849777</td>
+      <td id="T_dc893_row1_col53" class="data row1 col53" >-24.005196</td>
+      <td id="T_dc893_row1_col54" class="data row1 col54" >-51.876524</td>
+      <td id="T_dc893_row1_col55" class="data row1 col55" >-53.160396</td>
+      <td id="T_dc893_row1_col56" class="data row1 col56" >-55.941623</td>
+      <td id="T_dc893_row1_col57" class="data row1 col57" >-11.745004</td>
+      <td id="T_dc893_row1_col58" class="data row1 col58" >-6.452870</td>
+      <td id="T_dc893_row1_col59" class="data row1 col59" >4.071951</td>
+      <td id="T_dc893_row1_col60" class="data row1 col60" >-11.866163</td>
+      <td id="T_dc893_row1_col61" class="data row1 col61" >-11.412560</td>
+      <td id="T_dc893_row1_col62" class="data row1 col62" >-4.459402</td>
+      <td id="T_dc893_row1_col63" class="data row1 col63" >-50.902805</td>
+      <td id="T_dc893_row1_col64" class="data row1 col64" >-50.597020</td>
+      <td id="T_dc893_row1_col65" class="data row1 col65" >-51.547901</td>
+      <td id="T_dc893_row1_col66" class="data row1 col66" >-28.460534</td>
+      <td id="T_dc893_row1_col67" class="data row1 col67" >-23.098223</td>
+      <td id="T_dc893_row1_col68" class="data row1 col68" >-11.818615</td>
+      <td id="T_dc893_row1_col69" class="data row1 col69" >-22.811043</td>
+      <td id="T_dc893_row1_col70" class="data row1 col70" >-24.041585</td>
+      <td id="T_dc893_row1_col71" class="data row1 col71" >-14.668553</td>
+      <td id="T_dc893_row1_col72" class="data row1 col72" >-54.092747</td>
+      <td id="T_dc893_row1_col73" class="data row1 col73" >-51.528071</td>
+      <td id="T_dc893_row1_col74" class="data row1 col74" >-50.090742</td>
+      <td id="T_dc893_row1_col75" class="data row1 col75" >-42.084851</td>
+      <td id="T_dc893_row1_col76" class="data row1 col76" >-37.304959</td>
+      <td id="T_dc893_row1_col77" class="data row1 col77" >-26.407423</td>
+      <td id="T_dc893_row1_col78" class="data row1 col78" >-36.400893</td>
+      <td id="T_dc893_row1_col79" class="data row1 col79" >-39.510562</td>
+      <td id="T_dc893_row1_col80" class="data row1 col80" >-30.775933</td>
+      <td id="T_dc893_row1_col81" class="data row1 col81" >0.356008</td>
+      <td id="T_dc893_row1_col82" class="data row1 col82" >1.526121</td>
+      <td id="T_dc893_row1_col83" class="data row1 col83" >nan</td>
+      <td id="T_dc893_row1_col84" class="data row1 col84" >0.007551</td>
+      <td id="T_dc893_row1_col85" class="data row1 col85" >0.091381</td>
+      <td id="T_dc893_row1_col86" class="data row1 col86" >nan</td>
+      <td id="T_dc893_row1_col87" class="data row1 col87" >0.377109</td>
+      <td id="T_dc893_row1_col88" class="data row1 col88" >1.828806</td>
+      <td id="T_dc893_row1_col89" class="data row1 col89" >nan</td>
+      <td id="T_dc893_row1_col90" class="data row1 col90" >nan</td>
+      <td id="T_dc893_row1_col91" class="data row1 col91" >nan</td>
+      <td id="T_dc893_row1_col92" class="data row1 col92" >nan</td>
+      <td id="T_dc893_row1_col93" class="data row1 col93" >nan</td>
+      <td id="T_dc893_row1_col94" class="data row1 col94" >nan</td>
+      <td id="T_dc893_row1_col95" class="data row1 col95" >nan</td>
+      <td id="T_dc893_row1_col96" class="data row1 col96" >nan</td>
+      <td id="T_dc893_row1_col97" class="data row1 col97" >nan</td>
+      <td id="T_dc893_row1_col98" class="data row1 col98" >nan</td>
+      <td id="T_dc893_row1_col99" class="data row1 col99" >nan</td>
+      <td id="T_dc893_row1_col100" class="data row1 col100" >nan</td>
+      <td id="T_dc893_row1_col101" class="data row1 col101" >nan</td>
+      <td id="T_dc893_row1_col102" class="data row1 col102" >nan</td>
+      <td id="T_dc893_row1_col103" class="data row1 col103" >nan</td>
+      <td id="T_dc893_row1_col104" class="data row1 col104" >nan</td>
+      <td id="T_dc893_row1_col105" class="data row1 col105" >nan</td>
+      <td id="T_dc893_row1_col106" class="data row1 col106" >nan</td>
+      <td id="T_dc893_row1_col107" class="data row1 col107" >nan</td>
     </tr>
     <tr>
-      <th>Y-NO</th>
-      <th>%Diff</th>
-      <td>-42.1</td>
-      <td>-30.8</td>
-      <td>-60.2</td>
-      <td>-47.9</td>
-      <td>-52.9</td>
-      <td>-93.1</td>
-      <td>-18.3</td>
-      <td>-68.1</td>
-      <td>-93.1</td>
-      <td>-32.5</td>
-      <td>-23.0</td>
-      <td>-47.8</td>
-      <td>-50.7</td>
-      <td>-49.7</td>
-      <td>-92.0</td>
-      <td>-32.8</td>
-      <td>-63.1</td>
-      <td>-111.2</td>
-      <td>-17.3</td>
-      <td>-13.6</td>
-      <td>-38.8</td>
-      <td>-51.4</td>
-      <td>-46.2</td>
-      <td>-83.9</td>
-      <td>-40.9</td>
-      <td>-60.9</td>
-      <td>-125.2</td>
-      <td>-6.1</td>
-      <td>-2.2</td>
-      <td>-29.6</td>
-      <td>-46.9</td>
-      <td>-39.2</td>
-      <td>-71.1</td>
-      <td>-51.4</td>
-      <td>-58.2</td>
-      <td>-114.9</td>
-      <td>0.2</td>
-      <td>8.2</td>
-      <td>-22.0</td>
-      <td>-40.5</td>
-      <td>-31.6</td>
-      <td>-58.7</td>
-      <td>-62.1</td>
-      <td>-51.8</td>
-      <td>-100.3</td>
-      <td>14.1</td>
-      <td>18.0</td>
-      <td>25.0</td>
-      <td>-9.1</td>
-      <td>-0.7</td>
-      <td>1.5</td>
-      <td>-24.2</td>
-      <td>-11.1</td>
-      <td>-15.3</td>
-      <td>15.2</td>
-      <td>15.7</td>
-      <td>20.5</td>
-      <td>0.0</td>
-      <td>2.9</td>
-      <td>7.0</td>
-      <td>-11.7</td>
-      <td>-3.9</td>
-      <td>-4.9</td>
-      <td>1.0</td>
-      <td>12.5</td>
-      <td>15.5</td>
-      <td>0.0</td>
-      <td>0.1</td>
-      <td>6.0</td>
-      <td>1.1</td>
-      <td>-0.2</td>
-      <td>-1.0</td>
-      <td>1.0</td>
-      <td>1.3</td>
-      <td>10.8</td>
-      <td>0.0</td>
-      <td>0.1</td>
-      <td>4.3</td>
-      <td>1.1</td>
-      <td>1.6</td>
-      <td>0.1</td>
-      <td>1.0</td>
-      <td>1.3</td>
-      <td>5.3</td>
-      <td>0.0</td>
-      <td>0.1</td>
-      <td>0.4</td>
-      <td>1.1</td>
-      <td>1.6</td>
-      <td>5.9</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th id="T_dc893_level0_row2" class="row_heading level0 row2" >Y-NO</th>
+      <th id="T_dc893_level1_row2" class="row_heading level1 row2" >%Diff</th>
+      <td id="T_dc893_row2_col0" class="data row2 col0" >-42.057969</td>
+      <td id="T_dc893_row2_col1" class="data row2 col1" >-30.750175</td>
+      <td id="T_dc893_row2_col2" class="data row2 col2" >-60.216021</td>
+      <td id="T_dc893_row2_col3" class="data row2 col3" >-47.852230</td>
+      <td id="T_dc893_row2_col4" class="data row2 col4" >-52.914437</td>
+      <td id="T_dc893_row2_col5" class="data row2 col5" >-93.116330</td>
+      <td id="T_dc893_row2_col6" class="data row2 col6" >-18.273368</td>
+      <td id="T_dc893_row2_col7" class="data row2 col7" >-68.084893</td>
+      <td id="T_dc893_row2_col8" class="data row2 col8" >-93.087762</td>
+      <td id="T_dc893_row2_col9" class="data row2 col9" >-32.463387</td>
+      <td id="T_dc893_row2_col10" class="data row2 col10" >-23.036474</td>
+      <td id="T_dc893_row2_col11" class="data row2 col11" >-47.846101</td>
+      <td id="T_dc893_row2_col12" class="data row2 col12" >-50.693409</td>
+      <td id="T_dc893_row2_col13" class="data row2 col13" >-49.721891</td>
+      <td id="T_dc893_row2_col14" class="data row2 col14" >-91.989312</td>
+      <td id="T_dc893_row2_col15" class="data row2 col15" >-32.752110</td>
+      <td id="T_dc893_row2_col16" class="data row2 col16" >-63.066792</td>
+      <td id="T_dc893_row2_col17" class="data row2 col17" >-111.173314</td>
+      <td id="T_dc893_row2_col18" class="data row2 col18" >-17.308561</td>
+      <td id="T_dc893_row2_col19" class="data row2 col19" >-13.557233</td>
+      <td id="T_dc893_row2_col20" class="data row2 col20" >-38.772831</td>
+      <td id="T_dc893_row2_col21" class="data row2 col21" >-51.440008</td>
+      <td id="T_dc893_row2_col22" class="data row2 col22" >-46.189281</td>
+      <td id="T_dc893_row2_col23" class="data row2 col23" >-83.946422</td>
+      <td id="T_dc893_row2_col24" class="data row2 col24" >-40.900822</td>
+      <td id="T_dc893_row2_col25" class="data row2 col25" >-60.897781</td>
+      <td id="T_dc893_row2_col26" class="data row2 col26" >-125.156867</td>
+      <td id="T_dc893_row2_col27" class="data row2 col27" >-6.148746</td>
+      <td id="T_dc893_row2_col28" class="data row2 col28" >-2.231904</td>
+      <td id="T_dc893_row2_col29" class="data row2 col29" >-29.556662</td>
+      <td id="T_dc893_row2_col30" class="data row2 col30" >-46.929757</td>
+      <td id="T_dc893_row2_col31" class="data row2 col31" >-39.203440</td>
+      <td id="T_dc893_row2_col32" class="data row2 col32" >-71.098237</td>
+      <td id="T_dc893_row2_col33" class="data row2 col33" >-51.426399</td>
+      <td id="T_dc893_row2_col34" class="data row2 col34" >-58.160405</td>
+      <td id="T_dc893_row2_col35" class="data row2 col35" >-114.889716</td>
+      <td id="T_dc893_row2_col36" class="data row2 col36" >0.150559</td>
+      <td id="T_dc893_row2_col37" class="data row2 col37" >8.185085</td>
+      <td id="T_dc893_row2_col38" class="data row2 col38" >-21.990672</td>
+      <td id="T_dc893_row2_col39" class="data row2 col39" >-40.476423</td>
+      <td id="T_dc893_row2_col40" class="data row2 col40" >-31.615767</td>
+      <td id="T_dc893_row2_col41" class="data row2 col41" >-58.746769</td>
+      <td id="T_dc893_row2_col42" class="data row2 col42" >-62.118698</td>
+      <td id="T_dc893_row2_col43" class="data row2 col43" >-51.796998</td>
+      <td id="T_dc893_row2_col44" class="data row2 col44" >-100.307566</td>
+      <td id="T_dc893_row2_col45" class="data row2 col45" >14.082286</td>
+      <td id="T_dc893_row2_col46" class="data row2 col46" >18.026191</td>
+      <td id="T_dc893_row2_col47" class="data row2 col47" >24.959513</td>
+      <td id="T_dc893_row2_col48" class="data row2 col48" >-9.087603</td>
+      <td id="T_dc893_row2_col49" class="data row2 col49" >-0.705649</td>
+      <td id="T_dc893_row2_col50" class="data row2 col50" >1.486382</td>
+      <td id="T_dc893_row2_col51" class="data row2 col51" >-24.239909</td>
+      <td id="T_dc893_row2_col52" class="data row2 col52" >-11.106384</td>
+      <td id="T_dc893_row2_col53" class="data row2 col53" >-15.276925</td>
+      <td id="T_dc893_row2_col54" class="data row2 col54" >15.215109</td>
+      <td id="T_dc893_row2_col55" class="data row2 col55" >15.682853</td>
+      <td id="T_dc893_row2_col56" class="data row2 col56" >20.483625</td>
+      <td id="T_dc893_row2_col57" class="data row2 col57" >0.018614</td>
+      <td id="T_dc893_row2_col58" class="data row2 col58" >2.867818</td>
+      <td id="T_dc893_row2_col59" class="data row2 col59" >7.022887</td>
+      <td id="T_dc893_row2_col60" class="data row2 col60" >-11.699416</td>
+      <td id="T_dc893_row2_col61" class="data row2 col61" >-3.879567</td>
+      <td id="T_dc893_row2_col62" class="data row2 col62" >-4.905827</td>
+      <td id="T_dc893_row2_col63" class="data row2 col63" >1.016840</td>
+      <td id="T_dc893_row2_col64" class="data row2 col64" >12.528624</td>
+      <td id="T_dc893_row2_col65" class="data row2 col65" >15.507123</td>
+      <td id="T_dc893_row2_col66" class="data row2 col66" >0.021729</td>
+      <td id="T_dc893_row2_col67" class="data row2 col67" >0.077645</td>
+      <td id="T_dc893_row2_col68" class="data row2 col68" >6.030045</td>
+      <td id="T_dc893_row2_col69" class="data row2 col69" >1.056702</td>
+      <td id="T_dc893_row2_col70" class="data row2 col70" >-0.181186</td>
+      <td id="T_dc893_row2_col71" class="data row2 col71" >-1.044882</td>
+      <td id="T_dc893_row2_col72" class="data row2 col72" >1.024014</td>
+      <td id="T_dc893_row2_col73" class="data row2 col73" >1.343830</td>
+      <td id="T_dc893_row2_col74" class="data row2 col74" >10.806382</td>
+      <td id="T_dc893_row2_col75" class="data row2 col75" >0.023070</td>
+      <td id="T_dc893_row2_col76" class="data row2 col76" >0.079311</td>
+      <td id="T_dc893_row2_col77" class="data row2 col77" >4.278676</td>
+      <td id="T_dc893_row2_col78" class="data row2 col78" >1.064699</td>
+      <td id="T_dc893_row2_col79" class="data row2 col79" >1.595467</td>
+      <td id="T_dc893_row2_col80" class="data row2 col80" >0.090199</td>
+      <td id="T_dc893_row2_col81" class="data row2 col81" >1.030532</td>
+      <td id="T_dc893_row2_col82" class="data row2 col82" >1.349220</td>
+      <td id="T_dc893_row2_col83" class="data row2 col83" >5.312673</td>
+      <td id="T_dc893_row2_col84" class="data row2 col84" >0.024293</td>
+      <td id="T_dc893_row2_col85" class="data row2 col85" >0.080826</td>
+      <td id="T_dc893_row2_col86" class="data row2 col86" >0.392385</td>
+      <td id="T_dc893_row2_col87" class="data row2 col87" >1.071981</td>
+      <td id="T_dc893_row2_col88" class="data row2 col88" >1.603218</td>
+      <td id="T_dc893_row2_col89" class="data row2 col89" >5.869866</td>
+      <td id="T_dc893_row2_col90" class="data row2 col90" >nan</td>
+      <td id="T_dc893_row2_col91" class="data row2 col91" >nan</td>
+      <td id="T_dc893_row2_col92" class="data row2 col92" >nan</td>
+      <td id="T_dc893_row2_col93" class="data row2 col93" >nan</td>
+      <td id="T_dc893_row2_col94" class="data row2 col94" >nan</td>
+      <td id="T_dc893_row2_col95" class="data row2 col95" >nan</td>
+      <td id="T_dc893_row2_col96" class="data row2 col96" >nan</td>
+      <td id="T_dc893_row2_col97" class="data row2 col97" >nan</td>
+      <td id="T_dc893_row2_col98" class="data row2 col98" >nan</td>
+      <td id="T_dc893_row2_col99" class="data row2 col99" >nan</td>
+      <td id="T_dc893_row2_col100" class="data row2 col100" >nan</td>
+      <td id="T_dc893_row2_col101" class="data row2 col101" >nan</td>
+      <td id="T_dc893_row2_col102" class="data row2 col102" >nan</td>
+      <td id="T_dc893_row2_col103" class="data row2 col103" >nan</td>
+      <td id="T_dc893_row2_col104" class="data row2 col104" >nan</td>
+      <td id="T_dc893_row2_col105" class="data row2 col105" >nan</td>
+      <td id="T_dc893_row2_col106" class="data row2 col106" >nan</td>
+      <td id="T_dc893_row2_col107" class="data row2 col107" >nan</td>
     </tr>
     <tr>
-      <th>Y-N2O</th>
-      <th>%Diff</th>
-      <td>14.6</td>
-      <td>2.1</td>
-      <td>-44.1</td>
-      <td>-22.3</td>
-      <td>-60.5</td>
-      <td>-84.8</td>
-      <td>-62.0</td>
-      <td>-96.3</td>
-      <td>-114.6</td>
-      <td>4.1</td>
-      <td>-3.1</td>
-      <td>-43.4</td>
-      <td>-46.2</td>
-      <td>-94.7</td>
-      <td>-112.8</td>
-      <td>-115.7</td>
-      <td>-148.7</td>
-      <td>-153.1</td>
-      <td>0.3</td>
-      <td>-6.7</td>
-      <td>-37.0</td>
-      <td>-29.7</td>
-      <td>-64.5</td>
-      <td>-62.0</td>
-      <td>-100.5</td>
-      <td>-118.7</td>
-      <td>-106.2</td>
-      <td>-0.5</td>
-      <td>-5.2</td>
-      <td>-26.5</td>
-      <td>-10.9</td>
-      <td>-38.3</td>
-      <td>-27.3</td>
-      <td>-52.4</td>
-      <td>-65.5</td>
-      <td>-53.2</td>
-      <td>-0.2</td>
-      <td>-4.1</td>
-      <td>-15.4</td>
-      <td>-1.0</td>
-      <td>-23.7</td>
-      <td>-12.8</td>
-      <td>-23.5</td>
-      <td>-32.1</td>
-      <td>-24.2</td>
-      <td>7.1</td>
-      <td>-4.9</td>
-      <td>-17.8</td>
-      <td>17.3</td>
-      <td>16.0</td>
-      <td>20.4</td>
-      <td>3.0</td>
-      <td>-0.9</td>
-      <td>8.5</td>
-      <td>2.8</td>
-      <td>-4.5</td>
-      <td>-13.0</td>
-      <td>15.1</td>
-      <td>15.0</td>
-      <td>14.7</td>
-      <td>3.4</td>
-      <td>2.9</td>
-      <td>16.7</td>
-      <td>-4.9</td>
-      <td>-7.4</td>
-      <td>-10.8</td>
-      <td>11.8</td>
-      <td>13.9</td>
-      <td>11.4</td>
-      <td>-5.6</td>
-      <td>-13.5</td>
-      <td>-3.4</td>
-      <td>-12.0</td>
-      <td>-10.6</td>
-      <td>-9.7</td>
-      <td>25.6</td>
-      <td>28.6</td>
-      <td>21.2</td>
-      <td>-10.8</td>
-      <td>-20.5</td>
-      <td>-17.4</td>
-      <td>93.7</td>
-      <td>99.6</td>
-      <td>102.1</td>
-      <td>50.5</td>
-      <td>92.6</td>
-      <td>110.9</td>
-      <td>46.5</td>
-      <td>78.4</td>
-      <td>100.2</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <th id="T_dc893_level0_row3" class="row_heading level0 row3" >Y-N2O</th>
+      <th id="T_dc893_level1_row3" class="row_heading level1 row3" >%Diff</th>
+      <td id="T_dc893_row3_col0" class="data row3 col0" >14.634058</td>
+      <td id="T_dc893_row3_col1" class="data row3 col1" >2.069857</td>
+      <td id="T_dc893_row3_col2" class="data row3 col2" >-44.067896</td>
+      <td id="T_dc893_row3_col3" class="data row3 col3" >-22.306154</td>
+      <td id="T_dc893_row3_col4" class="data row3 col4" >-60.502301</td>
+      <td id="T_dc893_row3_col5" class="data row3 col5" >-84.761772</td>
+      <td id="T_dc893_row3_col6" class="data row3 col6" >-61.971619</td>
+      <td id="T_dc893_row3_col7" class="data row3 col7" >-96.275323</td>
+      <td id="T_dc893_row3_col8" class="data row3 col8" >-114.606483</td>
+      <td id="T_dc893_row3_col9" class="data row3 col9" >4.111694</td>
+      <td id="T_dc893_row3_col10" class="data row3 col10" >-3.072049</td>
+      <td id="T_dc893_row3_col11" class="data row3 col11" >-43.404719</td>
+      <td id="T_dc893_row3_col12" class="data row3 col12" >-46.214658</td>
+      <td id="T_dc893_row3_col13" class="data row3 col13" >-94.705328</td>
+      <td id="T_dc893_row3_col14" class="data row3 col14" >-112.770210</td>
+      <td id="T_dc893_row3_col15" class="data row3 col15" >-115.730414</td>
+      <td id="T_dc893_row3_col16" class="data row3 col16" >-148.676743</td>
+      <td id="T_dc893_row3_col17" class="data row3 col17" >-153.111748</td>
+      <td id="T_dc893_row3_col18" class="data row3 col18" >0.278049</td>
+      <td id="T_dc893_row3_col19" class="data row3 col19" >-6.673594</td>
+      <td id="T_dc893_row3_col20" class="data row3 col20" >-36.989432</td>
+      <td id="T_dc893_row3_col21" class="data row3 col21" >-29.697442</td>
+      <td id="T_dc893_row3_col22" class="data row3 col22" >-64.456437</td>
+      <td id="T_dc893_row3_col23" class="data row3 col23" >-62.006405</td>
+      <td id="T_dc893_row3_col24" class="data row3 col24" >-100.472062</td>
+      <td id="T_dc893_row3_col25" class="data row3 col25" >-118.732533</td>
+      <td id="T_dc893_row3_col26" class="data row3 col26" >-106.245852</td>
+      <td id="T_dc893_row3_col27" class="data row3 col27" >-0.479397</td>
+      <td id="T_dc893_row3_col28" class="data row3 col28" >-5.233314</td>
+      <td id="T_dc893_row3_col29" class="data row3 col29" >-26.528539</td>
+      <td id="T_dc893_row3_col30" class="data row3 col30" >-10.900423</td>
+      <td id="T_dc893_row3_col31" class="data row3 col31" >-38.348215</td>
+      <td id="T_dc893_row3_col32" class="data row3 col32" >-27.258897</td>
+      <td id="T_dc893_row3_col33" class="data row3 col33" >-52.411645</td>
+      <td id="T_dc893_row3_col34" class="data row3 col34" >-65.453391</td>
+      <td id="T_dc893_row3_col35" class="data row3 col35" >-53.175194</td>
+      <td id="T_dc893_row3_col36" class="data row3 col36" >-0.222746</td>
+      <td id="T_dc893_row3_col37" class="data row3 col37" >-4.058715</td>
+      <td id="T_dc893_row3_col38" class="data row3 col38" >-15.413128</td>
+      <td id="T_dc893_row3_col39" class="data row3 col39" >-0.984616</td>
+      <td id="T_dc893_row3_col40" class="data row3 col40" >-23.728031</td>
+      <td id="T_dc893_row3_col41" class="data row3 col41" >-12.840437</td>
+      <td id="T_dc893_row3_col42" class="data row3 col42" >-23.528606</td>
+      <td id="T_dc893_row3_col43" class="data row3 col43" >-32.101708</td>
+      <td id="T_dc893_row3_col44" class="data row3 col44" >-24.222707</td>
+      <td id="T_dc893_row3_col45" class="data row3 col45" >7.070754</td>
+      <td id="T_dc893_row3_col46" class="data row3 col46" >-4.913138</td>
+      <td id="T_dc893_row3_col47" class="data row3 col47" >-17.770092</td>
+      <td id="T_dc893_row3_col48" class="data row3 col48" >17.331410</td>
+      <td id="T_dc893_row3_col49" class="data row3 col49" >16.022030</td>
+      <td id="T_dc893_row3_col50" class="data row3 col50" >20.412338</td>
+      <td id="T_dc893_row3_col51" class="data row3 col51" >2.998006</td>
+      <td id="T_dc893_row3_col52" class="data row3 col52" >-0.889250</td>
+      <td id="T_dc893_row3_col53" class="data row3 col53" >8.472087</td>
+      <td id="T_dc893_row3_col54" class="data row3 col54" >2.846130</td>
+      <td id="T_dc893_row3_col55" class="data row3 col55" >-4.471909</td>
+      <td id="T_dc893_row3_col56" class="data row3 col56" >-13.001546</td>
+      <td id="T_dc893_row3_col57" class="data row3 col57" >15.073907</td>
+      <td id="T_dc893_row3_col58" class="data row3 col58" >14.956613</td>
+      <td id="T_dc893_row3_col59" class="data row3 col59" >14.745125</td>
+      <td id="T_dc893_row3_col60" class="data row3 col60" >3.400547</td>
+      <td id="T_dc893_row3_col61" class="data row3 col61" >2.889647</td>
+      <td id="T_dc893_row3_col62" class="data row3 col62" >16.714783</td>
+      <td id="T_dc893_row3_col63" class="data row3 col63" >-4.929130</td>
+      <td id="T_dc893_row3_col64" class="data row3 col64" >-7.391595</td>
+      <td id="T_dc893_row3_col65" class="data row3 col65" >-10.847034</td>
+      <td id="T_dc893_row3_col66" class="data row3 col66" >11.760927</td>
+      <td id="T_dc893_row3_col67" class="data row3 col67" >13.899059</td>
+      <td id="T_dc893_row3_col68" class="data row3 col68" >11.354459</td>
+      <td id="T_dc893_row3_col69" class="data row3 col69" >-5.605744</td>
+      <td id="T_dc893_row3_col70" class="data row3 col70" >-13.511952</td>
+      <td id="T_dc893_row3_col71" class="data row3 col71" >-3.350518</td>
+      <td id="T_dc893_row3_col72" class="data row3 col72" >-11.987796</td>
+      <td id="T_dc893_row3_col73" class="data row3 col73" >-10.640030</td>
+      <td id="T_dc893_row3_col74" class="data row3 col74" >-9.708320</td>
+      <td id="T_dc893_row3_col75" class="data row3 col75" >25.637979</td>
+      <td id="T_dc893_row3_col76" class="data row3 col76" >28.641831</td>
+      <td id="T_dc893_row3_col77" class="data row3 col77" >21.179180</td>
+      <td id="T_dc893_row3_col78" class="data row3 col78" >-10.766349</td>
+      <td id="T_dc893_row3_col79" class="data row3 col79" >-20.499800</td>
+      <td id="T_dc893_row3_col80" class="data row3 col80" >-17.408971</td>
+      <td id="T_dc893_row3_col81" class="data row3 col81" >93.746582</td>
+      <td id="T_dc893_row3_col82" class="data row3 col82" >99.559189</td>
+      <td id="T_dc893_row3_col83" class="data row3 col83" >102.105396</td>
+      <td id="T_dc893_row3_col84" class="data row3 col84" >50.531452</td>
+      <td id="T_dc893_row3_col85" class="data row3 col85" >92.643946</td>
+      <td id="T_dc893_row3_col86" class="data row3 col86" >110.897683</td>
+      <td id="T_dc893_row3_col87" class="data row3 col87" >46.513405</td>
+      <td id="T_dc893_row3_col88" class="data row3 col88" >78.386908</td>
+      <td id="T_dc893_row3_col89" class="data row3 col89" >100.218319</td>
+      <td id="T_dc893_row3_col90" class="data row3 col90" >nan</td>
+      <td id="T_dc893_row3_col91" class="data row3 col91" >nan</td>
+      <td id="T_dc893_row3_col92" class="data row3 col92" >nan</td>
+      <td id="T_dc893_row3_col93" class="data row3 col93" >nan</td>
+      <td id="T_dc893_row3_col94" class="data row3 col94" >nan</td>
+      <td id="T_dc893_row3_col95" class="data row3 col95" >nan</td>
+      <td id="T_dc893_row3_col96" class="data row3 col96" >nan</td>
+      <td id="T_dc893_row3_col97" class="data row3 col97" >nan</td>
+      <td id="T_dc893_row3_col98" class="data row3 col98" >nan</td>
+      <td id="T_dc893_row3_col99" class="data row3 col99" >nan</td>
+      <td id="T_dc893_row3_col100" class="data row3 col100" >nan</td>
+      <td id="T_dc893_row3_col101" class="data row3 col101" >nan</td>
+      <td id="T_dc893_row3_col102" class="data row3 col102" >nan</td>
+      <td id="T_dc893_row3_col103" class="data row3 col103" >nan</td>
+      <td id="T_dc893_row3_col104" class="data row3 col104" >nan</td>
+      <td id="T_dc893_row3_col105" class="data row3 col105" >nan</td>
+      <td id="T_dc893_row3_col106" class="data row3 col106" >nan</td>
+      <td id="T_dc893_row3_col107" class="data row3 col107" >nan</td>
     </tr>
   </tbody>
 </table>
