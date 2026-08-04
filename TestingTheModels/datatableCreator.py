@@ -58,10 +58,10 @@ thead tr:nth-child(1) th{
     color:black;
 }
 
-# .cold{
-#     background:#99c9ff !important;
-#     color:black;
-# }
+.cold{
+    background:#99c9ff !important;
+    color:black;
+}
 
 
 /* ---------- EQUIVALENCE RATIO COLORS ---------- */
@@ -315,7 +315,7 @@ comparison_files = [[["output/Glarborg/NH3/NH3_GlarborgAtm_E0-7.Y", "output/Glar
 # CREATE PANDAS DATA TABLE
 
 FUEL = ["NH3", "95-5", "90-10", "85-15", "80-20", "70-30", "60-40", "40-60", "20-80", "10-90", "5-95", "H2"] #"1-99",
-CONDITION = ['Atm', "Turb"]#, "Cold"]
+CONDITION = ['Atm', "Turb", "Cold"]
 #SPECIAL_CONDITION = ["Norm","HiDis"] #"Lew"
 METRICS = ["%Diff"]#["Peak Got", "Peak Glar", "Diff", "%Diff"] ##"Diff",
 EQR = ["E0.7", "E1.0", "E1.4"]
@@ -346,7 +346,7 @@ for num,fuelSet in enumerate(comparison_files):
         condition = "None"
         if i == 0: condition = "Atm"
         elif i == 1: condition = "Turb"
-        elif i == 2: continue
+        elif i == 2: condition = "Cold"
 
         for j in range(int(len(conditionFiles)/2)):
             for iterator in range(1):
@@ -429,35 +429,35 @@ def plot_condition_vs_eqr(df, condition, title, filename):
 # plot_condition_vs_eqr(df, "Turb", "Average %Diff vs Equivalence Ratio (Turbine)", "turb_pct_diff_vs_eqr.png")
 
 
-import matplotlib.colors as mcolors
+# import matplotlib.colors as mcolors
 
-atm = df.xs("Atm", axis=1, level="Condition")     # columns: (Fuel Ratio, Equi Ratio)
-turb = df.xs("Turb", axis=1, level="Condition")
+# atm = df.xs("Atm", axis=1, level="Condition")     # columns: (Fuel Ratio, Equi Ratio)
+# turb = df.xs("Turb", axis=1, level="Condition")
 
-change = turb.abs() - atm.abs()                                # + means Turbine bigger, - means Atm bigger
-change.index = change.index.droplevel("Metric")    # rows now just Molecule
-change = change.reindex(index=MOLECULES)
+# change = turb.abs() - atm.abs()                                # + means Turbine bigger, - means Atm bigger
+# change.index = change.index.droplevel("Metric")    # rows now just Molecule
+# change = change.reindex(index=MOLECULES)
 
-# red for positive (Turbine bigger), green for negative (Atm bigger)
-cmap = mcolors.LinearSegmentedColormap.from_list("green_white_red", ["green", "white", "red"])
+# # red for positive (Turbine bigger), green for negative (Atm bigger)
+# cmap = mcolors.LinearSegmentedColormap.from_list("green_white_red", ["green", "white", "red"])
 
-vmax = np.nanpercentile(change.abs().values, 90)
+# vmax = np.nanpercentile(change.abs().values, 90)
 
-styled = (
-    change.style
-    .format(lambda v: f"{v:+.1f}")
-    .background_gradient(cmap=cmap, vmin=-vmax, vmax=vmax)
-    .set_table_styles([
-        {"selector": "table", "props": [("border-collapse", "collapse")]},
-        {"selector": "th", "props": [("border", "1px solid black")]},
-        {"selector": "td", "props": [("border", "1px solid black")]},
-    ])
-)
+# styled = (
+#     change.style
+#     .format(lambda v: f"{v:+.1f}")
+#     .background_gradient(cmap=cmap, vmin=-vmax, vmax=vmax)
+#     .set_table_styles([
+#         {"selector": "table", "props": [("border-collapse", "collapse")]},
+#         {"selector": "th", "props": [("border", "1px solid black")]},
+#         {"selector": "td", "props": [("border", "1px solid black")]},
+#     ])
+# )
 
-styled.to_html("turb_vs_atm_change.html")
+# styled.to_html("turb_vs_atm_change.html")
 
-#filename = "table.html"
-#df.to_html(filename)
+filename = "tableWithColdTurbine.html"
+df.to_html(filename)
 #print(df)
 #df.to_excel(f"{filename.split(".")[0]}.xlsx", merge_cells=True)
 
