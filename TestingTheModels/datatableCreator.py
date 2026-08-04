@@ -315,8 +315,8 @@ comparison_files = [[["output/Glarborg/NH3/NH3_GlarborgAtm_E0-7.Y", "output/Glar
 # CREATE PANDAS DATA TABLE
 
 FUEL = ["NH3", "95-5", "90-10", "85-15", "80-20", "70-30", "60-40", "40-60", "20-80", "10-90", "5-95", "H2"] #"1-99",
-CONDITION = ['Atm', "Turb", "Cold"]
-#SPECIAL_CONDITION = ["Norm","HiDis"] #"Lew"
+CONDITION = ['Atm', "Turb"] #, "Cold"
+SPECIAL_CONDITION = ["Norm","HiDis"] #"Lew"
 METRICS = ["%Diff"]#["Peak Got", "Peak Glar", "Diff", "%Diff"] ##"Diff",
 EQR = ["E0.7", "E1.0", "E1.4"]
 MOLECULES = ["Y-OH", "Y-NO2", "Y-NO", "Y-N2O"] #, "Y-NH3", "T[K]", "Y-H2"
@@ -326,8 +326,8 @@ MOLECULES = ["Y-OH", "Y-NO2", "Y-NO", "Y-N2O"] #, "Y-NH3", "T[K]", "Y-H2"
 # df = pd.DataFrame(index=pd.Index(MOLECULES, name="Mol"), columns = columns, dtype=float)
 
 columns = pd.MultiIndex.from_product(
-    [FUEL, CONDITION, EQR], #, SPECIAL_CONDITION
-    names=["Fuel Ratio","Condition","Equi Ratio"] #,"Spec"
+    [FUEL, CONDITION, EQR, SPECIAL_CONDITION], #
+    names=["Fuel Ratio","Condition","Equi Ratio","Spec"] #
 )
 
 index = pd.MultiIndex.from_product(
@@ -346,10 +346,10 @@ for num,fuelSet in enumerate(comparison_files):
         condition = "None"
         if i == 0: condition = "Atm"
         elif i == 1: condition = "Turb"
-        elif i == 2: condition = "Cold"
+        elif i == 2: continue# condition = "Cold"
 
         for j in range(int(len(conditionFiles)/2)):
-            for iterator in range(1):
+            for iterator in range(2):
                 if iterator == 1:
                     glarborgFile = conditionFiles[j].split(".")[0] + "_HiDiss.Y"
                     gotamaFile = conditionFiles[j+3].split(".")[0] + "_HiDiss.Y"
@@ -377,7 +377,7 @@ for num,fuelSet in enumerate(comparison_files):
                     #     (fuel, condition, eqRatio)] = metrics[molecule][2] #, special
                     
                     df.loc[(molecule, "%Diff"),
-                        (fuel, condition, eqRatio)] = metrics[molecule][3] #, special
+                        (fuel, condition, eqRatio, special)] = metrics[molecule][3] #
 
 
 
@@ -492,42 +492,75 @@ filename = "tableWithColdTurbine.html"
 #       ])
 #       .map_index(color_condition, axis=1, level="Condition")
 # )
-import matplotlib.colors as mcolors
-import numpy as np
-import pandas as pd
+# import matplotlib.colors as mcolors
+# import numpy as np
+# import pandas as pd
 
-cold = df.xs("Cold", axis=1, level="Condition")
-atm = df.xs("Atm", axis=1, level="Condition")
-turb = df.xs("Turb", axis=1, level="Condition")
+# cold = df.xs("Cold", axis=1, level="Condition")
+# atm = df.xs("Atm", axis=1, level="Condition")
+# turb = df.xs("Turb", axis=1, level="Condition")
 
-change_atm = cold.abs() - atm.abs()
-change_turb = cold.abs() - turb.abs()
+# change_atm = cold.abs() - atm.abs()
+# change_turb = cold.abs() - turb.abs()
 
-# combine into one table, adding "Condition" back as a column level
-change = pd.concat([change_atm, change_turb], axis=1, keys=["Atm", "Turb"], names=["Condition"])
-change = change.reorder_levels(["Fuel Ratio", "Condition", "Equi Ratio"], axis=1)
-change = change.reindex(columns=FUEL, level="Fuel Ratio")
-change = change.reindex(columns=CONDITION, level="Condition")
+# # combine into one table, adding "Condition" back as a column level
+# change = pd.concat([change_atm, change_turb], axis=1, keys=["Atm", "Turb"], names=["Condition"])
+# change = change.reorder_levels(["Fuel Ratio", "Condition", "Equi Ratio"], axis=1)
+# change = change.reindex(columns=FUEL, level="Fuel Ratio")
+# change = change.reindex(columns=CONDITION, level="Condition")
 
-change.index = change.index.droplevel("Metric")   # rows now just Molecule
-change = change.reindex(index=MOLECULES)
+# change.index = change.index.droplevel("Metric")   # rows now just Molecule
+# change = change.reindex(index=MOLECULES)
 
-cmap = mcolors.LinearSegmentedColormap.from_list("green_white_blue", ["lightgreen", "white", "lightblue"])
-vmax = np.nanpercentile(change.abs().values, 90)
+# cmap = mcolors.LinearSegmentedColormap.from_list("green_white_blue", ["lightgreen", "white", "lightblue"])
+# vmax = np.nanpercentile(change.abs().values, 90)
 
-styled = (
-    change.style
-    .format(lambda v: f"{v:+.1f}")
-    .background_gradient(cmap=cmap, vmin=-vmax, vmax=vmax)
-    .set_table_styles([
-        {"selector": "table", "props": [("border-collapse", "collapse")]},
-        {"selector": "th", "props": [("border", "1px solid black")]},
-        {"selector": "td", "props": [("border", "1px solid black")]},
-    ])
-)
-styled.to_html("cold_vs_atm_turb_change.html")
+# styled = (
+#     change.style
+#     .format(lambda v: f"{v:+.1f}")
+#     .background_gradient(cmap=cmap, vmin=-vmax, vmax=vmax)
+#     .set_table_styles([
+#         {"selector": "table", "props": [("border-collapse", "collapse")]},
+#         {"selector": "th", "props": [("border", "1px solid black")]},
+#         {"selector": "td", "props": [("border", "1px solid black")]},
+#     ])
+# )
+# styled.to_html("cold_vs_atm_turb_change.html")
 
 # styled.to_html(filename)
+
+import matplotlib.colors as mcolors
+import numpy as np
+
+norm = df.xs("Norm", axis=1, level="Spec")     # columns: (Fuel Ratio, Condition, Equi Ratio)
+hidis = df.xs("HiDis", axis=1, level="Spec")
+
+change = hidis.abs() - norm.abs()                # + means HiDis bigger, - means Norm bigger
+change.index = change.index.droplevel("Metric")  # rows now just Molecule
+change = change.reindex(index=MOLECULES)
+
+cmap = mcolors.LinearSegmentedColormap.from_list("green_white_red", ["green", "white", "red"])
+vmax = np.nanpercentile(change.abs().values, 90)   # shared scale across both tables
+
+def make_condition_table(change, condition, filename):
+    sub = change.xs(condition, axis=1, level="Condition")
+    sub = sub.reindex(columns=FUEL, level="Fuel Ratio")
+    sub = sub.reindex(columns=EQR, level="Equi Ratio")
+
+    styled = (
+        sub.style
+        .format(lambda v: f"{v:+.1f}")
+        .background_gradient(cmap=cmap, vmin=-vmax, vmax=vmax)
+        .set_table_styles([
+            {"selector": "table", "props": [("border-collapse", "collapse")]},
+            {"selector": "th", "props": [("border", "1px solid black")]},
+            {"selector": "td", "props": [("border", "1px solid black")]},
+        ])
+    )
+    styled.to_html(filename)
+
+make_condition_table(change, "Atm", "hidis_vs_norm_atm.html")
+make_condition_table(change, "Turb", "hidis_vs_norm_turb.html")
 
 
 #df.to_html(filename)
