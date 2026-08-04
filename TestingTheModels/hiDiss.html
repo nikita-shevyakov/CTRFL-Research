@@ -1,0 +1,2891 @@
+
+<style>
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    margin:20px;
+}
+
+
+/* ---------- TABLE ---------- */
+
+table.lewis-table{
+    border-collapse:collapse;
+    font-size:11px;
+}
+
+table.lewis-table td,
+table.lewis-table th{
+    border:1px solid #c7c7c7;
+    padding:4px 6px;
+    text-align:center;
+}
+
+
+/* ---------- FUEL HEADER ---------- */
+
+thead tr:nth-child(1) th{
+    background:#333333;
+    color:white;
+    font-size:13px;
+}
+
+
+/* ---------- CONDITION HEADER COLORS ---------- */
+
+.atm{
+    background:#8fd18f !important;
+    color:black;
+}
+
+.turb{
+    background:#ffc87a !important;
+    color:black;
+}
+
+# .cold{
+#     background:#99c9ff !important;
+#     color:black;
+# }
+
+
+/* ---------- EQUIVALENCE RATIO COLORS ---------- */
+
+.e07{
+    background:#dff0ff;
+}
+
+.e10{
+    background:#b8dcff;
+}
+
+.e14{
+    background:#8fc4ff;
+}
+
+
+/* ---------- NORM / LEWIS ---------- */
+
+.norm{
+    border-left:2px solid #777;
+}
+
+.lew{
+    font-weight:bold;
+    border-right:2px solid #777;
+}
+
+
+/* ---------- ROW HEADERS ---------- */
+
+tbody th{
+    background:#404040;
+    color:white;
+    font-weight:bold;
+}
+
+
+/* ---------- HOVER ---------- */
+
+tbody tr:hover td{
+    background:#fff6b0 !important;
+}
+
+
+/* ---------- STICKY HEADERS ---------- */
+
+thead th{
+    position:sticky;
+    top:0;
+    z-index:2;
+}
+
+tbody th{
+    position:sticky;
+    left:0;
+    z-index:1;
+}
+
+thead tr:first-child th:first-child{
+    z-index:3;
+}
+
+</style>
+<table class="dataframe lewis-table" id="lewis">
+<thead>
+<tr>
+<th></th>
+<th>Fuel Ratio</th>
+<th colspan="12" halign="left">NH3</th>
+<th colspan="12" halign="left">95-5</th>
+<th colspan="12" halign="left">90-10</th>
+<th colspan="12" halign="left">85-15</th>
+<th colspan="12" halign="left">80-20</th>
+<th colspan="12" halign="left">70-30</th>
+<th colspan="12" halign="left">60-40</th>
+<th colspan="12" halign="left">40-60</th>
+<th colspan="12" halign="left">20-80</th>
+<th colspan="12" halign="left">10-90</th>
+<th colspan="12" halign="left">5-95</th>
+<th colspan="12" halign="left">H2</th>
+</tr>
+<tr>
+<th></th>
+<th>Condition</th>
+<th class="atm" colspan="6" halign="left">Atm</th>
+<th class="turb" colspan="6" halign="left">Turb</th>
+<th class="atm" colspan="6" halign="left">Atm</th>
+<th class="turb" colspan="6" halign="left">Turb</th>
+<th class="atm" colspan="6" halign="left">Atm</th>
+<th class="turb" colspan="6" halign="left">Turb</th>
+<th class="atm" colspan="6" halign="left">Atm</th>
+<th class="turb" colspan="6" halign="left">Turb</th>
+<th class="atm" colspan="6" halign="left">Atm</th>
+<th class="turb" colspan="6" halign="left">Turb</th>
+<th class="atm" colspan="6" halign="left">Atm</th>
+<th class="turb" colspan="6" halign="left">Turb</th>
+<th class="atm" colspan="6" halign="left">Atm</th>
+<th class="turb" colspan="6" halign="left">Turb</th>
+<th class="atm" colspan="6" halign="left">Atm</th>
+<th class="turb" colspan="6" halign="left">Turb</th>
+<th class="atm" colspan="6" halign="left">Atm</th>
+<th class="turb" colspan="6" halign="left">Turb</th>
+<th class="atm" colspan="6" halign="left">Atm</th>
+<th class="turb" colspan="6" halign="left">Turb</th>
+<th class="atm" colspan="6" halign="left">Atm</th>
+<th class="turb" colspan="6" halign="left">Turb</th>
+<th class="atm" colspan="6" halign="left">Atm</th>
+<th class="turb" colspan="6" halign="left">Turb</th>
+</tr>
+<tr>
+<th></th>
+<th>Equi Ratio</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+<th colspan="2" halign="left">E0.7</th>
+<th colspan="2" halign="left">E1.0</th>
+<th colspan="2" halign="left">E1.4</th>
+</tr>
+<tr>
+<th></th>
+<th>Spec</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+<th>Norm</th>
+<th>HiDis</th>
+</tr>
+<tr>
+<th>Molecule</th>
+<th>Metric</th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th rowspan="4" valign="top">Y-OH</th>
+<th>Peak Got</th>
+<td class="e07 norm">1.987e-03</td>
+<td class="e07 lew">3.650e-04</td>
+<td class="e10 norm">3.126e-03</td>
+<td class="e10 lew">1.107e-03</td>
+<td class="e14 norm">4.478e-05</td>
+<td class="e14 lew">8.940e-05</td>
+<td class="e07 norm">1.872e-03</td>
+<td class="e07 lew">1.538e-03</td>
+<td class="e10 norm">2.328e-03</td>
+<td class="e10 lew">1.685e-03</td>
+<td class="e14 norm">9.780e-05</td>
+<td class="e14 lew">1.542e-04</td>
+<td class="e07 norm">3.173e-03</td>
+<td class="e07 lew">5.494e-04</td>
+<td class="e10 norm">4.390e-03</td>
+<td class="e10 lew">1.682e-03</td>
+<td class="e14 norm">1.145e-04</td>
+<td class="e14 lew">2.473e-04</td>
+<td class="e07 norm">2.505e-03</td>
+<td class="e07 lew">2.413e-03</td>
+<td class="e10 norm">3.079e-03</td>
+<td class="e10 lew">2.670e-03</td>
+<td class="e14 norm">1.742e-04</td>
+<td class="e14 lew">2.390e-04</td>
+<td class="e07 norm">4.457e-03</td>
+<td class="e07 lew">8.817e-04</td>
+<td class="e10 norm">5.662e-03</td>
+<td class="e10 lew">2.192e-03</td>
+<td class="e14 norm">2.590e-04</td>
+<td class="e14 lew">4.842e-04</td>
+<td class="e07 norm">3.031e-03</td>
+<td class="e07 lew">3.219e-03</td>
+<td class="e10 norm">3.773e-03</td>
+<td class="e10 lew">3.559e-03</td>
+<td class="e14 norm">2.700e-04</td>
+<td class="e14 lew">3.511e-04</td>
+<td class="e07 norm">5.397e-03</td>
+<td class="e07 lew">2.476e-03</td>
+<td class="e10 norm">6.761e-03</td>
+<td class="e10 lew">2.637e-03</td>
+<td class="e14 norm">5.487e-04</td>
+<td class="e14 lew">8.822e-04</td>
+<td class="e07 norm">3.704e-03</td>
+<td class="e07 lew">3.965e-03</td>
+<td class="e10 norm">4.531e-03</td>
+<td class="e10 lew">4.374e-03</td>
+<td class="e14 norm">4.069e-04</td>
+<td class="e14 lew">5.043e-04</td>
+<td class="e07 norm">5.979e-03</td>
+<td class="e07 lew">3.909e-03</td>
+<td class="e10 norm">7.569e-03</td>
+<td class="e10 lew">4.486e-03</td>
+<td class="e14 norm">1.147e-03</td>
+<td class="e14 lew">1.608e-03</td>
+<td class="e07 norm">4.451e-03</td>
+<td class="e07 lew">4.663e-03</td>
+<td class="e10 norm">5.319e-03</td>
+<td class="e10 lew">5.146e-03</td>
+<td class="e14 norm">6.013e-04</td>
+<td class="e14 lew">7.069e-04</td>
+<td class="e07 norm">7.662e-03</td>
+<td class="e07 lew">6.918e-03</td>
+<td class="e10 norm">1.014e-02</td>
+<td class="e10 lew">9.542e-03</td>
+<td class="e14 norm">6.405e-03</td>
+<td class="e14 lew">5.817e-03</td>
+<td class="e07 norm">8.661e-03</td>
+<td class="e07 lew">8.543e-03</td>
+<td class="e10 norm">1.017e-02</td>
+<td class="e10 lew">9.996e-03</td>
+<td class="e14 norm">4.726e-03</td>
+<td class="e14 lew">4.667e-03</td>
+<td class="e07 norm">8.122e-03</td>
+<td class="e07 lew">7.450e-03</td>
+<td class="e10 norm">1.102e-02</td>
+<td class="e10 lew">1.047e-02</td>
+<td class="e14 norm">7.450e-03</td>
+<td class="e14 lew">6.884e-03</td>
+<td class="e07 norm">9.767e-03</td>
+<td class="e07 lew">9.714e-03</td>
+<td class="e10 norm">1.191e-02</td>
+<td class="e10 lew">1.183e-02</td>
+<td class="e14 norm">6.927e-03</td>
+<td class="e14 lew">6.922e-03</td>
+<td class="e07 norm">8.327e-03</td>
+<td class="e07 lew">7.652e-03</td>
+<td class="e10 norm">1.145e-02</td>
+<td class="e10 lew">1.084e-02</td>
+<td class="e14 norm">7.995e-03</td>
+<td class="e14 lew">7.372e-03</td>
+<td class="e07 norm">1.027e-02</td>
+<td class="e07 lew">1.022e-02</td>
+<td class="e10 norm">1.277e-02</td>
+<td class="e10 lew">1.270e-02</td>
+<td class="e14 norm">8.061e-03</td>
+<td class="e14 lew">8.047e-03</td>
+<td class="e07 norm">8.429e-03</td>
+<td class="e07 lew">7.744e-03</td>
+<td class="e10 norm">1.167e-02</td>
+<td class="e10 lew">1.102e-02</td>
+<td class="e14 norm">8.309e-03</td>
+<td class="e14 lew">7.627e-03</td>
+<td class="e07 norm">1.052e-02</td>
+<td class="e07 lew">1.047e-02</td>
+<td class="e10 norm">1.321e-02</td>
+<td class="e10 lew">1.314e-02</td>
+<td class="e14 norm">8.674e-03</td>
+<td class="e14 lew">8.649e-03</td>
+<td class="e07 norm">8.538e-03</td>
+<td class="e07 lew">7.833e-03</td>
+<td class="e10 norm">1.192e-02</td>
+<td class="e10 lew">1.119e-02</td>
+<td class="e14 norm">8.695e-03</td>
+<td class="e14 lew">7.915e-03</td>
+<td class="e07 norm">1.077e-02</td>
+<td class="e07 lew">1.071e-02</td>
+<td class="e10 norm">1.367e-02</td>
+<td class="e10 lew">1.359e-02</td>
+<td class="e14 norm">9.339e-03</td>
+<td class="e14 lew">9.305e-03</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+</tr>
+<tr>
+<th>Peak Glar</th>
+<td class="e07 norm">2.575e-03</td>
+<td class="e07 lew">3.655e-04</td>
+<td class="e10 norm">3.835e-03</td>
+<td class="e10 lew">1.106e-03</td>
+<td class="e14 norm">6.850e-05</td>
+<td class="e14 lew">8.727e-05</td>
+<td class="e07 norm">2.412e-03</td>
+<td class="e07 lew">2.067e-03</td>
+<td class="e10 norm">3.125e-03</td>
+<td class="e10 lew">2.369e-03</td>
+<td class="e14 norm">1.727e-04</td>
+<td class="e14 lew">2.058e-04</td>
+<td class="e07 norm">3.772e-03</td>
+<td class="e07 lew">5.541e-04</td>
+<td class="e10 norm">5.145e-03</td>
+<td class="e10 lew">1.672e-03</td>
+<td class="e14 norm">1.641e-04</td>
+<td class="e14 lew">2.462e-04</td>
+<td class="e07 norm">3.120e-03</td>
+<td class="e07 lew">2.999e-03</td>
+<td class="e10 norm">3.981e-03</td>
+<td class="e10 lew">3.458e-03</td>
+<td class="e14 norm">2.950e-04</td>
+<td class="e14 lew">3.472e-04</td>
+<td class="e07 norm">4.849e-03</td>
+<td class="e07 lew">1.174e-03</td>
+<td class="e10 norm">6.396e-03</td>
+<td class="e10 lew">2.172e-03</td>
+<td class="e14 norm">3.990e-04</td>
+<td class="e14 lew">4.932e-04</td>
+<td class="e07 norm">3.798e-03</td>
+<td class="e07 lew">3.826e-03</td>
+<td class="e10 norm">4.765e-03</td>
+<td class="e10 lew">4.406e-03</td>
+<td class="e14 norm">4.504e-04</td>
+<td class="e14 lew">5.274e-04</td>
+<td class="e07 norm">5.640e-03</td>
+<td class="e07 lew">2.825e-03</td>
+<td class="e10 norm">7.376e-03</td>
+<td class="e10 lew">3.235e-03</td>
+<td class="e14 norm">1.044e-03</td>
+<td class="e14 lew">9.380e-04</td>
+<td class="e07 norm">4.525e-03</td>
+<td class="e07 lew">4.622e-03</td>
+<td class="e10 norm">5.567e-03</td>
+<td class="e10 lew">5.299e-03</td>
+<td class="e14 norm">6.572e-04</td>
+<td class="e14 lew">7.577e-04</td>
+<td class="e07 norm">6.163e-03</td>
+<td class="e07 lew">4.070e-03</td>
+<td class="e10 norm">8.050e-03</td>
+<td class="e10 lew">5.027e-03</td>
+<td class="e14 norm">2.401e-03</td>
+<td class="e14 lew">1.791e-03</td>
+<td class="e07 norm">5.295e-03</td>
+<td class="e07 lew">5.385e-03</td>
+<td class="e10 norm">6.389e-03</td>
+<td class="e10 lew">6.174e-03</td>
+<td class="e14 norm">9.358e-04</td>
+<td class="e14 lew">1.060e-03</td>
+<td class="e07 norm">7.755e-03</td>
+<td class="e07 lew">6.986e-03</td>
+<td class="e10 norm">1.034e-02</td>
+<td class="e10 lew">9.710e-03</td>
+<td class="e14 norm">6.807e-03</td>
+<td class="e14 lew">6.059e-03</td>
+<td class="e07 norm">9.612e-03</td>
+<td class="e07 lew">9.556e-03</td>
+<td class="e10 norm">1.167e-02</td>
+<td class="e10 lew">1.156e-02</td>
+<td class="e14 norm">6.061e-03</td>
+<td class="e14 lew">6.113e-03</td>
+<td class="e07 norm">8.185e-03</td>
+<td class="e07 lew">7.491e-03</td>
+<td class="e10 norm">1.111e-02</td>
+<td class="e10 lew">1.055e-02</td>
+<td class="e14 norm">7.620e-03</td>
+<td class="e14 lew">6.991e-03</td>
+<td class="e07 norm">1.079e-02</td>
+<td class="e07 lew">1.074e-02</td>
+<td class="e10 norm">1.341e-02</td>
+<td class="e10 lew">1.332e-02</td>
+<td class="e14 norm">8.461e-03</td>
+<td class="e14 lew">8.454e-03</td>
+<td class="e07 norm">8.372e-03</td>
+<td class="e07 lew">7.684e-03</td>
+<td class="e10 norm">1.149e-02</td>
+<td class="e10 lew">1.089e-02</td>
+<td class="e14 norm">8.063e-03</td>
+<td class="e14 lew">7.410e-03</td>
+<td class="e07 norm">1.129e-02</td>
+<td class="e07 lew">1.123e-02</td>
+<td class="e10 norm">1.422e-02</td>
+<td class="e10 lew">1.413e-02</td>
+<td class="e14 norm">9.608e-03</td>
+<td class="e14 lew">9.576e-03</td>
+<td class="e07 norm">8.465e-03</td>
+<td class="e07 lew">7.771e-03</td>
+<td class="e10 norm">1.169e-02</td>
+<td class="e10 lew">1.105e-02</td>
+<td class="e14 norm">8.322e-03</td>
+<td class="e14 lew">7.634e-03</td>
+<td class="e07 norm">1.153e-02</td>
+<td class="e07 lew">1.147e-02</td>
+<td class="e10 norm">1.463e-02</td>
+<td class="e10 lew">1.454e-02</td>
+<td class="e14 norm">1.022e-02</td>
+<td class="e14 lew">1.018e-02</td>
+<td class="e07 norm">8.567e-03</td>
+<td class="e07 lew">7.856e-03</td>
+<td class="e10 norm">1.192e-02</td>
+<td class="e10 lew">1.122e-02</td>
+<td class="e14 norm">8.674e-03</td>
+<td class="e14 lew">7.899e-03</td>
+<td class="e07 norm">1.176e-02</td>
+<td class="e07 lew">1.170e-02</td>
+<td class="e10 norm">1.505e-02</td>
+<td class="e10 lew">1.496e-02</td>
+<td class="e14 norm">1.091e-02</td>
+<td class="e14 lew">1.086e-02</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+</tr>
+<tr>
+<th>Diff</th>
+<td class="e07 norm">-5.884e-04</td>
+<td class="e07 lew">-4.573e-07</td>
+<td class="e10 norm">-7.094e-04</td>
+<td class="e10 lew">9.147e-07</td>
+<td class="e14 norm">-2.372e-05</td>
+<td class="e14 lew">2.135e-06</td>
+<td class="e07 norm">-5.398e-04</td>
+<td class="e07 lew">-5.292e-04</td>
+<td class="e10 norm">-7.970e-04</td>
+<td class="e10 lew">-6.839e-04</td>
+<td class="e14 norm">-7.488e-05</td>
+<td class="e14 lew">-5.156e-05</td>
+<td class="e07 norm">-5.992e-04</td>
+<td class="e07 lew">-4.710e-06</td>
+<td class="e10 norm">-7.549e-04</td>
+<td class="e10 lew">9.967e-06</td>
+<td class="e14 norm">-4.957e-05</td>
+<td class="e14 lew">1.160e-06</td>
+<td class="e07 norm">-6.150e-04</td>
+<td class="e07 lew">-5.858e-04</td>
+<td class="e10 norm">-9.022e-04</td>
+<td class="e10 lew">-7.881e-04</td>
+<td class="e14 norm">-1.207e-04</td>
+<td class="e14 lew">-1.081e-04</td>
+<td class="e07 norm">-3.924e-04</td>
+<td class="e07 lew">-2.928e-04</td>
+<td class="e10 norm">-7.339e-04</td>
+<td class="e10 lew">1.914e-05</td>
+<td class="e14 norm">-1.400e-04</td>
+<td class="e14 lew">-9.032e-06</td>
+<td class="e07 norm">-7.668e-04</td>
+<td class="e07 lew">-6.073e-04</td>
+<td class="e10 norm">-9.927e-04</td>
+<td class="e10 lew">-8.475e-04</td>
+<td class="e14 norm">-1.805e-04</td>
+<td class="e14 lew">-1.763e-04</td>
+<td class="e07 norm">-2.423e-04</td>
+<td class="e07 lew">-3.495e-04</td>
+<td class="e10 norm">-6.156e-04</td>
+<td class="e10 lew">-5.981e-04</td>
+<td class="e14 norm">-4.951e-04</td>
+<td class="e14 lew">-5.580e-05</td>
+<td class="e07 norm">-8.211e-04</td>
+<td class="e07 lew">-6.574e-04</td>
+<td class="e10 norm">-1.036e-03</td>
+<td class="e10 lew">-9.249e-04</td>
+<td class="e14 norm">-2.503e-04</td>
+<td class="e14 lew">-2.534e-04</td>
+<td class="e07 norm">-1.844e-04</td>
+<td class="e07 lew">-1.609e-04</td>
+<td class="e10 norm">-4.803e-04</td>
+<td class="e10 lew">-5.413e-04</td>
+<td class="e14 norm">-1.254e-03</td>
+<td class="e14 lew">-1.830e-04</td>
+<td class="e07 norm">-8.446e-04</td>
+<td class="e07 lew">-7.216e-04</td>
+<td class="e10 norm">-1.070e-03</td>
+<td class="e10 lew">-1.028e-03</td>
+<td class="e14 norm">-3.344e-04</td>
+<td class="e14 lew">-3.526e-04</td>
+<td class="e07 norm">-9.238e-05</td>
+<td class="e07 lew">-6.820e-05</td>
+<td class="e10 norm">-1.936e-04</td>
+<td class="e10 lew">-1.680e-04</td>
+<td class="e14 norm">-4.022e-04</td>
+<td class="e14 lew">-2.415e-04</td>
+<td class="e07 norm">-9.508e-04</td>
+<td class="e07 lew">-1.014e-03</td>
+<td class="e10 norm">-1.500e-03</td>
+<td class="e10 lew">-1.567e-03</td>
+<td class="e14 norm">-1.335e-03</td>
+<td class="e14 lew">-1.446e-03</td>
+<td class="e07 norm">-6.252e-05</td>
+<td class="e07 lew">-4.125e-05</td>
+<td class="e10 norm">-9.699e-05</td>
+<td class="e10 lew">-8.308e-05</td>
+<td class="e14 norm">-1.702e-04</td>
+<td class="e14 lew">-1.067e-04</td>
+<td class="e07 norm">-1.025e-03</td>
+<td class="e07 lew">-1.023e-03</td>
+<td class="e10 norm">-1.509e-03</td>
+<td class="e10 lew">-1.496e-03</td>
+<td class="e14 norm">-1.535e-03</td>
+<td class="e14 lew">-1.532e-03</td>
+<td class="e07 norm">-4.462e-05</td>
+<td class="e07 lew">-3.136e-05</td>
+<td class="e10 norm">-4.279e-05</td>
+<td class="e10 lew">-4.991e-05</td>
+<td class="e14 norm">-6.771e-05</td>
+<td class="e14 lew">-3.789e-05</td>
+<td class="e07 norm">-1.018e-03</td>
+<td class="e07 lew">-1.011e-03</td>
+<td class="e10 norm">-1.452e-03</td>
+<td class="e10 lew">-1.433e-03</td>
+<td class="e14 norm">-1.548e-03</td>
+<td class="e14 lew">-1.529e-03</td>
+<td class="e07 norm">-3.533e-05</td>
+<td class="e07 lew">-2.698e-05</td>
+<td class="e10 norm">-1.740e-05</td>
+<td class="e10 lew">-3.583e-05</td>
+<td class="e14 norm">-1.312e-05</td>
+<td class="e14 lew">-7.158e-06</td>
+<td class="e07 norm">-1.007e-03</td>
+<td class="e07 lew">-1.001e-03</td>
+<td class="e10 norm">-1.419e-03</td>
+<td class="e10 lew">-1.403e-03</td>
+<td class="e14 norm">-1.547e-03</td>
+<td class="e14 lew">-1.532e-03</td>
+<td class="e07 norm">-2.838e-05</td>
+<td class="e07 lew">-2.269e-05</td>
+<td class="e10 norm">-1.364e-06</td>
+<td class="e10 lew">-2.478e-05</td>
+<td class="e14 norm">2.083e-05</td>
+<td class="e14 lew">1.653e-05</td>
+<td class="e07 norm">-9.957e-04</td>
+<td class="e07 lew">-9.905e-04</td>
+<td class="e10 norm">-1.386e-03</td>
+<td class="e10 lew">-1.374e-03</td>
+<td class="e14 norm">-1.566e-03</td>
+<td class="e14 lew">-1.553e-03</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+</tr>
+<tr>
+<th>%Diff</th>
+<td class="e07 norm">-2.580e+01</td>
+<td class="e07 lew">-1.252e-01</td>
+<td class="e10 norm">-2.038e+01</td>
+<td class="e10 lew">8.265e-02</td>
+<td class="e14 norm">-4.187e+01</td>
+<td class="e14 lew">2.417e+00</td>
+<td class="e07 norm">-2.520e+01</td>
+<td class="e07 lew">-2.935e+01</td>
+<td class="e10 norm">-2.923e+01</td>
+<td class="e10 lew">-3.374e+01</td>
+<td class="e14 norm">-5.537e+01</td>
+<td class="e14 lew">-2.864e+01</td>
+<td class="e07 norm">-1.726e+01</td>
+<td class="e07 lew">-8.536e-01</td>
+<td class="e10 norm">-1.583e+01</td>
+<td class="e10 lew">5.944e-01</td>
+<td class="e14 norm">-3.558e+01</td>
+<td class="e14 lew">4.702e-01</td>
+<td class="e07 norm">-2.187e+01</td>
+<td class="e07 lew">-2.165e+01</td>
+<td class="e10 norm">-2.556e+01</td>
+<td class="e10 lew">-2.572e+01</td>
+<td class="e14 norm">-5.147e+01</td>
+<td class="e14 lew">-3.689e+01</td>
+<td class="e07 norm">-8.434e+00</td>
+<td class="e07 lew">-2.848e+01</td>
+<td class="e10 norm">-1.217e+01</td>
+<td class="e10 lew">8.773e-01</td>
+<td class="e14 norm">-4.255e+01</td>
+<td class="e14 lew">-1.848e+00</td>
+<td class="e07 norm">-2.246e+01</td>
+<td class="e07 lew">-1.724e+01</td>
+<td class="e10 norm">-2.325e+01</td>
+<td class="e10 lew">-2.128e+01</td>
+<td class="e14 norm">-5.010e+01</td>
+<td class="e14 lew">-4.014e+01</td>
+<td class="e07 norm">-4.390e+00</td>
+<td class="e07 lew">-1.319e+01</td>
+<td class="e10 norm">-8.709e+00</td>
+<td class="e10 lew">-2.037e+01</td>
+<td class="e14 norm">-6.217e+01</td>
+<td class="e14 lew">-6.131e+00</td>
+<td class="e07 norm">-1.996e+01</td>
+<td class="e07 lew">-1.531e+01</td>
+<td class="e10 norm">-2.052e+01</td>
+<td class="e10 lew">-1.912e+01</td>
+<td class="e14 norm">-4.705e+01</td>
+<td class="e14 lew">-4.016e+01</td>
+<td class="e07 norm">-3.037e+00</td>
+<td class="e07 lew">-4.032e+00</td>
+<td class="e10 norm">-6.150e+00</td>
+<td class="e10 lew">-1.138e+01</td>
+<td class="e14 norm">-7.066e+01</td>
+<td class="e14 lew">-1.077e+01</td>
+<td class="e07 norm">-1.733e+01</td>
+<td class="e07 lew">-1.436e+01</td>
+<td class="e10 norm">-1.828e+01</td>
+<td class="e10 lew">-1.816e+01</td>
+<td class="e14 norm">-4.352e+01</td>
+<td class="e14 lew">-3.992e+01</td>
+<td class="e07 norm">-1.198e+00</td>
+<td class="e07 lew">-9.810e-01</td>
+<td class="e10 norm">-1.891e+00</td>
+<td class="e10 lew">-1.746e+00</td>
+<td class="e14 norm">-6.088e+00</td>
+<td class="e14 lew">-4.067e+00</td>
+<td class="e07 norm">-1.041e+01</td>
+<td class="e07 lew">-1.120e+01</td>
+<td class="e10 norm">-1.373e+01</td>
+<td class="e10 lew">-1.454e+01</td>
+<td class="e14 norm">-2.475e+01</td>
+<td class="e14 lew">-2.683e+01</td>
+<td class="e07 norm">-7.668e-01</td>
+<td class="e07 lew">-5.521e-01</td>
+<td class="e10 norm">-8.765e-01</td>
+<td class="e10 lew">-7.903e-01</td>
+<td class="e14 norm">-2.259e+00</td>
+<td class="e14 lew">-1.538e+00</td>
+<td class="e07 norm">-9.969e+00</td>
+<td class="e07 lew">-1.001e+01</td>
+<td class="e10 norm">-1.192e+01</td>
+<td class="e10 lew">-1.189e+01</td>
+<td class="e14 norm">-1.995e+01</td>
+<td class="e14 lew">-1.993e+01</td>
+<td class="e07 norm">-5.344e-01</td>
+<td class="e07 lew">-4.090e-01</td>
+<td class="e10 norm">-3.732e-01</td>
+<td class="e10 lew">-4.593e-01</td>
+<td class="e14 norm">-8.433e-01</td>
+<td class="e14 lew">-5.127e-01</td>
+<td class="e07 norm">-9.441e+00</td>
+<td class="e07 lew">-9.423e+00</td>
+<td class="e10 norm">-1.076e+01</td>
+<td class="e10 lew">-1.068e+01</td>
+<td class="e14 norm">-1.752e+01</td>
+<td class="e14 lew">-1.735e+01</td>
+<td class="e07 norm">-4.182e-01</td>
+<td class="e07 lew">-3.478e-01</td>
+<td class="e10 norm">-1.490e-01</td>
+<td class="e10 lew">-3.247e-01</td>
+<td class="e14 norm">-1.578e-01</td>
+<td class="e14 lew">-9.381e-02</td>
+<td class="e07 norm">-9.134e+00</td>
+<td class="e07 lew">-9.126e+00</td>
+<td class="e10 norm">-1.019e+01</td>
+<td class="e10 lew">-1.014e+01</td>
+<td class="e14 norm">-1.638e+01</td>
+<td class="e14 lew">-1.627e+01</td>
+<td class="e07 norm">-3.319e-01</td>
+<td class="e07 lew">-2.892e-01</td>
+<td class="e10 norm">-1.144e-02</td>
+<td class="e10 lew">-2.212e-01</td>
+<td class="e14 norm">2.398e-01</td>
+<td class="e14 lew">2.090e-01</td>
+<td class="e07 norm">-8.837e+00</td>
+<td class="e07 lew">-8.842e+00</td>
+<td class="e10 norm">-9.654e+00</td>
+<td class="e10 lew">-9.629e+00</td>
+<td class="e14 norm">-1.547e+01</td>
+<td class="e14 lew">-1.541e+01</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+</tr>
+<tr>
+<th rowspan="4" valign="top">Y-NO2</th>
+<th>Peak Got</th>
+<td class="e07 norm">8.135e-06</td>
+<td class="e07 lew">6.195e-06</td>
+<td class="e10 norm">5.540e-06</td>
+<td class="e10 lew">1.947e-06</td>
+<td class="e14 norm">4.253e-06</td>
+<td class="e14 lew">5.008e-07</td>
+<td class="e07 norm">6.886e-05</td>
+<td class="e07 lew">7.170e-05</td>
+<td class="e10 norm">6.214e-05</td>
+<td class="e10 lew">4.798e-05</td>
+<td class="e14 norm">5.195e-05</td>
+<td class="e14 lew">3.530e-05</td>
+<td class="e07 norm">1.077e-05</td>
+<td class="e07 lew">5.288e-06</td>
+<td class="e10 norm">6.592e-06</td>
+<td class="e10 lew">2.212e-06</td>
+<td class="e14 norm">6.313e-06</td>
+<td class="e14 lew">1.948e-06</td>
+<td class="e07 norm">8.422e-05</td>
+<td class="e07 lew">9.194e-05</td>
+<td class="e10 norm">9.316e-05</td>
+<td class="e10 lew">6.754e-05</td>
+<td class="e14 norm">9.971e-05</td>
+<td class="e14 lew">5.151e-05</td>
+<td class="e07 norm">1.446e-05</td>
+<td class="e07 lew">8.334e-06</td>
+<td class="e10 norm">1.047e-05</td>
+<td class="e10 lew">5.008e-06</td>
+<td class="e14 norm">9.989e-06</td>
+<td class="e14 lew">5.418e-06</td>
+<td class="e07 norm">2.311e-04</td>
+<td class="e07 lew">1.145e-04</td>
+<td class="e10 norm">2.513e-04</td>
+<td class="e10 lew">8.739e-05</td>
+<td class="e14 norm">2.752e-04</td>
+<td class="e14 lew">6.924e-05</td>
+<td class="e07 norm">1.818e-05</td>
+<td class="e07 lew">2.731e-05</td>
+<td class="e10 norm">1.532e-05</td>
+<td class="e10 lew">1.623e-05</td>
+<td class="e14 norm">1.440e-05</td>
+<td class="e14 lew">1.232e-05</td>
+<td class="e07 norm">4.866e-04</td>
+<td class="e07 lew">1.393e-04</td>
+<td class="e10 norm">4.851e-04</td>
+<td class="e10 lew">1.088e-04</td>
+<td class="e14 norm">5.019e-04</td>
+<td class="e14 lew">8.889e-05</td>
+<td class="e07 norm">2.498e-05</td>
+<td class="e07 lew">4.159e-05</td>
+<td class="e10 norm">2.129e-05</td>
+<td class="e10 lew">3.121e-05</td>
+<td class="e14 norm">1.979e-05</td>
+<td class="e14 lew">2.094e-05</td>
+<td class="e07 norm">7.370e-04</td>
+<td class="e07 lew">1.666e-04</td>
+<td class="e10 norm">7.183e-04</td>
+<td class="e10 lew">1.324e-04</td>
+<td class="e14 norm">7.259e-04</td>
+<td class="e14 lew">1.107e-04</td>
+<td class="e07 norm">1.108e-04</td>
+<td class="e07 lew">4.508e-05</td>
+<td class="e10 norm">1.080e-04</td>
+<td class="e10 lew">3.619e-05</td>
+<td class="e14 norm">1.039e-04</td>
+<td class="e14 lew">2.920e-05</td>
+<td class="e07 norm">1.638e-03</td>
+<td class="e07 lew">3.205e-04</td>
+<td class="e10 norm">1.628e-03</td>
+<td class="e10 lew">2.723e-04</td>
+<td class="e14 norm">1.668e-03</td>
+<td class="e14 lew">2.395e-04</td>
+<td class="e07 norm">1.519e-04</td>
+<td class="e07 lew">3.123e-05</td>
+<td class="e10 norm">1.507e-04</td>
+<td class="e10 lew">2.555e-05</td>
+<td class="e14 norm">1.462e-04</td>
+<td class="e14 lew">2.273e-05</td>
+<td class="e07 norm">9.530e-04</td>
+<td class="e07 lew">2.445e-04</td>
+<td class="e10 norm">9.254e-04</td>
+<td class="e10 lew">2.079e-04</td>
+<td class="e14 norm">9.517e-04</td>
+<td class="e14 lew">1.848e-04</td>
+<td class="e07 norm">1.515e-04</td>
+<td class="e07 lew">2.045e-05</td>
+<td class="e10 norm">1.500e-04</td>
+<td class="e10 lew">1.647e-05</td>
+<td class="e14 norm">1.453e-04</td>
+<td class="e14 lew">1.558e-05</td>
+<td class="e07 norm">4.089e-04</td>
+<td class="e07 lew">1.522e-04</td>
+<td class="e10 norm">3.910e-04</td>
+<td class="e10 lew">1.294e-04</td>
+<td class="e14 norm">3.987e-04</td>
+<td class="e14 lew">1.159e-04</td>
+<td class="e07 norm">1.220e-04</td>
+<td class="e07 lew">1.347e-05</td>
+<td class="e10 norm">1.204e-04</td>
+<td class="e10 lew">1.010e-05</td>
+<td class="e14 norm">1.171e-04</td>
+<td class="e14 lew">9.742e-06</td>
+<td class="e07 norm">1.781e-04</td>
+<td class="e07 lew">8.627e-05</td>
+<td class="e10 norm">1.683e-04</td>
+<td class="e10 lew">7.340e-05</td>
+<td class="e14 norm">1.701e-04</td>
+<td class="e14 lew">6.602e-05</td>
+<td class="e07 norm">5.719e-06</td>
+<td class="e07 lew">5.719e-06</td>
+<td class="e10 norm">7.431e-07</td>
+<td class="e10 lew">1.289e-06</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">3.246e-05</td>
+<td class="e07 lew">3.246e-05</td>
+<td class="e10 norm">3.512e-06</td>
+<td class="e10 lew">3.512e-06</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+</tr>
+<tr>
+<th>Peak Glar</th>
+<td class="e07 norm">2.065e-05</td>
+<td class="e07 lew">7.467e-06</td>
+<td class="e10 norm">2.494e-05</td>
+<td class="e10 lew">1.915e-06</td>
+<td class="e14 norm">2.457e-05</td>
+<td class="e14 lew">3.312e-06</td>
+<td class="e07 norm">1.128e-04</td>
+<td class="e07 lew">1.816e-04</td>
+<td class="e10 norm">7.684e-05</td>
+<td class="e10 lew">1.519e-04</td>
+<td class="e14 norm">5.544e-05</td>
+<td class="e14 lew">1.307e-04</td>
+<td class="e07 norm">6.863e-05</td>
+<td class="e07 lew">1.294e-05</td>
+<td class="e10 norm">7.006e-05</td>
+<td class="e10 lew">8.226e-06</td>
+<td class="e14 norm">7.066e-05</td>
+<td class="e14 lew">7.705e-06</td>
+<td class="e07 norm">5.031e-04</td>
+<td class="e07 lew">3.729e-04</td>
+<td class="e10 norm">5.659e-04</td>
+<td class="e10 lew">3.347e-04</td>
+<td class="e14 norm">6.169e-04</td>
+<td class="e14 lew">3.097e-04</td>
+<td class="e07 norm">9.594e-05</td>
+<td class="e07 lew">2.401e-05</td>
+<td class="e10 norm">9.635e-05</td>
+<td class="e10 lew">1.639e-05</td>
+<td class="e14 norm">9.746e-05</td>
+<td class="e14 lew">1.296e-05</td>
+<td class="e07 norm">8.579e-04</td>
+<td class="e07 lew">5.044e-04</td>
+<td class="e10 norm">9.243e-04</td>
+<td class="e10 lew">4.572e-04</td>
+<td class="e14 norm">9.816e-04</td>
+<td class="e14 lew">4.361e-04</td>
+<td class="e07 norm">1.165e-04</td>
+<td class="e07 lew">4.998e-05</td>
+<td class="e10 norm">1.163e-04</td>
+<td class="e10 lew">3.405e-05</td>
+<td class="e14 norm">1.176e-04</td>
+<td class="e14 lew">2.195e-05</td>
+<td class="e07 norm">1.122e-03</td>
+<td class="e07 lew">6.017e-04</td>
+<td class="e10 norm">1.185e-03</td>
+<td class="e10 lew">5.486e-04</td>
+<td class="e14 norm">1.245e-03</td>
+<td class="e14 lew">5.313e-04</td>
+<td class="e07 norm">1.334e-04</td>
+<td class="e07 lew">6.692e-05</td>
+<td class="e10 norm">1.329e-04</td>
+<td class="e10 lew">4.978e-05</td>
+<td class="e14 norm">1.342e-04</td>
+<td class="e14 lew">3.341e-05</td>
+<td class="e07 norm">1.331e-03</td>
+<td class="e07 lew">6.754e-04</td>
+<td class="e10 norm">1.390e-03</td>
+<td class="e10 lew">6.181e-04</td>
+<td class="e14 norm">1.451e-03</td>
+<td class="e14 lew">6.033e-04</td>
+<td class="e07 norm">2.236e-04</td>
+<td class="e07 lew">6.629e-05</td>
+<td class="e10 norm">2.250e-04</td>
+<td class="e10 lew">5.550e-05</td>
+<td class="e14 norm">2.268e-04</td>
+<td class="e14 lew">4.840e-05</td>
+<td class="e07 norm">1.833e-03</td>
+<td class="e07 lew">7.768e-04</td>
+<td class="e10 norm">1.780e-03</td>
+<td class="e10 lew">6.954e-04</td>
+<td class="e14 norm">1.739e-03</td>
+<td class="e14 lew">6.732e-04</td>
+<td class="e07 norm">2.582e-04</td>
+<td class="e07 lew">4.353e-05</td>
+<td class="e10 norm">2.599e-04</td>
+<td class="e10 lew">3.741e-05</td>
+<td class="e14 norm">2.598e-04</td>
+<td class="e14 lew">3.579e-05</td>
+<td class="e07 norm">1.072e-03</td>
+<td class="e07 lew">5.419e-04</td>
+<td class="e10 norm">9.871e-04</td>
+<td class="e10 lew">4.704e-04</td>
+<td class="e14 norm">9.137e-04</td>
+<td class="e14 lew">4.479e-04</td>
+<td class="e07 norm">2.550e-04</td>
+<td class="e07 lew">2.741e-05</td>
+<td class="e10 norm">2.516e-04</td>
+<td class="e10 lew">2.334e-05</td>
+<td class="e14 norm">2.461e-04</td>
+<td class="e14 lew">2.364e-05</td>
+<td class="e07 norm">5.446e-04</td>
+<td class="e07 lew">3.249e-04</td>
+<td class="e10 norm">4.931e-04</td>
+<td class="e10 lew">2.770e-04</td>
+<td class="e14 norm">4.488e-04</td>
+<td class="e14 lew">2.615e-04</td>
+<td class="e07 norm">2.125e-04</td>
+<td class="e07 lew">1.736e-05</td>
+<td class="e10 norm">2.040e-04</td>
+<td class="e10 lew">1.393e-05</td>
+<td class="e14 norm">1.954e-04</td>
+<td class="e14 lew">1.443e-05</td>
+<td class="e07 norm">2.731e-04</td>
+<td class="e07 lew">1.800e-04</td>
+<td class="e10 norm">2.455e-04</td>
+<td class="e10 lew">1.519e-04</td>
+<td class="e14 norm">2.219e-04</td>
+<td class="e14 lew">1.428e-04</td>
+<td class="e07 norm">5.698e-06</td>
+<td class="e07 lew">5.698e-06</td>
+<td class="e10 norm">7.318e-07</td>
+<td class="e10 lew">1.377e-06</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">3.246e-05</td>
+<td class="e07 lew">3.246e-05</td>
+<td class="e10 norm">3.509e-06</td>
+<td class="e10 lew">3.509e-06</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+</tr>
+<tr>
+<th>Diff</th>
+<td class="e07 norm">-1.251e-05</td>
+<td class="e07 lew">-1.271e-06</td>
+<td class="e10 norm">-1.940e-05</td>
+<td class="e10 lew">3.203e-08</td>
+<td class="e14 norm">-2.031e-05</td>
+<td class="e14 lew">-2.811e-06</td>
+<td class="e07 norm">-4.399e-05</td>
+<td class="e07 lew">-1.099e-04</td>
+<td class="e10 norm">-1.470e-05</td>
+<td class="e10 lew">-1.039e-04</td>
+<td class="e14 norm">-3.490e-06</td>
+<td class="e14 lew">-9.545e-05</td>
+<td class="e07 norm">-5.786e-05</td>
+<td class="e07 lew">-7.652e-06</td>
+<td class="e10 norm">-6.347e-05</td>
+<td class="e10 lew">-6.014e-06</td>
+<td class="e14 norm">-6.435e-05</td>
+<td class="e14 lew">-5.756e-06</td>
+<td class="e07 norm">-4.189e-04</td>
+<td class="e07 lew">-2.810e-04</td>
+<td class="e10 norm">-4.727e-04</td>
+<td class="e10 lew">-2.672e-04</td>
+<td class="e14 norm">-5.172e-04</td>
+<td class="e14 lew">-2.582e-04</td>
+<td class="e07 norm">-8.148e-05</td>
+<td class="e07 lew">-1.567e-05</td>
+<td class="e10 norm">-8.588e-05</td>
+<td class="e10 lew">-1.138e-05</td>
+<td class="e14 norm">-8.747e-05</td>
+<td class="e14 lew">-7.542e-06</td>
+<td class="e07 norm">-6.268e-04</td>
+<td class="e07 lew">-3.899e-04</td>
+<td class="e10 norm">-6.730e-04</td>
+<td class="e10 lew">-3.698e-04</td>
+<td class="e14 norm">-7.064e-04</td>
+<td class="e14 lew">-3.669e-04</td>
+<td class="e07 norm">-9.834e-05</td>
+<td class="e07 lew">-2.266e-05</td>
+<td class="e10 norm">-1.010e-04</td>
+<td class="e10 lew">-1.781e-05</td>
+<td class="e14 norm">-1.032e-04</td>
+<td class="e14 lew">-9.625e-06</td>
+<td class="e07 norm">-6.352e-04</td>
+<td class="e07 lew">-4.623e-04</td>
+<td class="e10 norm">-6.999e-04</td>
+<td class="e10 lew">-4.398e-04</td>
+<td class="e14 norm">-7.429e-04</td>
+<td class="e14 lew">-4.424e-04</td>
+<td class="e07 norm">-1.084e-04</td>
+<td class="e07 lew">-2.532e-05</td>
+<td class="e10 norm">-1.116e-04</td>
+<td class="e10 lew">-1.857e-05</td>
+<td class="e14 norm">-1.144e-04</td>
+<td class="e14 lew">-1.247e-05</td>
+<td class="e07 norm">-5.936e-04</td>
+<td class="e07 lew">-5.088e-04</td>
+<td class="e10 norm">-6.712e-04</td>
+<td class="e10 lew">-4.858e-04</td>
+<td class="e14 norm">-7.255e-04</td>
+<td class="e14 lew">-4.927e-04</td>
+<td class="e07 norm">-1.128e-04</td>
+<td class="e07 lew">-2.121e-05</td>
+<td class="e10 norm">-1.170e-04</td>
+<td class="e10 lew">-1.931e-05</td>
+<td class="e14 norm">-1.229e-04</td>
+<td class="e14 lew">-1.921e-05</td>
+<td class="e07 norm">-1.953e-04</td>
+<td class="e07 lew">-4.562e-04</td>
+<td class="e10 norm">-1.513e-04</td>
+<td class="e10 lew">-4.231e-04</td>
+<td class="e14 norm">-7.076e-05</td>
+<td class="e14 lew">-4.337e-04</td>
+<td class="e07 norm">-1.064e-04</td>
+<td class="e07 lew">-1.229e-05</td>
+<td class="e10 norm">-1.091e-04</td>
+<td class="e10 lew">-1.186e-05</td>
+<td class="e14 norm">-1.136e-04</td>
+<td class="e14 lew">-1.307e-05</td>
+<td class="e07 norm">-1.189e-04</td>
+<td class="e07 lew">-2.973e-04</td>
+<td class="e10 norm">-6.171e-05</td>
+<td class="e10 lew">-2.625e-04</td>
+<td class="e14 norm">3.798e-05</td>
+<td class="e14 lew">-2.631e-04</td>
+<td class="e07 norm">-1.035e-04</td>
+<td class="e07 lew">-6.956e-06</td>
+<td class="e10 norm">-1.016e-04</td>
+<td class="e10 lew">-6.870e-06</td>
+<td class="e14 norm">-1.009e-04</td>
+<td class="e14 lew">-8.058e-06</td>
+<td class="e07 norm">-1.357e-04</td>
+<td class="e07 lew">-1.728e-04</td>
+<td class="e10 norm">-1.021e-04</td>
+<td class="e10 lew">-1.475e-04</td>
+<td class="e14 norm">-5.008e-05</td>
+<td class="e14 lew">-1.455e-04</td>
+<td class="e07 norm">-9.046e-05</td>
+<td class="e07 lew">-3.897e-06</td>
+<td class="e10 norm">-8.356e-05</td>
+<td class="e10 lew">-3.827e-06</td>
+<td class="e14 norm">-7.827e-05</td>
+<td class="e14 lew">-4.692e-06</td>
+<td class="e07 norm">-9.495e-05</td>
+<td class="e07 lew">-9.368e-05</td>
+<td class="e10 norm">-7.720e-05</td>
+<td class="e10 lew">-7.850e-05</td>
+<td class="e14 norm">-5.176e-05</td>
+<td class="e14 lew">-7.674e-05</td>
+<td class="e07 norm">2.032e-08</td>
+<td class="e07 lew">2.032e-08</td>
+<td class="e10 norm">1.125e-08</td>
+<td class="e10 lew">-8.767e-08</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">2.451e-09</td>
+<td class="e07 lew">2.451e-09</td>
+<td class="e10 norm">3.208e-09</td>
+<td class="e10 lew">3.208e-09</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+</tr>
+<tr>
+<th>%Diff</th>
+<td class="e07 norm">-8.695e+01</td>
+<td class="e07 lew">-1.861e+01</td>
+<td class="e10 norm">-1.273e+02</td>
+<td class="e10 lew">1.659e+00</td>
+<td class="e14 norm">-1.410e+02</td>
+<td class="e14 lew">-1.475e+02</td>
+<td class="e07 norm">-4.842e+01</td>
+<td class="e07 lew">-8.677e+01</td>
+<td class="e10 norm">-2.115e+01</td>
+<td class="e10 lew">-1.040e+02</td>
+<td class="e14 norm">-6.500e+00</td>
+<td class="e14 lew">-1.150e+02</td>
+<td class="e07 norm">-1.457e+02</td>
+<td class="e07 lew">-8.396e+01</td>
+<td class="e10 norm">-1.656e+02</td>
+<td class="e10 lew">-1.152e+02</td>
+<td class="e14 norm">-1.672e+02</td>
+<td class="e14 lew">-1.193e+02</td>
+<td class="e07 norm">-1.426e+02</td>
+<td class="e07 lew">-1.209e+02</td>
+<td class="e10 norm">-1.435e+02</td>
+<td class="e10 lew">-1.328e+02</td>
+<td class="e14 norm">-1.443e+02</td>
+<td class="e14 lew">-1.430e+02</td>
+<td class="e07 norm">-1.476e+02</td>
+<td class="e07 lew">-9.693e+01</td>
+<td class="e10 norm">-1.608e+02</td>
+<td class="e10 lew">-1.064e+02</td>
+<td class="e14 norm">-1.628e+02</td>
+<td class="e14 lew">-8.208e+01</td>
+<td class="e07 norm">-1.151e+02</td>
+<td class="e07 lew">-1.260e+02</td>
+<td class="e10 norm">-1.145e+02</td>
+<td class="e10 lew">-1.358e+02</td>
+<td class="e14 norm">-1.124e+02</td>
+<td class="e14 lew">-1.452e+02</td>
+<td class="e07 norm">-1.460e+02</td>
+<td class="e07 lew">-5.865e+01</td>
+<td class="e10 norm">-1.535e+02</td>
+<td class="e10 lew">-7.085e+01</td>
+<td class="e14 norm">-1.564e+02</td>
+<td class="e14 lew">-5.617e+01</td>
+<td class="e07 norm">-7.899e+01</td>
+<td class="e07 lew">-1.248e+02</td>
+<td class="e10 norm">-8.382e+01</td>
+<td class="e10 lew">-1.338e+02</td>
+<td class="e14 norm">-8.506e+01</td>
+<td class="e14 lew">-1.427e+02</td>
+<td class="e07 norm">-1.369e+02</td>
+<td class="e07 lew">-4.667e+01</td>
+<td class="e10 norm">-1.448e+02</td>
+<td class="e10 lew">-4.587e+01</td>
+<td class="e14 norm">-1.486e+02</td>
+<td class="e14 lew">-4.589e+01</td>
+<td class="e07 norm">-5.742e+01</td>
+<td class="e07 lew">-1.208e+02</td>
+<td class="e10 norm">-6.369e+01</td>
+<td class="e10 lew">-1.294e+02</td>
+<td class="e14 norm">-6.664e+01</td>
+<td class="e14 lew">-1.380e+02</td>
+<td class="e07 norm">-6.749e+01</td>
+<td class="e07 lew">-3.809e+01</td>
+<td class="e10 norm">-7.026e+01</td>
+<td class="e10 lew">-4.212e+01</td>
+<td class="e14 norm">-7.433e+01</td>
+<td class="e14 lew">-4.951e+01</td>
+<td class="e07 norm">-1.126e+01</td>
+<td class="e07 lew">-8.316e+01</td>
+<td class="e10 norm">-8.878e+00</td>
+<td class="e10 lew">-8.745e+01</td>
+<td class="e14 norm">-4.154e+00</td>
+<td class="e14 lew">-9.503e+01</td>
+<td class="e07 norm">-5.188e+01</td>
+<td class="e07 lew">-3.289e+01</td>
+<td class="e10 norm">-5.316e+01</td>
+<td class="e10 lew">-3.768e+01</td>
+<td class="e14 norm">-5.594e+01</td>
+<td class="e14 lew">-4.466e+01</td>
+<td class="e07 norm">-1.175e+01</td>
+<td class="e07 lew">-7.562e+01</td>
+<td class="e10 norm">-6.453e+00</td>
+<td class="e10 lew">-7.741e+01</td>
+<td class="e14 norm">4.072e+00</td>
+<td class="e14 lew">-8.317e+01</td>
+<td class="e07 norm">-5.090e+01</td>
+<td class="e07 lew">-2.907e+01</td>
+<td class="e10 norm">-5.060e+01</td>
+<td class="e10 lew">-3.451e+01</td>
+<td class="e14 norm">-5.155e+01</td>
+<td class="e14 lew">-4.109e+01</td>
+<td class="e07 norm">-2.846e+01</td>
+<td class="e07 lew">-7.242e+01</td>
+<td class="e10 norm">-2.310e+01</td>
+<td class="e10 lew">-7.261e+01</td>
+<td class="e14 norm">-1.182e+01</td>
+<td class="e14 lew">-7.713e+01</td>
+<td class="e07 norm">-5.409e+01</td>
+<td class="e07 lew">-2.528e+01</td>
+<td class="e10 norm">-5.153e+01</td>
+<td class="e10 lew">-3.185e+01</td>
+<td class="e14 norm">-5.009e+01</td>
+<td class="e14 lew">-3.882e+01</td>
+<td class="e07 norm">-4.208e+01</td>
+<td class="e07 lew">-7.038e+01</td>
+<td class="e10 norm">-3.730e+01</td>
+<td class="e10 lew">-6.968e+01</td>
+<td class="e14 norm">-2.641e+01</td>
+<td class="e14 lew">-7.352e+01</td>
+<td class="e07 norm">3.560e-01</td>
+<td class="e07 lew">3.560e-01</td>
+<td class="e10 norm">1.526e+00</td>
+<td class="e10 lew">-6.577e+00</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">7.551e-03</td>
+<td class="e07 lew">7.551e-03</td>
+<td class="e10 norm">9.138e-02</td>
+<td class="e10 lew">9.138e-02</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+</tr>
+<tr>
+<th rowspan="4" valign="top">Y-NO</th>
+<th>Peak Got</th>
+<td class="e07 norm">3.833e-03</td>
+<td class="e07 lew">1.786e-03</td>
+<td class="e10 norm">4.446e-03</td>
+<td class="e10 lew">8.911e-04</td>
+<td class="e14 norm">3.183e-04</td>
+<td class="e14 lew">1.576e-04</td>
+<td class="e07 norm">4.509e-03</td>
+<td class="e07 lew">4.509e-03</td>
+<td class="e10 norm">4.086e-03</td>
+<td class="e10 lew">2.984e-03</td>
+<td class="e14 norm">6.189e-04</td>
+<td class="e14 lew">6.957e-04</td>
+<td class="e07 norm">6.057e-03</td>
+<td class="e07 lew">2.244e-03</td>
+<td class="e10 norm">6.491e-03</td>
+<td class="e10 lew">1.395e-03</td>
+<td class="e14 norm">7.728e-04</td>
+<td class="e14 lew">6.534e-04</td>
+<td class="e07 norm">5.342e-03</td>
+<td class="e07 lew">5.833e-03</td>
+<td class="e10 norm">5.214e-03</td>
+<td class="e10 lew">5.208e-03</td>
+<td class="e14 norm">9.473e-04</td>
+<td class="e14 lew">1.171e-03</td>
+<td class="e07 norm">8.983e-03</td>
+<td class="e07 lew">2.823e-03</td>
+<td class="e10 norm">9.051e-03</td>
+<td class="e10 lew">2.287e-03</td>
+<td class="e14 norm">1.593e-03</td>
+<td class="e14 lew">1.600e-03</td>
+<td class="e07 norm">6.196e-03</td>
+<td class="e07 lew">7.197e-03</td>
+<td class="e10 norm">6.355e-03</td>
+<td class="e10 lew">7.097e-03</td>
+<td class="e14 norm">1.463e-03</td>
+<td class="e14 lew">1.784e-03</td>
+<td class="e07 norm">1.151e-02</td>
+<td class="e07 lew">6.854e-03</td>
+<td class="e10 norm">1.189e-02</td>
+<td class="e10 lew">5.283e-03</td>
+<td class="e14 norm">2.916e-03</td>
+<td class="e14 lew">3.311e-03</td>
+<td class="e07 norm">7.428e-03</td>
+<td class="e07 lew">8.425e-03</td>
+<td class="e10 norm">7.836e-03</td>
+<td class="e10 lew">8.751e-03</td>
+<td class="e14 norm">2.198e-03</td>
+<td class="e14 lew">2.503e-03</td>
+<td class="e07 norm">1.304e-02</td>
+<td class="e07 lew">9.884e-03</td>
+<td class="e10 norm">1.447e-02</td>
+<td class="e10 lew">9.890e-03</td>
+<td class="e14 norm">5.072e-03</td>
+<td class="e14 lew">5.889e-03</td>
+<td class="e07 norm">8.771e-03</td>
+<td class="e07 lew">9.518e-03</td>
+<td class="e10 norm">9.459e-03</td>
+<td class="e10 lew">1.024e-02</td>
+<td class="e14 norm">3.059e-03</td>
+<td class="e14 lew">3.324e-03</td>
+<td class="e07 norm">9.484e-03</td>
+<td class="e07 lew">7.849e-03</td>
+<td class="e10 norm">1.238e-02</td>
+<td class="e10 lew">9.351e-03</td>
+<td class="e14 norm">1.273e-02</td>
+<td class="e14 lew">8.934e-03</td>
+<td class="e07 norm">1.029e-02</td>
+<td class="e07 lew">1.027e-02</td>
+<td class="e10 norm">1.324e-02</td>
+<td class="e10 lew">1.321e-02</td>
+<td class="e14 norm">1.176e-02</td>
+<td class="e14 lew">1.145e-02</td>
+<td class="e07 norm">5.243e-03</td>
+<td class="e07 lew">4.928e-03</td>
+<td class="e10 norm">7.115e-03</td>
+<td class="e10 lew">5.645e-03</td>
+<td class="e14 norm">8.320e-03</td>
+<td class="e14 lew">5.859e-03</td>
+<td class="e07 norm">8.681e-03</td>
+<td class="e07 lew">8.681e-03</td>
+<td class="e10 norm">8.324e-03</td>
+<td class="e10 lew">8.174e-03</td>
+<td class="e14 norm">9.278e-03</td>
+<td class="e14 lew">9.064e-03</td>
+<td class="e07 norm">4.362e-03</td>
+<td class="e07 lew">4.362e-03</td>
+<td class="e10 norm">3.994e-03</td>
+<td class="e10 lew">3.569e-03</td>
+<td class="e14 norm">5.000e-03</td>
+<td class="e14 lew">3.577e-03</td>
+<td class="e07 norm">8.804e-03</td>
+<td class="e07 lew">8.804e-03</td>
+<td class="e10 norm">4.863e-03</td>
+<td class="e10 lew">4.863e-03</td>
+<td class="e14 norm">5.664e-03</td>
+<td class="e14 lew">5.561e-03</td>
+<td class="e07 norm">4.397e-03</td>
+<td class="e07 lew">4.397e-03</td>
+<td class="e10 norm">3.127e-03</td>
+<td class="e10 lew">3.127e-03</td>
+<td class="e14 norm">2.850e-03</td>
+<td class="e14 lew">2.074e-03</td>
+<td class="e07 norm">8.858e-03</td>
+<td class="e07 lew">8.858e-03</td>
+<td class="e10 norm">4.909e-03</td>
+<td class="e10 lew">4.909e-03</td>
+<td class="e14 norm">3.142e-03</td>
+<td class="e14 lew">3.104e-03</td>
+<td class="e07 norm">4.429e-03</td>
+<td class="e07 lew">4.429e-03</td>
+<td class="e10 norm">3.158e-03</td>
+<td class="e10 lew">3.158e-03</td>
+<td class="e14 norm">2.025e-04</td>
+<td class="e14 lew">2.025e-04</td>
+<td class="e07 norm">8.908e-03</td>
+<td class="e07 lew">8.908e-03</td>
+<td class="e10 norm">4.951e-03</td>
+<td class="e10 lew">4.951e-03</td>
+<td class="e14 norm">3.980e-04</td>
+<td class="e14 lew">3.980e-04</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+</tr>
+<tr>
+<th>Peak Glar</th>
+<td class="e07 norm">5.875e-03</td>
+<td class="e07 lew">1.787e-03</td>
+<td class="e10 norm">6.061e-03</td>
+<td class="e10 lew">9.053e-04</td>
+<td class="e14 norm">5.925e-04</td>
+<td class="e14 lew">1.951e-04</td>
+<td class="e07 norm">7.346e-03</td>
+<td class="e07 lew">6.949e-03</td>
+<td class="e10 norm">7.025e-03</td>
+<td class="e10 lew">5.947e-03</td>
+<td class="e14 norm">1.697e-03</td>
+<td class="e14 lew">1.744e-03</td>
+<td class="e07 norm">8.405e-03</td>
+<td class="e07 lew">2.238e-03</td>
+<td class="e10 norm">8.181e-03</td>
+<td class="e10 lew">1.530e-03</td>
+<td class="e14 norm">1.259e-03</td>
+<td class="e14 lew">7.522e-04</td>
+<td class="e07 norm">8.970e-03</td>
+<td class="e07 lew">9.098e-03</td>
+<td class="e10 norm">8.664e-03</td>
+<td class="e10 lew">8.357e-03</td>
+<td class="e14 norm">2.561e-03</td>
+<td class="e14 lew">2.807e-03</td>
+<td class="e07 norm">1.068e-02</td>
+<td class="e07 lew">3.479e-03</td>
+<td class="e10 norm">1.037e-02</td>
+<td class="e10 lew">2.975e-03</td>
+<td class="e14 norm">2.359e-03</td>
+<td class="e14 lew">1.711e-03</td>
+<td class="e07 norm">1.049e-02</td>
+<td class="e07 lew">1.080e-02</td>
+<td class="e10 norm">1.017e-02</td>
+<td class="e10 lew">1.026e-02</td>
+<td class="e14 norm">3.579e-03</td>
+<td class="e14 lew">3.809e-03</td>
+<td class="e07 norm">1.224e-02</td>
+<td class="e07 lew">7.581e-03</td>
+<td class="e10 norm">1.216e-02</td>
+<td class="e10 lew">6.588e-03</td>
+<td class="e14 norm">3.928e-03</td>
+<td class="e14 lew">3.309e-03</td>
+<td class="e07 norm">1.198e-02</td>
+<td class="e07 lew">1.220e-02</td>
+<td class="e10 norm">1.166e-02</td>
+<td class="e10 lew">1.185e-02</td>
+<td class="e14 norm">4.623e-03</td>
+<td class="e14 lew">4.768e-03</td>
+<td class="e07 norm">1.302e-02</td>
+<td class="e07 lew">1.009e-02</td>
+<td class="e10 norm">1.333e-02</td>
+<td class="e10 lew">9.826e-03</td>
+<td class="e14 norm">6.325e-03</td>
+<td class="e14 lew">5.579e-03</td>
+<td class="e07 norm">1.322e-02</td>
+<td class="e07 lew">1.327e-02</td>
+<td class="e10 norm">1.301e-02</td>
+<td class="e10 lew">1.318e-02</td>
+<td class="e14 norm">5.603e-03</td>
+<td class="e14 lew">5.710e-03</td>
+<td class="e07 norm">8.236e-03</td>
+<td class="e07 lew">7.969e-03</td>
+<td class="e10 norm">1.033e-02</td>
+<td class="e10 lew">9.169e-03</td>
+<td class="e14 norm">9.905e-03</td>
+<td class="e14 lew">8.460e-03</td>
+<td class="e07 norm">1.127e-02</td>
+<td class="e07 lew">1.103e-02</td>
+<td class="e10 norm">1.334e-02</td>
+<td class="e10 lew">1.308e-02</td>
+<td class="e14 norm">1.158e-02</td>
+<td class="e14 lew">1.135e-02</td>
+<td class="e07 norm">4.501e-03</td>
+<td class="e07 lew">4.946e-03</td>
+<td class="e10 norm">6.080e-03</td>
+<td class="e10 lew">5.625e-03</td>
+<td class="e14 norm">6.774e-03</td>
+<td class="e14 lew">5.786e-03</td>
+<td class="e07 norm">8.679e-03</td>
+<td class="e07 lew">8.679e-03</td>
+<td class="e10 norm">8.089e-03</td>
+<td class="e10 lew">7.928e-03</td>
+<td class="e14 norm">8.648e-03</td>
+<td class="e14 lew">8.497e-03</td>
+<td class="e07 norm">4.317e-03</td>
+<td class="e07 lew">4.317e-03</td>
+<td class="e10 norm">3.523e-03</td>
+<td class="e10 lew">3.540e-03</td>
+<td class="e14 norm">4.280e-03</td>
+<td class="e14 lew">3.652e-03</td>
+<td class="e07 norm">8.802e-03</td>
+<td class="e07 lew">8.802e-03</td>
+<td class="e10 norm">4.859e-03</td>
+<td class="e10 lew">4.859e-03</td>
+<td class="e14 norm">5.332e-03</td>
+<td class="e14 lew">5.265e-03</td>
+<td class="e07 norm">4.352e-03</td>
+<td class="e07 lew">4.352e-03</td>
+<td class="e10 norm">3.086e-03</td>
+<td class="e10 lew">3.086e-03</td>
+<td class="e14 norm">2.558e-03</td>
+<td class="e14 lew">2.173e-03</td>
+<td class="e07 norm">8.856e-03</td>
+<td class="e07 lew">8.856e-03</td>
+<td class="e10 norm">4.905e-03</td>
+<td class="e10 lew">4.905e-03</td>
+<td class="e14 norm">3.010e-03</td>
+<td class="e14 lew">2.986e-03</td>
+<td class="e07 norm">4.384e-03</td>
+<td class="e07 lew">4.384e-03</td>
+<td class="e10 norm">3.115e-03</td>
+<td class="e10 lew">3.115e-03</td>
+<td class="e14 norm">1.920e-04</td>
+<td class="e14 lew">1.920e-04</td>
+<td class="e07 norm">8.905e-03</td>
+<td class="e07 lew">8.905e-03</td>
+<td class="e10 norm">4.947e-03</td>
+<td class="e10 lew">4.947e-03</td>
+<td class="e14 norm">3.964e-04</td>
+<td class="e14 lew">3.964e-04</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+</tr>
+<tr>
+<th>Diff</th>
+<td class="e07 norm">-2.042e-03</td>
+<td class="e07 lew">-1.259e-06</td>
+<td class="e10 norm">-1.615e-03</td>
+<td class="e10 lew">-1.426e-05</td>
+<td class="e14 norm">-2.742e-04</td>
+<td class="e14 lew">-3.747e-05</td>
+<td class="e07 norm">-2.837e-03</td>
+<td class="e07 lew">-2.440e-03</td>
+<td class="e10 norm">-2.940e-03</td>
+<td class="e10 lew">-2.963e-03</td>
+<td class="e14 norm">-1.078e-03</td>
+<td class="e14 lew">-1.048e-03</td>
+<td class="e07 norm">-2.347e-03</td>
+<td class="e07 lew">5.754e-06</td>
+<td class="e10 norm">-1.690e-03</td>
+<td class="e10 lew">-1.349e-04</td>
+<td class="e14 norm">-4.860e-04</td>
+<td class="e14 lew">-9.880e-05</td>
+<td class="e07 norm">-3.627e-03</td>
+<td class="e07 lew">-3.265e-03</td>
+<td class="e10 norm">-3.450e-03</td>
+<td class="e10 lew">-3.149e-03</td>
+<td class="e14 norm">-1.614e-03</td>
+<td class="e14 lew">-1.636e-03</td>
+<td class="e07 norm">-1.702e-03</td>
+<td class="e07 lew">-6.563e-04</td>
+<td class="e10 norm">-1.316e-03</td>
+<td class="e10 lew">-6.888e-04</td>
+<td class="e14 norm">-7.662e-04</td>
+<td class="e14 lew">-1.114e-04</td>
+<td class="e07 norm">-4.291e-03</td>
+<td class="e07 lew">-3.606e-03</td>
+<td class="e10 norm">-3.817e-03</td>
+<td class="e10 lew">-3.160e-03</td>
+<td class="e14 norm">-2.116e-03</td>
+<td class="e14 lew">-2.025e-03</td>
+<td class="e07 norm">-7.303e-04</td>
+<td class="e07 lew">-7.269e-04</td>
+<td class="e10 norm">-2.684e-04</td>
+<td class="e10 lew">-1.306e-03</td>
+<td class="e14 norm">-1.011e-03</td>
+<td class="e14 lew">2.530e-06</td>
+<td class="e07 norm">-4.555e-03</td>
+<td class="e07 lew">-3.772e-03</td>
+<td class="e10 norm">-3.821e-03</td>
+<td class="e10 lew">-3.100e-03</td>
+<td class="e14 norm">-2.425e-03</td>
+<td class="e14 lew">-2.265e-03</td>
+<td class="e07 norm">1.962e-05</td>
+<td class="e07 lew">-2.007e-04</td>
+<td class="e10 norm">1.138e-03</td>
+<td class="e10 lew">6.460e-05</td>
+<td class="e14 norm">-1.253e-03</td>
+<td class="e14 lew">3.096e-04</td>
+<td class="e07 norm">-4.451e-03</td>
+<td class="e07 lew">-3.751e-03</td>
+<td class="e10 norm">-3.552e-03</td>
+<td class="e10 lew">-2.937e-03</td>
+<td class="e14 norm">-2.544e-03</td>
+<td class="e14 lew">-2.386e-03</td>
+<td class="e07 norm">1.248e-03</td>
+<td class="e07 lew">-1.203e-04</td>
+<td class="e10 norm">2.047e-03</td>
+<td class="e10 lew">1.813e-04</td>
+<td class="e14 norm">2.825e-03</td>
+<td class="e14 lew">4.738e-04</td>
+<td class="e07 norm">-9.800e-04</td>
+<td class="e07 lew">-7.558e-04</td>
+<td class="e10 norm">-9.378e-05</td>
+<td class="e10 lew">1.330e-04</td>
+<td class="e14 norm">1.735e-04</td>
+<td class="e14 lew">9.471e-05</td>
+<td class="e07 norm">7.413e-04</td>
+<td class="e07 lew">-1.710e-05</td>
+<td class="e10 norm">1.035e-03</td>
+<td class="e10 lew">1.920e-05</td>
+<td class="e14 norm">1.546e-03</td>
+<td class="e14 lew">7.284e-05</td>
+<td class="e07 norm">1.616e-06</td>
+<td class="e07 lew">1.616e-06</td>
+<td class="e10 norm">2.353e-04</td>
+<td class="e10 lew">2.465e-04</td>
+<td class="e14 norm">6.295e-04</td>
+<td class="e14 lew">5.672e-04</td>
+<td class="e07 norm">4.413e-05</td>
+<td class="e07 lew">4.413e-05</td>
+<td class="e10 norm">4.709e-04</td>
+<td class="e10 lew">2.936e-05</td>
+<td class="e14 norm">7.195e-04</td>
+<td class="e14 lew">-7.522e-05</td>
+<td class="e07 norm">1.913e-06</td>
+<td class="e07 lew">1.913e-06</td>
+<td class="e10 norm">3.774e-06</td>
+<td class="e10 lew">3.774e-06</td>
+<td class="e14 norm">3.315e-04</td>
+<td class="e14 lew">2.957e-04</td>
+<td class="e07 norm">4.479e-05</td>
+<td class="e07 lew">4.479e-05</td>
+<td class="e10 norm">4.175e-05</td>
+<td class="e10 lew">4.175e-05</td>
+<td class="e14 norm">2.922e-04</td>
+<td class="e14 lew">-9.884e-05</td>
+<td class="e07 norm">2.043e-06</td>
+<td class="e07 lew">2.043e-06</td>
+<td class="e10 norm">3.892e-06</td>
+<td class="e10 lew">3.892e-06</td>
+<td class="e14 norm">1.316e-04</td>
+<td class="e14 lew">1.182e-04</td>
+<td class="e07 norm">4.541e-05</td>
+<td class="e07 lew">4.541e-05</td>
+<td class="e10 norm">4.232e-05</td>
+<td class="e10 lew">4.232e-05</td>
+<td class="e14 norm">1.048e-05</td>
+<td class="e14 lew">1.048e-05</td>
+<td class="e07 norm">2.164e-06</td>
+<td class="e07 lew">2.164e-06</td>
+<td class="e10 norm">4.000e-06</td>
+<td class="e10 lew">4.000e-06</td>
+<td class="e14 norm">1.559e-06</td>
+<td class="e14 lew">1.559e-06</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+</tr>
+<tr>
+<th>%Diff</th>
+<td class="e07 norm">-4.206e+01</td>
+<td class="e07 lew">-7.050e-02</td>
+<td class="e10 norm">-3.075e+01</td>
+<td class="e10 lew">-1.588e+00</td>
+<td class="e14 norm">-6.022e+01</td>
+<td class="e14 lew">-2.124e+01</td>
+<td class="e07 norm">-4.785e+01</td>
+<td class="e07 lew">-4.258e+01</td>
+<td class="e10 norm">-5.291e+01</td>
+<td class="e10 lew">-6.636e+01</td>
+<td class="e14 norm">-9.312e+01</td>
+<td class="e14 lew">-8.592e+01</td>
+<td class="e07 norm">-3.246e+01</td>
+<td class="e07 lew">2.568e-01</td>
+<td class="e10 norm">-2.304e+01</td>
+<td class="e10 lew">-9.225e+00</td>
+<td class="e14 norm">-4.785e+01</td>
+<td class="e14 lew">-1.406e+01</td>
+<td class="e07 norm">-5.069e+01</td>
+<td class="e07 lew">-4.373e+01</td>
+<td class="e10 norm">-4.972e+01</td>
+<td class="e10 lew">-4.643e+01</td>
+<td class="e14 norm">-9.199e+01</td>
+<td class="e14 lew">-8.223e+01</td>
+<td class="e07 norm">-1.731e+01</td>
+<td class="e07 lew">-2.083e+01</td>
+<td class="e10 norm">-1.356e+01</td>
+<td class="e10 lew">-2.618e+01</td>
+<td class="e14 norm">-3.877e+01</td>
+<td class="e14 lew">-6.731e+00</td>
+<td class="e07 norm">-5.144e+01</td>
+<td class="e07 lew">-4.006e+01</td>
+<td class="e10 norm">-4.619e+01</td>
+<td class="e10 lew">-3.642e+01</td>
+<td class="e14 norm">-8.395e+01</td>
+<td class="e14 lew">-7.239e+01</td>
+<td class="e07 norm">-6.149e+00</td>
+<td class="e07 lew">-1.007e+01</td>
+<td class="e10 norm">-2.232e+00</td>
+<td class="e10 lew">-2.200e+01</td>
+<td class="e14 norm">-2.956e+01</td>
+<td class="e14 lew">7.644e-02</td>
+<td class="e07 norm">-4.693e+01</td>
+<td class="e07 lew">-3.658e+01</td>
+<td class="e10 norm">-3.920e+01</td>
+<td class="e10 lew">-3.010e+01</td>
+<td class="e14 norm">-7.110e+01</td>
+<td class="e14 lew">-6.230e+01</td>
+<td class="e07 norm">1.506e-01</td>
+<td class="e07 lew">-2.010e+00</td>
+<td class="e10 norm">8.185e+00</td>
+<td class="e10 lew">6.553e-01</td>
+<td class="e14 norm">-2.199e+01</td>
+<td class="e14 lew">5.400e+00</td>
+<td class="e07 norm">-4.048e+01</td>
+<td class="e07 lew">-3.292e+01</td>
+<td class="e10 norm">-3.162e+01</td>
+<td class="e10 lew">-2.508e+01</td>
+<td class="e14 norm">-5.875e+01</td>
+<td class="e14 lew">-5.283e+01</td>
+<td class="e07 norm">1.408e+01</td>
+<td class="e07 lew">-1.521e+00</td>
+<td class="e10 norm">1.803e+01</td>
+<td class="e10 lew">1.958e+00</td>
+<td class="e14 norm">2.496e+01</td>
+<td class="e14 lew">5.448e+00</td>
+<td class="e07 norm">-9.088e+00</td>
+<td class="e07 lew">-7.096e+00</td>
+<td class="e10 norm">-7.056e-01</td>
+<td class="e10 lew">1.012e+00</td>
+<td class="e14 norm">1.486e+00</td>
+<td class="e14 lew">8.307e-01</td>
+<td class="e07 norm">1.522e+01</td>
+<td class="e07 lew">-3.463e-01</td>
+<td class="e10 norm">1.568e+01</td>
+<td class="e10 lew">3.408e-01</td>
+<td class="e14 norm">2.048e+01</td>
+<td class="e14 lew">1.251e+00</td>
+<td class="e07 norm">1.861e-02</td>
+<td class="e07 lew">1.861e-02</td>
+<td class="e10 norm">2.868e+00</td>
+<td class="e10 lew">3.062e+00</td>
+<td class="e14 norm">7.023e+00</td>
+<td class="e14 lew">6.460e+00</td>
+<td class="e07 norm">1.017e+00</td>
+<td class="e07 lew">1.017e+00</td>
+<td class="e10 norm">1.253e+01</td>
+<td class="e10 lew">8.258e-01</td>
+<td class="e14 norm">1.551e+01</td>
+<td class="e14 lew">-2.081e+00</td>
+<td class="e07 norm">2.173e-02</td>
+<td class="e07 lew">2.173e-02</td>
+<td class="e10 norm">7.765e-02</td>
+<td class="e10 lew">7.765e-02</td>
+<td class="e14 norm">6.030e+00</td>
+<td class="e14 lew">5.463e+00</td>
+<td class="e07 norm">1.024e+00</td>
+<td class="e07 lew">1.024e+00</td>
+<td class="e10 norm">1.344e+00</td>
+<td class="e10 lew">1.344e+00</td>
+<td class="e14 norm">1.081e+01</td>
+<td class="e14 lew">-4.655e+00</td>
+<td class="e07 norm">2.307e-02</td>
+<td class="e07 lew">2.307e-02</td>
+<td class="e10 norm">7.931e-02</td>
+<td class="e10 lew">7.931e-02</td>
+<td class="e14 norm">4.279e+00</td>
+<td class="e14 lew">3.882e+00</td>
+<td class="e07 norm">1.031e+00</td>
+<td class="e07 lew">1.031e+00</td>
+<td class="e10 norm">1.349e+00</td>
+<td class="e10 lew">1.349e+00</td>
+<td class="e14 norm">5.313e+00</td>
+<td class="e14 lew">5.313e+00</td>
+<td class="e07 norm">2.429e-02</td>
+<td class="e07 lew">2.429e-02</td>
+<td class="e10 norm">8.083e-02</td>
+<td class="e10 lew">8.083e-02</td>
+<td class="e14 norm">3.924e-01</td>
+<td class="e14 lew">3.924e-01</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+</tr>
+<tr>
+<th rowspan="4" valign="top">Y-N2O</th>
+<th>Peak Got</th>
+<td class="e07 norm">3.789e-03</td>
+<td class="e07 lew">7.023e-05</td>
+<td class="e10 norm">2.347e-03</td>
+<td class="e10 lew">1.212e-04</td>
+<td class="e14 norm">6.739e-04</td>
+<td class="e14 lew">1.577e-05</td>
+<td class="e07 norm">3.819e-03</td>
+<td class="e07 lew">5.272e-03</td>
+<td class="e10 norm">1.872e-03</td>
+<td class="e10 lew">1.778e-03</td>
+<td class="e14 norm">1.219e-03</td>
+<td class="e14 lew">5.713e-04</td>
+<td class="e07 norm">3.944e-03</td>
+<td class="e07 lew">2.623e-04</td>
+<td class="e10 norm">2.960e-03</td>
+<td class="e10 lew">3.252e-04</td>
+<td class="e14 norm">1.212e-03</td>
+<td class="e14 lew">1.495e-04</td>
+<td class="e07 norm">4.175e-03</td>
+<td class="e07 lew">5.559e-03</td>
+<td class="e10 norm">2.256e-03</td>
+<td class="e10 lew">2.611e-03</td>
+<td class="e14 norm">1.709e-03</td>
+<td class="e14 lew">9.983e-04</td>
+<td class="e07 norm">4.032e-03</td>
+<td class="e07 lew">7.928e-04</td>
+<td class="e10 norm">3.412e-03</td>
+<td class="e10 lew">7.909e-04</td>
+<td class="e14 norm">1.816e-03</td>
+<td class="e14 lew">5.501e-04</td>
+<td class="e07 norm">4.655e-03</td>
+<td class="e07 lew">5.246e-03</td>
+<td class="e10 norm">2.827e-03</td>
+<td class="e10 lew">2.917e-03</td>
+<td class="e14 norm">2.722e-03</td>
+<td class="e14 lew">1.373e-03</td>
+<td class="e07 norm">3.912e-03</td>
+<td class="e07 lew">2.820e-03</td>
+<td class="e10 norm">3.677e-03</td>
+<td class="e10 lew">2.082e-03</td>
+<td class="e14 norm">2.422e-03</td>
+<td class="e14 lew">1.366e-03</td>
+<td class="e07 norm">5.146e-03</td>
+<td class="e07 lew">4.817e-03</td>
+<td class="e10 norm">3.335e-03</td>
+<td class="e10 lew">2.992e-03</td>
+<td class="e14 norm">3.432e-03</td>
+<td class="e14 lew">1.608e-03</td>
+<td class="e07 norm">3.603e-03</td>
+<td class="e07 lew">3.291e-03</td>
+<td class="e10 norm">3.622e-03</td>
+<td class="e10 lew">3.007e-03</td>
+<td class="e14 norm">2.893e-03</td>
+<td class="e14 lew">2.212e-03</td>
+<td class="e07 norm">5.042e-03</td>
+<td class="e07 lew">4.363e-03</td>
+<td class="e10 norm">3.463e-03</td>
+<td class="e10 lew">2.939e-03</td>
+<td class="e14 norm">3.531e-03</td>
+<td class="e14 lew">1.735e-03</td>
+<td class="e07 norm">9.371e-04</td>
+<td class="e07 lew">6.070e-04</td>
+<td class="e10 norm">9.589e-04</td>
+<td class="e10 lew">6.178e-04</td>
+<td class="e14 norm">9.304e-04</td>
+<td class="e14 lew">6.412e-04</td>
+<td class="e07 norm">1.418e-03</td>
+<td class="e07 lew">1.057e-03</td>
+<td class="e10 norm">1.246e-03</td>
+<td class="e10 lew">8.905e-04</td>
+<td class="e14 norm">1.226e-03</td>
+<td class="e14 lew">7.634e-04</td>
+<td class="e07 norm">3.038e-04</td>
+<td class="e07 lew">1.512e-04</td>
+<td class="e10 norm">3.128e-04</td>
+<td class="e10 lew">1.556e-04</td>
+<td class="e14 norm">3.110e-04</td>
+<td class="e14 lew">1.760e-04</td>
+<td class="e07 norm">3.229e-04</td>
+<td class="e07 lew">2.644e-04</td>
+<td class="e10 norm">2.713e-04</td>
+<td class="e10 lew">2.266e-04</td>
+<td class="e14 norm">2.528e-04</td>
+<td class="e14 lew">2.035e-04</td>
+<td class="e07 norm">1.053e-04</td>
+<td class="e07 lew">4.436e-05</td>
+<td class="e10 norm">1.093e-04</td>
+<td class="e10 lew">4.412e-05</td>
+<td class="e14 norm">1.106e-04</td>
+<td class="e14 lew">5.198e-05</td>
+<td class="e07 norm">7.459e-05</td>
+<td class="e07 lew">7.238e-05</td>
+<td class="e10 norm">6.287e-05</td>
+<td class="e10 lew">6.225e-05</td>
+<td class="e14 norm">5.808e-05</td>
+<td class="e14 lew">5.622e-05</td>
+<td class="e07 norm">3.523e-05</td>
+<td class="e07 lew">1.495e-05</td>
+<td class="e10 norm">3.679e-05</td>
+<td class="e10 lew">1.359e-05</td>
+<td class="e14 norm">3.778e-05</td>
+<td class="e14 lew">1.564e-05</td>
+<td class="e07 norm">2.146e-05</td>
+<td class="e07 lew">2.265e-05</td>
+<td class="e10 norm">1.828e-05</td>
+<td class="e10 lew">1.940e-05</td>
+<td class="e14 norm">1.629e-05</td>
+<td class="e14 lew">1.695e-05</td>
+<td class="e07 norm">2.632e-06</td>
+<td class="e07 lew">1.693e-06</td>
+<td class="e10 norm">2.214e-06</td>
+<td class="e10 lew">1.519e-06</td>
+<td class="e14 norm">1.231e-06</td>
+<td class="e14 lew">1.199e-06</td>
+<td class="e07 norm">8.830e-06</td>
+<td class="e07 lew">8.769e-06</td>
+<td class="e10 norm">5.810e-06</td>
+<td class="e10 lew">5.831e-06</td>
+<td class="e14 norm">3.201e-06</td>
+<td class="e14 lew">3.270e-06</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+</tr>
+<tr>
+<th>Peak Glar</th>
+<td class="e07 norm">3.272e-03</td>
+<td class="e07 lew">2.537e-05</td>
+<td class="e10 norm">2.299e-03</td>
+<td class="e10 lew">5.940e-05</td>
+<td class="e14 norm">1.055e-03</td>
+<td class="e14 lew">1.589e-05</td>
+<td class="e07 norm">4.778e-03</td>
+<td class="e07 lew">5.188e-03</td>
+<td class="e10 norm">3.496e-03</td>
+<td class="e10 lew">2.684e-03</td>
+<td class="e14 norm">3.012e-03</td>
+<td class="e14 lew">1.212e-03</td>
+<td class="e07 norm">3.785e-03</td>
+<td class="e07 lew">1.563e-04</td>
+<td class="e10 norm">3.052e-03</td>
+<td class="e10 lew">2.183e-04</td>
+<td class="e14 norm">1.884e-03</td>
+<td class="e14 lew">1.390e-04</td>
+<td class="e07 norm">6.684e-03</td>
+<td class="e07 lew">5.084e-03</td>
+<td class="e10 norm">6.314e-03</td>
+<td class="e10 lew">3.198e-03</td>
+<td class="e14 norm">6.129e-03</td>
+<td class="e14 lew">1.964e-03</td>
+<td class="e07 norm">4.021e-03</td>
+<td class="e07 lew">7.414e-04</td>
+<td class="e10 norm">3.648e-03</td>
+<td class="e10 lew">7.234e-04</td>
+<td class="e14 norm">2.640e-03</td>
+<td class="e14 lew">4.702e-04</td>
+<td class="e07 norm">6.279e-03</td>
+<td class="e07 lew">4.752e-03</td>
+<td class="e10 norm">5.516e-03</td>
+<td class="e10 lew">3.359e-03</td>
+<td class="e14 norm">5.168e-03</td>
+<td class="e14 lew">2.395e-03</td>
+<td class="e07 norm">3.930e-03</td>
+<td class="e07 lew">2.100e-03</td>
+<td class="e10 norm">3.874e-03</td>
+<td class="e10 lew">1.822e-03</td>
+<td class="e14 norm">3.163e-03</td>
+<td class="e14 lew">1.075e-03</td>
+<td class="e07 norm">5.739e-03</td>
+<td class="e07 lew">4.310e-03</td>
+<td class="e10 norm">4.918e-03</td>
+<td class="e10 lew">3.299e-03</td>
+<td class="e14 norm">4.516e-03</td>
+<td class="e14 lew">2.555e-03</td>
+<td class="e07 norm">3.611e-03</td>
+<td class="e07 lew">2.350e-03</td>
+<td class="e10 norm">3.772e-03</td>
+<td class="e10 lew">2.236e-03</td>
+<td class="e14 norm">3.376e-03</td>
+<td class="e14 lew">1.671e-03</td>
+<td class="e07 norm">5.092e-03</td>
+<td class="e07 lew">3.814e-03</td>
+<td class="e10 norm">4.395e-03</td>
+<td class="e10 lew">3.096e-03</td>
+<td class="e14 norm">4.016e-03</td>
+<td class="e14 lew">2.530e-03</td>
+<td class="e07 norm">8.731e-04</td>
+<td class="e07 lew">4.455e-04</td>
+<td class="e10 norm">1.007e-03</td>
+<td class="e10 lew">4.924e-04</td>
+<td class="e14 norm">1.112e-03</td>
+<td class="e14 lew">5.681e-04</td>
+<td class="e07 norm">1.192e-03</td>
+<td class="e07 lew">7.836e-04</td>
+<td class="e10 norm">1.061e-03</td>
+<td class="e10 lew">7.505e-04</td>
+<td class="e14 norm">9.993e-04</td>
+<td class="e14 lew">7.476e-04</td>
+<td class="e07 norm">2.953e-04</td>
+<td class="e07 lew">1.109e-04</td>
+<td class="e10 norm">3.272e-04</td>
+<td class="e10 lew">1.251e-04</td>
+<td class="e14 norm">3.542e-04</td>
+<td class="e14 lew">1.596e-04</td>
+<td class="e07 norm">2.776e-04</td>
+<td class="e07 lew">1.903e-04</td>
+<td class="e10 norm">2.336e-04</td>
+<td class="e10 lew">1.829e-04</td>
+<td class="e14 norm">2.181e-04</td>
+<td class="e14 lew">1.878e-04</td>
+<td class="e07 norm">1.107e-04</td>
+<td class="e07 lew">3.205e-05</td>
+<td class="e10 norm">1.177e-04</td>
+<td class="e10 lew">3.526e-05</td>
+<td class="e14 norm">1.233e-04</td>
+<td class="e14 lew">4.747e-05</td>
+<td class="e07 norm">6.631e-05</td>
+<td class="e07 lew">4.973e-05</td>
+<td class="e10 norm">5.470e-05</td>
+<td class="e10 lew">4.744e-05</td>
+<td class="e14 norm">5.184e-05</td>
+<td class="e14 lew">4.916e-05</td>
+<td class="e07 norm">3.972e-05</td>
+<td class="e07 lew">1.029e-05</td>
+<td class="e10 norm">4.092e-05</td>
+<td class="e10 lew">1.043e-05</td>
+<td class="e14 norm">4.164e-05</td>
+<td class="e14 lew">1.405e-05</td>
+<td class="e07 norm">1.658e-05</td>
+<td class="e07 lew">1.352e-05</td>
+<td class="e10 norm">1.370e-05</td>
+<td class="e10 lew">1.277e-05</td>
+<td class="e14 norm">1.317e-05</td>
+<td class="e14 lew">1.318e-05</td>
+<td class="e07 norm">9.520e-07</td>
+<td class="e07 lew">6.428e-07</td>
+<td class="e10 norm">7.422e-07</td>
+<td class="e10 lew">4.997e-07</td>
+<td class="e14 norm">3.990e-07</td>
+<td class="e14 lew">3.863e-07</td>
+<td class="e07 norm">5.268e-06</td>
+<td class="e07 lew">5.030e-06</td>
+<td class="e10 norm">2.131e-06</td>
+<td class="e10 lew">2.096e-06</td>
+<td class="e14 norm">9.174e-07</td>
+<td class="e14 lew">9.217e-07</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+</tr>
+<tr>
+<th>Diff</th>
+<td class="e07 norm">5.167e-04</td>
+<td class="e07 lew">4.486e-05</td>
+<td class="e10 norm">4.808e-05</td>
+<td class="e10 lew">6.182e-05</td>
+<td class="e14 norm">-3.809e-04</td>
+<td class="e14 lew">-1.151e-07</td>
+<td class="e07 norm">-9.589e-04</td>
+<td class="e07 lew">8.493e-05</td>
+<td class="e10 norm">-1.624e-03</td>
+<td class="e10 lew">-9.058e-04</td>
+<td class="e14 norm">-1.793e-03</td>
+<td class="e14 lew">-6.404e-04</td>
+<td class="e07 norm">1.589e-04</td>
+<td class="e07 lew">1.061e-04</td>
+<td class="e10 norm">-9.234e-05</td>
+<td class="e10 lew">1.069e-04</td>
+<td class="e14 norm">-6.720e-04</td>
+<td class="e14 lew">1.051e-05</td>
+<td class="e07 norm">-2.509e-03</td>
+<td class="e07 lew">4.751e-04</td>
+<td class="e10 norm">-4.058e-03</td>
+<td class="e10 lew">-5.874e-04</td>
+<td class="e14 norm">-4.420e-03</td>
+<td class="e14 lew">-9.653e-04</td>
+<td class="e07 norm">1.120e-05</td>
+<td class="e07 lew">5.135e-05</td>
+<td class="e10 norm">-2.356e-04</td>
+<td class="e10 lew">6.750e-05</td>
+<td class="e14 norm">-8.241e-04</td>
+<td class="e14 lew">7.997e-05</td>
+<td class="e07 norm">-1.624e-03</td>
+<td class="e07 lew">4.941e-04</td>
+<td class="e10 norm">-2.689e-03</td>
+<td class="e10 lew">-4.415e-04</td>
+<td class="e14 norm">-2.446e-03</td>
+<td class="e14 lew">-1.022e-03</td>
+<td class="e07 norm">-1.880e-05</td>
+<td class="e07 lew">7.200e-04</td>
+<td class="e10 norm">-1.976e-04</td>
+<td class="e10 lew">2.605e-04</td>
+<td class="e14 norm">-7.408e-04</td>
+<td class="e14 lew">2.904e-04</td>
+<td class="e07 norm">-5.933e-04</td>
+<td class="e07 lew">5.071e-04</td>
+<td class="e10 norm">-1.583e-03</td>
+<td class="e10 lew">-3.066e-04</td>
+<td class="e14 norm">-1.083e-03</td>
+<td class="e14 lew">-9.467e-04</td>
+<td class="e07 norm">-8.035e-06</td>
+<td class="e07 lew">9.408e-04</td>
+<td class="e10 norm">-1.501e-04</td>
+<td class="e10 lew">7.710e-04</td>
+<td class="e14 norm">-4.831e-04</td>
+<td class="e14 lew">5.410e-04</td>
+<td class="e07 norm">-4.989e-05</td>
+<td class="e07 lew">5.495e-04</td>
+<td class="e10 norm">-9.323e-04</td>
+<td class="e10 lew">-1.572e-04</td>
+<td class="e14 norm">-4.846e-04</td>
+<td class="e14 lew">-7.950e-04</td>
+<td class="e07 norm">6.400e-05</td>
+<td class="e07 lew">1.615e-04</td>
+<td class="e10 norm">-4.830e-05</td>
+<td class="e10 lew">1.254e-04</td>
+<td class="e14 norm">-1.815e-04</td>
+<td class="e14 lew">7.312e-05</td>
+<td class="e07 norm">2.262e-04</td>
+<td class="e07 lew">2.730e-04</td>
+<td class="e10 norm">1.849e-04</td>
+<td class="e10 lew">1.400e-04</td>
+<td class="e14 norm">2.272e-04</td>
+<td class="e14 lew">1.577e-05</td>
+<td class="e07 norm">8.525e-06</td>
+<td class="e07 lew">4.034e-05</td>
+<td class="e10 norm">-1.431e-05</td>
+<td class="e10 lew">3.056e-05</td>
+<td class="e14 norm">-4.324e-05</td>
+<td class="e14 lew">1.640e-05</td>
+<td class="e07 norm">4.526e-05</td>
+<td class="e07 lew">7.412e-05</td>
+<td class="e10 norm">3.776e-05</td>
+<td class="e10 lew">4.373e-05</td>
+<td class="e14 norm">3.471e-05</td>
+<td class="e14 lew">1.569e-05</td>
+<td class="e07 norm">-5.323e-06</td>
+<td class="e07 lew">1.231e-05</td>
+<td class="e10 norm">-8.392e-06</td>
+<td class="e10 lew">8.860e-06</td>
+<td class="e14 norm">-1.269e-05</td>
+<td class="e14 lew">4.509e-06</td>
+<td class="e07 norm">8.286e-06</td>
+<td class="e07 lew">2.265e-05</td>
+<td class="e10 norm">8.171e-06</td>
+<td class="e10 lew">1.480e-05</td>
+<td class="e14 norm">6.240e-06</td>
+<td class="e14 lew">7.062e-06</td>
+<td class="e07 norm">-4.493e-06</td>
+<td class="e07 lew">4.659e-06</td>
+<td class="e10 norm">-4.134e-06</td>
+<td class="e10 lew">3.165e-06</td>
+<td class="e14 norm">-3.855e-06</td>
+<td class="e14 lew">1.587e-06</td>
+<td class="e07 norm">4.877e-06</td>
+<td class="e07 lew">9.133e-06</td>
+<td class="e10 norm">4.580e-06</td>
+<td class="e10 lew">6.627e-06</td>
+<td class="e14 norm">3.119e-06</td>
+<td class="e14 lew">3.772e-06</td>
+<td class="e07 norm">1.680e-06</td>
+<td class="e07 lew">1.050e-06</td>
+<td class="e10 norm">1.471e-06</td>
+<td class="e10 lew">1.020e-06</td>
+<td class="e14 norm">8.324e-07</td>
+<td class="e14 lew">8.128e-07</td>
+<td class="e07 norm">3.562e-06</td>
+<td class="e07 lew">3.739e-06</td>
+<td class="e10 norm">3.678e-06</td>
+<td class="e10 lew">3.735e-06</td>
+<td class="e14 norm">2.284e-06</td>
+<td class="e14 lew">2.348e-06</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+</tr>
+<tr>
+<th>%Diff</th>
+<td class="e07 norm">1.463e+01</td>
+<td class="e07 lew">9.384e+01</td>
+<td class="e10 norm">2.070e+00</td>
+<td class="e10 lew">6.846e+01</td>
+<td class="e14 norm">-4.407e+01</td>
+<td class="e14 lew">-7.270e-01</td>
+<td class="e07 norm">-2.231e+01</td>
+<td class="e07 lew">1.624e+00</td>
+<td class="e10 norm">-6.050e+01</td>
+<td class="e10 lew">-4.060e+01</td>
+<td class="e14 norm">-8.476e+01</td>
+<td class="e14 lew">-7.184e+01</td>
+<td class="e07 norm">4.112e+00</td>
+<td class="e07 lew">5.069e+01</td>
+<td class="e10 norm">-3.072e+00</td>
+<td class="e10 lew">3.934e+01</td>
+<td class="e14 norm">-4.340e+01</td>
+<td class="e14 lew">7.289e+00</td>
+<td class="e07 norm">-4.621e+01</td>
+<td class="e07 lew">8.926e+00</td>
+<td class="e10 norm">-9.471e+01</td>
+<td class="e10 lew">-2.022e+01</td>
+<td class="e14 norm">-1.128e+02</td>
+<td class="e14 lew">-6.518e+01</td>
+<td class="e07 norm">2.780e-01</td>
+<td class="e07 lew">6.694e+00</td>
+<td class="e10 norm">-6.674e+00</td>
+<td class="e10 lew">8.915e+00</td>
+<td class="e14 norm">-3.699e+01</td>
+<td class="e14 lew">1.568e+01</td>
+<td class="e07 norm">-2.970e+01</td>
+<td class="e07 lew">9.885e+00</td>
+<td class="e10 norm">-6.446e+01</td>
+<td class="e10 lew">-1.407e+01</td>
+<td class="e14 norm">-6.201e+01</td>
+<td class="e14 lew">-5.425e+01</td>
+<td class="e07 norm">-4.794e-01</td>
+<td class="e07 lew">2.927e+01</td>
+<td class="e10 norm">-5.233e+00</td>
+<td class="e10 lew">1.335e+01</td>
+<td class="e14 norm">-2.653e+01</td>
+<td class="e14 lew">2.379e+01</td>
+<td class="e07 norm">-1.090e+01</td>
+<td class="e07 lew">1.111e+01</td>
+<td class="e10 norm">-3.835e+01</td>
+<td class="e10 lew">-9.747e+00</td>
+<td class="e14 norm">-2.726e+01</td>
+<td class="e14 lew">-4.548e+01</td>
+<td class="e07 norm">-2.227e-01</td>
+<td class="e07 lew">3.336e+01</td>
+<td class="e10 norm">-4.059e+00</td>
+<td class="e10 lew">2.941e+01</td>
+<td class="e14 norm">-1.541e+01</td>
+<td class="e14 lew">2.786e+01</td>
+<td class="e07 norm">-9.846e-01</td>
+<td class="e07 lew">1.344e+01</td>
+<td class="e10 norm">-2.373e+01</td>
+<td class="e10 lew">-5.209e+00</td>
+<td class="e14 norm">-1.284e+01</td>
+<td class="e14 lew">-3.728e+01</td>
+<td class="e07 norm">7.071e+00</td>
+<td class="e07 lew">3.069e+01</td>
+<td class="e10 norm">-4.913e+00</td>
+<td class="e10 lew">2.259e+01</td>
+<td class="e14 norm">-1.777e+01</td>
+<td class="e14 lew">1.209e+01</td>
+<td class="e07 norm">1.733e+01</td>
+<td class="e07 lew">2.967e+01</td>
+<td class="e10 norm">1.602e+01</td>
+<td class="e10 lew">1.707e+01</td>
+<td class="e14 norm">2.041e+01</td>
+<td class="e14 lew">2.088e+00</td>
+<td class="e07 norm">2.846e+00</td>
+<td class="e07 lew">3.079e+01</td>
+<td class="e10 norm">-4.472e+00</td>
+<td class="e10 lew">2.177e+01</td>
+<td class="e14 norm">-1.300e+01</td>
+<td class="e14 lew">9.776e+00</td>
+<td class="e07 norm">1.507e+01</td>
+<td class="e07 lew">3.260e+01</td>
+<td class="e10 norm">1.496e+01</td>
+<td class="e10 lew">2.136e+01</td>
+<td class="e14 norm">1.475e+01</td>
+<td class="e14 lew">8.022e+00</td>
+<td class="e07 norm">-4.929e+00</td>
+<td class="e07 lew">3.223e+01</td>
+<td class="e10 norm">-7.392e+00</td>
+<td class="e10 lew">2.232e+01</td>
+<td class="e14 norm">-1.085e+01</td>
+<td class="e14 lew">9.067e+00</td>
+<td class="e07 norm">1.176e+01</td>
+<td class="e07 lew">3.709e+01</td>
+<td class="e10 norm">1.390e+01</td>
+<td class="e10 lew">2.699e+01</td>
+<td class="e14 norm">1.135e+01</td>
+<td class="e14 lew">1.340e+01</td>
+<td class="e07 norm">-1.199e+01</td>
+<td class="e07 lew">3.690e+01</td>
+<td class="e10 norm">-1.064e+01</td>
+<td class="e10 lew">2.636e+01</td>
+<td class="e14 norm">-9.708e+00</td>
+<td class="e14 lew">1.069e+01</td>
+<td class="e07 norm">2.564e+01</td>
+<td class="e07 lew">5.049e+01</td>
+<td class="e10 norm">2.864e+01</td>
+<td class="e10 lew">4.120e+01</td>
+<td class="e14 norm">2.118e+01</td>
+<td class="e14 lew">2.503e+01</td>
+<td class="e07 norm">9.375e+01</td>
+<td class="e07 lew">8.993e+01</td>
+<td class="e10 norm">9.956e+01</td>
+<td class="e10 lew">1.010e+02</td>
+<td class="e14 norm">1.021e+02</td>
+<td class="e14 lew">1.025e+02</td>
+<td class="e07 norm">5.053e+01</td>
+<td class="e07 lew">5.419e+01</td>
+<td class="e10 norm">9.264e+01</td>
+<td class="e10 lew">9.422e+01</td>
+<td class="e14 norm">1.109e+02</td>
+<td class="e14 lew">1.120e+02</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+<td class="e07 norm">NaN</td>
+<td class="e07 lew">NaN</td>
+<td class="e10 norm">NaN</td>
+<td class="e10 lew">NaN</td>
+<td class="e14 norm">NaN</td>
+<td class="e14 lew">NaN</td>
+</tr>
+</tbody>
+</table>

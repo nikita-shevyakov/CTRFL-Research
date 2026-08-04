@@ -1,0 +1,820 @@
+! ************************************************************************
+! ************************************************************************
+! ******************* For further documentation of mechanism:  ***********
+! ******************* see references below and their citations ***********
+! ************************************************************************
+! ************************************************************************
+!
+! Hydrocarbon subset
+!
+! H. Hashemi, J.M. Christensen, S. Gersen, H. Levinsky, S.J. Klippenstein, P. Glarborg, 
+! “High-Pressure Oxidation of Methane”, Combust. Flame 172 (2016) 349-364.
+!
+! J. Gimenez-Lopez, C.T. Rasmussen, H. Hashemi, M.U. Alzueta, Y. Gao, P. Marshall, C.F. Goldsmith, P. Glarborg, 
+! “Experimental and Kinetic Modeling Study of C2H2 Oxidation at High Pressure, Int. J. Chem. Kinet. 48 (2016) 724-738.
+!
+! H. Hashemi, J.G. Jacobsen, C.T. Rasmussen, J.M. Christensen, P. Glarborg, S. Gersen, M. van Essen, H.B. Levinsky, S.J. Klippenstein, 
+! “High-Pressure Oxidation of Ethane”, Combust. Flame 182 (2017) 150-166.
+! 
+! 
+! Nitrogen subset
+!
+! P. Glarborg, J.A. Miller, B. Ruscic, S.J. Klippenstein, 
+! “Modeling Nitrogen Chemistry in Combustion”, 
+! Prog. Energy Combust. Sci. 67 (2017) 31-68. 
+!
+!
+ELEMENTS
+C H O N
+END  
+!
+SPECIES    
+H2 O2 O3 H O OH HO2 H2O H2O2 
+!
+NO NH3
+NH2 NH N NNH N2H4 N2H3 N2H2 H2NN 
+NH2OH H2NO HNOH HNO HON NO2 HONO HNO2 NO3 HONO2 N2O
+!  
+N2
+!
+END
+!
+REACTIONS
+!
+! *****************************************************************************
+!    H2/O2 subset                                                             *
+! *****************************************************************************
+!
+H+O2=O+OH                            1.0E14   0.000   15286 !
+! Hong et al., Proc. Comb. Inst. 33:309-316 (2011)
+!
+O+H2=OH+H                            3.8E12   0.000    7948 ! 
+ DUPLICATE                                                  !
+O+H2=OH+H                            8.8E14   0.000   19175 ! 
+ DUPLICATE                                                  !
+! Baulch DL Bowman CT Cobos CJ Cox RA Just Th Kerr JA Pilling MJ Stocker D Troe J Tsang W Walker RW Warnatz J JPCRD 34:757-1397 2005
+!
+OH+H2=H+H2O                          2.2E08   1.510    3430 ! 
+! Michael and Sutherland, J. Phys. Chem. 92:3853 (1988)
+!
+!OH+OH=O+H2O                          1.4E07   1.689   -1167 !
+! DUPLICATE
+!OH+OH=O+H2O                         -2.7E10   0.567       0 !
+! DUPLICATE
+! M. Sangwan, L. N. Krasnoperov, J Phys Chem A 116 (2012) 11817–11822.
+OH+OH=O+H2O                          2.0E07   1.651     631 !   
+ DUPLICATE
+OH+OH=O+H2O                          2.6E11  -0.057    -827 ! 
+ DUPLICATE
+! HH: Refitted (400-3000 K) for better stability of the solvers (avoiding negative 'A') 16-04-08
+!
+H2+M=H+H+M                           4.6E19  -1.400  104380 !
+ H2/2.5/ H2O/12/
+! H2+AR=H+H+AR                         5.8E18  -1.100  104380 !
+! Tsang and Hampson, J. Phys. Chem. Ref. Data, 15:1087 (1986) 
+!
+H+O+M=OH+M                           4.7E18  -1.000       0 !
+ H2/2.5/  H2O/12/
+! Tsang and Hampson, J. Phys. Chem. Ref. Data, 15:1087 (1986) 
+!
+O+O+M=O2+M                           1.9E13   0.000   -1788 ! 
+ H2/2.5/ H2O/12/
+! Tsang W Hampson RF JPCRD 15:1087 1986
+!
+H2O+M=H+OH+M                       6.1E27  -3.322  120790 !
+ H2/3/ H2O/0/ N2/2/ O2/1.5/
+! Srinivasan and Michael, Int. J. Chem. Kinetic. 38 (2006)
+! Rate constant is for Ar with efficiencies from Michael et al., J. Phys. Chem. A, 106 (2002)
+! Efficiencies for CO and CO2 taken from Li et al., Int. J. Chem. Kinet. 36:566-575 (2004)
+H2O+H2O=H+OH+H2O                   1.0E26  -2.440  120180 !
+! Srinivasan and Michael, Int. J. Chem. Kinetic. 38 (2006)
+!                        !   
+!=================================================================================
+! MAIN BATH GAS IS N2 (comment this reaction otherwise)
+!
+H+O2(+M)=HO2(+M)                     4.7E12   0.440       0 !
+ LOW/6.366E20 -1.72  5.248E02/
+ TROE/0.5  1E-30  1E30/
+ H2/2/ H2O/14/ O2/0.78/
+!=================================================================================
+! MAIN BATH GAS IS AR (comment this reaction otherwise)
+!
+!H+O2(+M)=HO2(+M)                     4.7E12   0.440       0 !
+! LOW/9.042E19 -1.50  4.922E02/
+! TROE/0.5 1E-30  1E30/
+! H2/3/ H2O/21/ O2/1.1/ N2/1.5/
+!=================================================================================
+! High-pressure limit from Troe, Proc. Comb. Inst. 28:1463-1469 (2000)
+! Low-pressure  limit from Michael et al., J. Phys. Chem. A 106:5297-5313
+! Centering factors from Fernandes et al., Phys. Chem. Chem. Phys. 10:4313-4321 (2008)
+!
+HO2+H=H2+O2                          2.8E06   2.090   -1451 !
+! Michael et al., Proc. Comb. Inst. 28:1471 (2000)                   
+! Scaled by 0.75 Burke et al. (2012)
+! 
+HO2+H=OH+OH                          7.1E13   0.000     295 !
+! Mueller et al., Int. J. Chem. Kinetic. 31:113 (1999) 
+!
+HO2+H=H2O+O                          1.4E12   0.000       0 ! 
+! Baulch DL Bowman CT Cobos CJ Cox RA Just Th Kerr JA Pilling MJ Stocker D Troe J Tsang W Walker RW Warnatz J JPCRD 34:757-1397 2005
+!
+HO2+O=O2+OH                          2.9E10   1.000    -724 !
+! Fernandez-Ramos and Varandas, J. Phys. Chem. A 106:4077-4083 (2002)
+! Scaled by 0.60 by Burke et al. 2012
+!
+HO2+OH=H2O+O2                      1.9E20  -2.490     584 !
+ DUPLICATE
+HO2+OH=H2O+O2                      1.2E09   1.240   -1310 !
+ DUPLICATE
+! M. P. Burke, S. J. Klippenstein, L. B. Harding, Proc Combust Inst 34 (2013) 547–555.
+!
+HO2+HO2=H2O2+O2                      1.2E09   0.7712  -1825 !
+ DUPLICATE
+HO2+HO2=H2O2+O2                      1.3E12   0.295    7397 !                   	
+   DUPLICATE
+! D. D. Y. Zhou, K. Han, P. Zhang, L. B. Harding, M. J. Davis, R. T. Skodje, J Phys Chem A 116 (2012) 2089–2100.
+!
+H2O2(+M)=OH+OH(+M)                 2.0E12   0.900   48749 !
+ LOW/                                2.5E24  -2.300   48749/
+ TROE/0.43 1E-30 1E30/
+ H2O/7.5/ N2/1.5/ O2/1.2/ H2O2/7.7/ H2/3.7/
+! Troe, Combust. Flame 158:594-601 (2011)
+! Efficiencies for H2 and CO taken from Li et al., Int. J. Chem. Kinet. 36:566-575 (2004)
+!
+H2O2+H=H2O+OH                        2.4E13   0.000    3970 !
+! Tsang and Hampson, J. Phys. Chem. Ref. Data, 15:1087 (1986)
+!
+H2O2+H=HO2+H2                        4.8E13   0.000    7950 !
+! Tsang and Hampson, J. Phys. Chem. Ref. Data, 15:1087 (1986)
+!
+H2O2+O=HO2+OH                        9.6E06   2.000    3970 ! 
+! Tsang W Hampson RF JPCRD 15:1087 1986
+!
+H2O2+OH=HO2+H2O                      1.7E12   0.000     318 !
+   DUPLICATE
+H2O2+OH=HO2+H2O                      7.6E13   0.000    7270 !
+   DUPLICATE
+! Hong et al., J. Phys. Chem. A  114 (2010) 5718–5727
+!
+!
+! ************************************************************************
+!   NH3 subset                                                           *
+! ************************************************************************
+!
+NH2+H(+M)=NH3(+M)                    1.6E14   0.000       0 
+ LOW  /3.6E22 -1.760 0/                                     !
+ TROE /0.5 1E-30 1E30 1E30/                                 !
+ H2 /1.0/
+! Altinay, G. Macdonald, R.G. J Phys Chem A 119 7593-7610 2015
+! extrapolates fairly well to CEC94 values for reverse step
+!
+NH3+H=NH2+H2                         6.4E05   2.390   10171 ! 
+! Michael JV Sutherland JW Klemm RB JPC 90:497 1986
+!
+NH3+O=NH2+OH                         9.4E06   1.940    6460 ! 
+! Sutherland JW Patterson PM Klemm RB JPC 94:2471 1990
+!
+NH3+OH=NH2+H2O                       2.0E06   2.040     566 ! 
+! Salimian S, Hanson RK, Kruger CH. Int J Chem Kin 1984;16:725.
+!
+NH3+HO2=NH2+H2O2                     3.0E11   0.000   22000 ! 
+! JAM est
+!
+NH+H2=NH2+H                          2.1E13   0.000   15417 !
+! M.-K. Bahng and R.G. Macdonald
+! Determination of the Rate Constants for the Radical-Radical Reactions NH2 + NH and NH2 + H2 at 293 K}",
+! J. Chem. Phys. A 113 2415-2423 2009
+! 
+NH2+O=HNO+H                          6.6E14  -0.500       0 !       
+! J.A. Miller M.D. Smooke R.M. Green R.J. Kee,
+! Kinetic modeling of the oxidation of ammonia in flames
+! Combust. Sci. Technol. 34, 149-176, 1983 
+!NH2+O=HNO+H                          6.6E13   0.000       0 !       
+! Inomata S Washida N JPCA 103:5023-5031 1999
+! Dransfeld P Hack W Kurzke H Temps F Wagner HGg PCI 20:655 1984
+! Adamson JD Farhat SK Morter CL Glass GP Curl RF Philips LF JPC 98:5665 1994
+!
+NH2+O=NH+OH                          7.0E12   0.000       0 !  
+ DUP
+NH2+O=NH+OH                          8.6E-1   4.010    1673 !           
+ DUP   
+! Inomata S Washida N JPCA 103:5023-5031 1999
+! Dransfeld P Hack W Kurzke H Temps F Wagner HGg PCI 20:655 1984
+! Adamson JD Farhat SK Morter CL Glass GP Curl RF Philips LF JPC 98:5665 1994
+! Duan X Page M JCP 102:6121-6127 1995
+!
+NH2+OH=NH+H2O                        3.3E06   1.949    -217 ! 
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+! SJ Klippenstein LB Harding P Glarborg JA Miller CF 158 (2011) 774-789.
+!
+NH2+HO2=NH3+O2                       1.7E04   1.550    2027 ! 
+! Sumathi R, Peyerimhoff SD. Chem Phys Lett 1996;263:742-748 (1 atm).
+!
+NH2+HO2=H2NO+OH                      2.5E17  -1.280    1166 ! 
+!NH2+HO2=H2NO+OH                      5.0E13   0.000        0 ! ktot (high pressure limit)
+! Sumathi R, Peyerimhoff SD. Chem Phys Lett 1996;263:742-748 (ktot for nh2+ho2).
+!
+NH2+HO2=HNO+H2O                      1.6E07   0.550     525 ! 
+ DUP
+NH2+HO2=HNO+H2O                      5.7E15  -1.120     707 !  
+ DUP
+! Sumathi R, Peyerimhoff SD. Chem Phys Lett 1996;263:742-748.
+!
+NH2+HO2=HON+H2O                      2.1E07   0.640     811 ! 
+! Sumathi R, Peyerimhoff SD. Chem Phys Lett 1996;263:742-748.
+!
+NH2+O2=H2NO+O                        2.6E11   0.4872  29050 !           
+! SJ Klippenstein LB Harding P Glarborg JA Miller CF 158 (2011) 774-789.
+!
+NH2+O2=HNO+OH                        2.9E-2   3.764   18185 !  
+! SJ Klippenstein LB Harding P Glarborg JA Miller CF 158 (2011) 774-789.
+!
+NH2+NH2=NH3+NH                       5.6E00   3.530     552 !  
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+!
+NH2+NH=NH3+N                         9.6E03   2.460     107 !  
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+!
+NH2+N=N2+H+H                        7.0E13   0.000       0 ! 
+! Whyte AR Phillips LF CPL 102:451 1983 
+!
+NH2+HNO=NH3+NO                       5.9E02   2.950   -3469 ! 
+! S. Xu, M.C. Lin, Int J Chem Kinet 41: 667–677, 2009 
+!
+NH2+NO=N2+H2O                        2.6E19  -2.369     870 !
+! S. Song R.K. Hanson C.T. Bowman D.M. Golden Int J Chem Kinet 33 715-721, 2001 (kT)     
+!
+NH2+NO=NNH+OH                        4.3E10   0.294    -866 !  
+! S. Song R.K. Hanson C.T. Bowman D.M. Golden Int J Chem Kinet 33 715-721, 2001 (kT)     
+!
+NH2+HONO=NH3+NO2                     7.1E01   3.020   -4940 ! 
+! Mebel AM, Diau EWG, Lin MC, Morokuma K. J Phys Chem 1996;100:7517-7525.
+!
+NH2+NO2=H2NO+NO                      8.6E11   0.110   -1186 !  
+! P. Glarborg, J.A. Miller, B. Ruscic, S.J. Klippenstein, Prog. Energy Combust. Sci. 67 (2018) 31-68. 
+!
+NH2+NO2=N2O+H2O                      2.2E11   0.110   -1186 !  
+! P. Glarborg, J.A. Miller, B. Ruscic, S.J. Klippenstein, Prog. Energy Combust. Sci. 67 (2018) 31-68. 
+!
+NH+H=N+H2                            3.0E13   0.000       0 ! 
+! Davidson DF Kohse-Hoinghaus K Chang AY Hanson RK IJCK 22:513 1990 (reverse)
+!
+NH+O=NO+H                            9.2E13   0.000       0 ! 
+! Baulch DL Cobos CJ Cox RA Frank P Hayman G Just Th Kerr JA Murrells T Pilling MJ Troe J Walker RW Warnatz J JPCRD 23:847-1033 1994
+!
+NH+OH=HNO+H                          3.2E14  -0.376     -46 !    
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+!
+NH+OH=N+H2O                          1.6E07   1.733    -576 !         
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+!
+NH+O2=HNO+O                          2.4E13   0.000   13850 ! #r
+! Baulch DL Bowman CT Cobos CJ Cox RA Just Th Kerr JA Pilling MJ Stocker D Troe J Tsang W Walker RW Warnatz J JPCRD 34:757-1397 2005
+! Final value used in P. Glarborg, J.A. Miller, B. Ruscic, S.J. Klippenstein, Prog. Energy Combust. Sci. 67 (2018) 31-68 
+!NH+O2=HNO+O                          4.6E05   2.000    6500 !
+! Miller JA, Melius CF. Symp (Int) Combust 1992;24:719-26.
+! Preliminary value used in P. Glarborg, J.A. Miller, B. Ruscic, S.J. Klippenstein, Prog. Energy Combust. Sci. 67 (2018) 31-68 
+!
+NH+O2=NO+OH                          9.9E10   0.000    1530 ! #r
+! Baulch DL Bowman CT Cobos CJ Cox RA Just Th Kerr JA Pilling MJ Stocker D Troe J Tsang W Walker RW Warnatz J JPCRD 34:757-1397 2005
+! Final value Used in P. Glarborg, J.A. Miller, B. Ruscic, S.J. Klippenstein, Prog. Energy Combust. Sci. 67 (2018) 31-68 
+!NH+O2=HNO+O                          1.3E06   1.500     100 !
+! Miller JA, Melius CF. Symp (Int) Combust 1992;24:719-26.
+! Preliminary value used in P. Glarborg, J.A. Miller, B. Ruscic, S.J. Klippenstein, Prog. Energy Combust. Sci. 67 (2018) 31-68
+!
+NH+NH=NH2+N                          5.7E-1   3.880     342 !   
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+!
+NH+N=N2+H                            3.0E13   0.000       0 ! 
+! JAM est
+!
+NH+NO=N2O+H                          2.7E15  -0.780      20 !
+! Baulch DL Bowman CT Cobos CJ Cox RA Just Th Kerr JA Pilling MJ Stocker D Troe J Tsang W Walker RW Warnatz J JPCRD 34:757-1397 2005
+! P. Glarborg, J.A. Miller, B. Ruscic, S.J. Klippenstein, Prog. Energy Combust. Sci. 67 (2018) 31-68. 
+!
+NH+NO=N2+OH                          6.8E14  -0.780      20 !
+! Baulch DL Bowman CT Cobos CJ Cox RA Just Th Kerr JA Pilling MJ Stocker D Troe J Tsang W Walker RW Warnatz J JPCRD 34:757-1397 2005
+! P. Glarborg, J.A. Miller, B. Ruscic, S.J. Klippenstein, Prog. Energy Combust. Sci. 67 (2018) 31-68. 
+!
+NH+HONO=NH2+NO2                      1.0E13   0.000       0 ! 
+! JAM est
+!
+NH+NO2=N2O+OH                        4.1E12   0.000       0 !
+! Harrison JA Whyte AR Phillips LF CPL 129:346 1986
+!
+NH+NO2=HNO+NO                        5.9E12   0.000       0 ! 
+! Harrison JA Whyte AR Phillips LF CPL 129:346 1986
+!
+N+OH=NO+H                            3.8E13   0.000       0 ! 
+! Flower WL Hanson RK Kruger CH CST 15:115 1977
+! Howard MJ Smith IWM CPL 69:40 1980
+!
+N+O2=NO+O                            5.9E09   1.000    6280 ! #r 
+! Baulch DL Bowman CT Cobos CJ Cox RA Just Th Kerr JA Pilling MJ Stocker D Troe J Tsang W Walker RW Warnatz J JPCRD 34:757-1397 2005
+!
+N+NO=N2+O                            9.4E12   0.140       0 ! 
+! M. Abian, M.U. Alzueta, P. Glarborg, Int. J. Chem. Kinet. 47 (2015) 518-532.
+!   
+!   
+NNH=N2+H                             1.0E09   0.000       0 !     
+! SJ Klippenstein LB Harding P Glarborg JA Miller CF 158 (2011) 774-789.
+!
+NNH+H=N2+H2                          1.0E14   0.000       0 ! 
+! JAM est
+!
+NNH+O=N2O+H                          1.9E14  -0.274     -22 ! 
+! SJ Klippenstein LB Harding P Glarborg JA Miller CF 158 (2011) 774-789.
+!
+NNH+O=N2+OH                          1.2E13   0.145    -217 ! 
+! SJ Klippenstein LB Harding P Glarborg JA Miller CF 158 (2011) 774-789.
+!
+NNH+O=NH+NO                          5.2E11   0.381    -409 ! 
+! SJ Klippenstein LB Harding P Glarborg JA Miller CF 158 (2011) 774-789.
+!
+NNH+OH=N2+H2O                        5.0E13   0.000       0 ! 
+! JAM est
+!
+NNH+O2=N2+HO2                        5.6E14  -0.385     -13 ! 
+! SJ Klippenstein LB Harding P Glarborg JA Miller CF 158 (2011) 774-789.
+!
+NNH+NH=N2+NH2                       5.0E13   0.000       0 ! 
+! JAM est
+!
+NNH+NH2=N2+NH3                       5.0E13   0.000       0 ! 
+! JAM est
+!
+NNH+NO=N2+HNO                        5.0E13   0.000       0 ! 
+! JAM est
+!
+!
+NH2OH(+M)=NH2+OH(+M)                 1.4E20  -1.310   64080 ! 
+ LOW  /5.4E37 -5.96 66783/                                  !
+ TROE /0.31 1E-30 1E30 1E30/                                !
+ H2 /1.0/
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+!
+NH2OH+H=HNOH+H2                      4.8E08   1.50     6249 !    
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+NH2OH+H=H2NO+H2                      2.4E08   1.50     5067 !    
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+NH2OH+O=HNOH+OH                      3.3E08   1.50     3865 !   
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+NH2OH+O=H2NO+OH                      1.7E08   1.50     3010 !  
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+NH2OH+OH=HNOH+H2O                    1.5E04   2.61    -3537 !  
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+!
+NH2OH+OH=H2NO+H2O                    1.5E05   2.28    -1296 !  
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+!
+NH2OH+NH2=HNOH+NH3                   1.1E-1   4.00      -97 ! 
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+!
+NH2OH+NH2=H2NO+NH3                   9.5E00   3.42    -1013 ! 
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+!
+NH2OH+NH=HNOH+NH2                    2.9E-3   4.40     1564 ! 
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+!
+NH2OH+NH=H2NO+NH2                    1.5E-3   4.60     2424 ! 
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+!
+NH2OH+HO2=HNOH+H2O2                  2.9E04   2.69     9557 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+NH2OH+HO2=H2NO+H2O2                  1.4E04   2.69     6418 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+!
+H2NO+M=HNO+H+M                       2.8E24  -2.830   64915 ! 
+ H2O/10/
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+H2NO+M=HNOH+M                        1.1E29  -4.000   44000 ! 
+ H2O/10/
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+H2NO+H=HNO+H2                        3.0E07   2.000    2000 ! 
+! JAM est
+!
+H2NO+H=NH2+OH                        5.0E13   0.000       0 ! 
+! JAM est
+!
+H2NO+O=HNO+OH                        3.0E07   2.000    2000 ! 
+! JAM est
+!
+H2NO+OH=HNO+H2O                      1.0E14   0.000       0 ! 
+! Sun F DeSain JD Scott G Hung PY Thompson RI Glass GP Curl RF JPCA 105:6121-6128 2001
+!
+H2NO+HO2=HNO+H2O2                    2.9E04   2.690   -1600 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+H2NO+O2=HNO+HO2                      2.3E02   2.994   16500 ! 
+! See P. Glarborg, J.A. Miller, B. Ruscic, S.J. Klippenstein, Prog. Energy Combust. Sci. 67 (2018) 31-68. 
+!H2NO+O2=HNO+HO2                      2.3E02   2.994   18900 ! 
+! Y. Song, H. Hashemi, J.M. Christensen, C. Zou, P. Marshall, P. Glarborg, Fuel 181 (2016) 358-365.
+!
+H2NO+NH2=HNO+NH3                     3.0E12   0.000    1000 ! 
+! JAM est
+!
+H2NO+NO=HNO+HNO                      2.0E04   2.000   13000 ! 
+! JAM est
+!
+H2NO+NO2=HONO+HNO                    4.4E04   2.640    4040 ! 
+! est as HNO+NO2
+!
+HNOH+M=HNO+H+M                       2.0E24  -2.840   58934 ! 
+ H2O/10/
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+HNOH+H=NH2+OH                        4.0E13   0.000       0 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+HNOH+H=HNO+H2                        4.8E08   1.500     378 !
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+HNOH+O=HNO+OH                        7.0E13   0.000       0 ! 
+ DUP
+HNOH+O=HNO+OH                        3.3E08   1.500    -358 ! 
+ DUP
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+HNOH+OH=HNO+H2O                      2.4E06   2.000   -1192 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+HNOH+HO2=HNO+H2O2                    2.9E04   2.690   -1600 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+HNOH+HO2=NH2OH+O2                    2.9E04   2.690   -1600 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+HNOH+O2=HNO+HO2                      3.0E12   0.000   25000 ! 
+! JAM est
+!
+HNOH+NH2=NH3+HNO                     1.8E06   1.940   -1152 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+HNOH+NO2=HONO+HNO                    6.0E11   0.000    2000 ! 
+! JAM est
+!
+!
+NO+H(+M)=HNO(+M)                     1.5E15  -0.410       0 ! 
+ LOW /2.4E14 0.206 -1550/                                   ! 
+ TROE /0.82 1E-30 1E30 1E30/                                ! 
+ N2/1.6/                                                    ! 
+! Tsang W JPCRD 20:221 1991
+! Riley PS Cosic B Fontijn A IJCK 35:374 2003
+!
+HNO+H=NO+H2                          6.6E10   0.940     495 ! 
+! MT Nguyen S Zhang J Peeters TN TRuong MT Nguyen Chem Phys Lett 2004 388 94-99
+!
+HNO+O=NO+OH                          2.3E13   0.000       0 ! 
+! Inomata S Washida N JPCA 103:5023-5031 1999
+!
+HNO+OH=NO+H2O                        1.2E09   1.189     334 ! 
+! MT Nguyen S Zhang J Peeters TN TRuong MT Nguyen Chem Phys Lett 2004 388 94-99
+!
+HNO+HO2=HNO2+OH                      2.0E03   2.360    8980 ! 
+! SH Mousavipour SS Asemani J phys Chem A 2015 119 5553-5565
+!
+HNO+O2=HO2+NO                        2.0E13   0.000   16000 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+HNO+HNO=N2O+H2O                      9.0E08   0.000    3100 ! 
+! NBS91      Tsang W JPCRD 20:221 1991
+!
+HNO+NO2=HONO+NO                      4.4E04   2.640    4040 ! 
+! Mebel AM Lin MC Morokuma K IJCK 30:729-736 1998
+!
+!
+NO+HO2=NO2+OH                        2.1E12   0.000    -497 ! 
+! Baulch DL Bowman CT Cobos CJ Cox RA Just Th Kerr JA Pilling MJ Stocker D Troe J Tsang W Walker RW Warnatz J JPCRD 34:757-1397 2005
+!
+!
+NO+O(+M)=NO2(+M)                     1.3E15  -0.750       0 ! 
+ LOW  /4.72E24 -2.87 1550/                                  ! N2
+! LOW  /7.56E19 -1.41 0/                                     ! AR 
+ TROE /0.750 1E03 1E05 1E30/                                !
+ H2 /1.0/
+! Tsang W JPCRD 20:221 1991
+! Allen MT Yetter RA Dryer FL CF 109:449 1997
+! Yarwood G Sutherland JW Wickramaaratchi MA Klemm RB JPC 95:8771 1991 (AR)
+!   
+NO2+H=NO+OH                          1.3E14   0.000     362 ! 
+! Ko T Fontijn A JPC 95:3984-3987 1991
+!
+NO2+O=NO+O2                          1.1E14  -0.520       0 ! 
+! Bemand PP Clyne MAA Watson RT JCSFT2 70:564-576 1974
+!
+NO2+HO2=HONO+O2                      1.9E00   3.320    3044 ! 
+! CL Rasmussen J Hansen P Marshall P Glarborg IJCK 40, 454-480 (2008)
+!
+NO2+HO2=HNO2+O2                      1.9E01   3.260    4983 ! 
+! CL Rasmussen J Hansen P Marshall P Glarborg IJCK 40, 454-480 (2008)
+!
+NO2+NO2=NO+NO+O2                     4.5E12   0.000   27599 ! 
+! Park J Giles ND Moore J Lin MC JPCA 102:10099 1998
+!
+NO2+NO2=NO3+NO                       9.6E09   0.730   20900 ! 
+! Tsang W JPCRD 20:221 1991
+!
+!
+NO+OH(+M)=HONO(+M)                   1.1E14  -0.300       0 ! 
+ LOW  /3.392E23 -2.5 0/                                     ! He
+ TROE /0.75 1E-30 1E30 1E30/
+ H2 /1.0/
+! Fulle D Hamann HF Hippler H Troe J JCP 108:5391 1998
+!
+NO2+H2=HONO+H                        1.8E01   3.510   26300 ! 
+  DUP
+NO2+H2=HONO+H                        2.4E01   3.620   35800 ! 
+  DUP
+! J. Chai, CF Goldsmith Proc Combust Inst 36 2017 617-626
+!
+HONO+H=HNO+OH                        5.6E10   0.860    5000 ! 
+! Hsu CC Lin MC Mebel AM Melius CF JPCA 101:60 1997
+!
+HONO+H=NO+H2O                        8.1E06   1.890    3850 ! 
+! Hsu CC Lin MC Mebel AM Melius CF JPCA 101:60 1997
+!
+HONO+O=NO2+OH                        1.2E13   0.000    5960 ! 
+! NBS91      Tsang W JPCRD 20:221 1991
+!
+HONO+OH=NO2+H2O                      1.7E12   0.000    -520 ! 
+! Burkholder JB Mellouki A Talukdar R Ravishankara AR IJCK 24:711 1992
+!
+HONO+NO2=HONO2+NO                    2.0E11   0.000   32700 ! 
+! Park J Giles ND Moore J Lin MC JPCA 102:10099 1998
+!
+HONO+HONO=NO+NO2+H2O                 3.5E-01  3.640   12140 ! 
+! Mebel AM Lin MC Melius CF JPCA 102:1803 1998
+!
+!
+HNO2(+M)=HONO(+M)                    2.5E14   0.000   32300 ! 
+ LOW  /3.1E18 0.0 31500/                                    !
+ TROE /1.149 1E-30 3125 1E30/                               !
+ H2 /1.0/
+! CL Rasmussen J Hansen P Marshall P Glarborg IJCK 40, 454-480 (2008)
+!
+NO2+H2=HNO2+H                        2.4E02   3.150   31100 ! 
+! J. Chai, CF Goldsmith Proc Combust Inst 36 2017 617-626
+!
+HNO2+O=NO2+OH                        1.7E08   1.500    2000 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+HNO2+OH=NO2+H2O                      4.0E13   0.000       0 ! 
+! CL Rasmussen J Hansen P Marshall P Glarborg IJCK 40, 454-480 (2008)
+!
+!
+NO2+O(+M)=NO3(+M)                    3.5E12   0.240       0 ! 
+ LOW  /2.5E20 -1.50 0/                                      !
+ TROE /0.71 1E-30 1700 1E30/                                !
+ H2 /1.0/
+! Hahn J Luther K Troe J PCCP 2:5098 2000
+!
+NO3+H=NO2+OH                         6.0E13   0.000       0 ! 
+! Becker E Rahman MM Schindler RN BBPC 96:776 1992
+! 
+NO3+O=NO2+O2                         1.0E13   0.000       0 ! 
+! Atkinson R Baulch DL Cox RA Hampson RF Kerr JA Troe J JPC Ref Data 1992, 21, 1125–1568.
+!
+NO3+OH=NO2+HO2                       1.4E13   0.000       0 ! 
+! Atkinson R Baulch DL Cox RA Hampson RF Kerr JA Troe J JPC Ref Data 1992, 21, 1125–1568.
+!
+NO3+HO2=NO2+O2+OH                    1.5E12   0.000       0 ! 
+! Becker E Rahman MM Schindler RN BBPC 96:776 1992
+! 
+NO3+NO2=NO+NO2+O2                    5.0E10   0.000    2940 ! 
+! DeMore WB Sander SP Golden DM Molina MJ Hampson RF Kurylo MJ Howard CJ Ravishankara AR JPL P 90-1:1 1990
+!
+!
+NO2+OH(+M)=HONO2(+M)                 3.0E13   0.000       0 ! 
+ LOW  /2.938E25 -3.0 0/                                     !
+ TROE /0.4 1E-30 1E30 1E30/                                 ! Fc=0.4
+ H2 /1.0/
+! Troe J IJCK 33:878 2001
+! 
+HONO2+H=H2+NO3                       5.6E08   1.500   16400 !
+! Boughton JW Kristyan S Lin MC Chem. Phys 214:219 1997
+!
+HONO2+H=H2O+NO2                      6.1E01   3.300    6285 ! 
+! Boughton JW Kristyan S Lin MC Chem. Phys 214:219 1997
+!
+HONO2+H=OH+HONO                      3.8E05   2.300    6976 ! 
+! Boughton JW Kristyan S Lin MC Chem. Phys 214:219 1997
+!
+HONO2+OH=H2O+NO3                     1.0E10   0.000   -1240 ! 
+! Lamb JJ Mozurkewich M Benson SW JPC 88:6441-6448 1984
+!
+! 
+N2O(+M)=N2+O(+M)                     9.9E10   0.000   57901 ! 
+ LOW/                                6.0E14   0.000   57444/
+ N2/1.7/ O2/1.4/ H2O/12/   !
+! Baulch DL Bowman CT Cobos CJ Cox RA Just Th Kerr JA Pilling MJ Stocker D Troe J Tsang W Walker RW Warnatz J JPCRD 34:757-1397 2005
+! Fc=1.167-1.25E-4T close to 1.0 over 300-2500 K range
+! Johnsson JE Glarborg P Dam-Johansen K PCI 24:917 1992 (TBE)
+!
+N2O+H=N2+OH                          6.4E07   1.835   13492 !
+! SJ Klippenstein LB Harding P Glarborg JA Miller CF 158 (2011) 774-789.
+!
+N2O+O=NO+NO                          9.2E13   0.000   27679 ! 
+! Meagher NE Anderson WR JPCA 104:6013-6031 2000
+!
+N2O+O=N2+O2                          9.2E13   0.000   27679 ! 
+! P. Glarborg, J.A. Miller, B. Ruscic, S.J. Klippenstein, Prog. Energy Combust. Sci. 67 (2018) 31-68. 
+!
+N2O+OH=N2+HO2                        1.3E-2   4.720   36560 ! 
+! Mebel AM Diau EWG Lin MC Morokuma K JPC 100:7517-7525 1996
+!
+N2O+OH=HNO+NO                        1.2E-4   4.330   25080 ! 
+! Mebel AM Diau EWG Lin MC Morokuma K JPC 100:7517-7525 1996
+!
+N2O+NO=NO2+N2                        5.3E05   2.230   46280 ! 
+! Mebel AM Diau EWG Lin MC Morokuma K JPC 100:7517-7525 1996
+!
+!
+! ************************************************************************
+!   N2 amine subset                                                          *
+! ************************************************************************
+!
+NH2+NH2=N2H2+H2                      1.7E08   1.620   11783 !   
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+!
+NH2+NH2=H2NN+H2                      7.2E04   1.880    8802 !  
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+!
+NH2+NH=N2H2+H                        4.3E14  -0.272     -77 !  
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+!
+HNOH+NH2=N2H3+OH                     1.0E01   3.460    -467 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+HNOH+NH2=H2NN+H2O                    8.8E16  -1.080    1113 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+NH2+NH2(+M)=N2H4(+M)                 5.6E14  -0.414      66 !   
+ LOW  /1.6E34 -5.49 1987/                                   !
+ TROE /0.31 1E-30 1E30 1E30/                                ! Fc=0.31
+ H2 /1.0/
+! SJ Klippenstein LB Harding B Ruscic R Sivaramakrishnan NK Srinivasan M-C Su JV Michael JPCA 113 (2009) 10241-10259.  
+!
+N2H4=H2NN+H2                         1.4E14   0.000   74911 !  
+! D.-Y. Hwang, A.M. Mebel, J. Phys. Chem. A 2003, 107, 2865-2874 
+! 
+N2H4+H=N2H3+H2                       7.0E12   0.000    2500 !
+! Vaghjiani GL IJCK 27:777 1995
+!N2H4+H=N2H3+H2                       4.5E07   1.800    2613 !
+! D.-Y. Hwang, A.M. Mebel, J. Phys. Chem. A 2003, 107, 2865-2874 (factor 7 low at 300 K)
+!
+N2H4+H=NH3+NH2                       2.3E05   1.420    8202 !
+! D.-Y. Hwang, A.M. Mebel, J. Phys. Chem. A 2003, 107, 2865-2874 (factor 7 low at 300 K)
+!
+N2H4+O=N2H3+OH                       1.5E11   0.000   -1270 !     
+! Vaghjiani GL JPC 104:5479-5489 1996
+! Vaghjiani GL JPCA 105:4682-4690 2001
+!
+N2H4+O=N2H2+H2O                      2.9E11   0.000   -1270 !        
+! Vaghjiani GL JPC 104:5479-5489 1996
+! Vaghjiani GL JPCA 105:4682-4690 2001
+! Non-OH products assumed
+!
+N2H4+OH=N2H3+H2O                     1.3E13   0.000    -318 !   
+! Vaghjiani GL IJCK 33:354-362 2001
+!
+N2H4+NH2=N2H3+NH3                    7.6E-1   4.000    4048 ! 
+! Q.S. Li, X.A.F. Zhang 
+! Direct dynamics study on the hydrogen abstraction reactions N2H4+R->N2H3+RH (R=NH2,CH3)
+! J. Chem. Phys. 125 064304 2006
+!
+N2H4+NO=N2H3+HNO                     6.0E01   3.160   30845 ! 
+! P. Raghunath and Y.H. Lin and M.C. Lin
+! Ab initio chemical kinetics for the N2H4+NOx (x=1–3) reactions and related reverse processes
+! Comp. Theor. Chem. 1046, 73-80, 2014
+!
+N2H4+NO2=N2H3+HONO                   8.2E01   3.130    8860 ! 
+! P. Raghunath and Y.H. Lin and M.C. Lin
+! Ab initio chemical kinetics for the N2H4+NOx (x=1–3) reactions and related reverse processes,
+! Comp. Theor. Chem. 1046, 73-80, 2014
+!
+N2H4+NO2=N2H3+HNO2                   2.4E-2   4.140    7946 ! 
+! P. Raghunath and Y.H. Lin and M.C. Lin
+! Ab initio chemical kinetics for the N2H4+NOx (x=1–3) reactions and related reverse processes,
+! Comp. Theor. Chem. 1046, 73-80, 2014
+!
+N2H2+H=N2H3                          1.3E14   0.000    3871 ! 
+! Zheng, JJ Rocha, RJ Pelegrini, M Ferrao, LFA Carvalho, EFV Roberto-Neto, O Machado, FBC Truhlar, DG
+! A product branching ratio controlled by vibrational adiabaticity and variational effects: Kinetics of the H+trans-N2H2 reactions
+! J. Chem. Phys. 18 184310 2012
+! rough fit to 600-1500 K
+!
+N2H3+H=N2H2+H2                       2.4E08   1.500     -10 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+N2H3+O=N2H2+OH                       1.7E08   1.500    -646 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+N2H3+O=NH2+HNO                       3.0E13   0.000       0 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+N2H3+O=>NH2+NO+H                     3.0E13   0.000       0 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+N2H3+OH=N2H2+H2O                     1.2E06   2.000   -1192 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+N2H3+OH=H2NN+H2O                     3.0E13   0.000       0 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+N2H3+OH=NH3+HNO                      1.0E12   0.000   15000 ! 
+! JAM est
+!
+N2H3+HO2=N2H2+H2O2                   1.4E04   2.690   -1600 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+N2H3+HO2=N2H4+O2                     9.2E05   1.940    2126 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+N2H3+NH2=N2H2+NH3                    9.2E05   1.940   -1152 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+N2H3+NH2=H2NN+NH3                    3.0E13   0.000       0 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+N2H3+NH=N2H2+NH2                     2.0E13   0.000       0 ! 
+! JAM est
+!
+!
+N2H2+M=NNH+H+M                       1.9E27  -3.050   66107 ! M=N2
+ H2O/7/
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+N2H2+H=NNH+H2                        1.1E14   0.000    3128 ! 
+! Zheng, JJ Rocha, RJ Pelegrini, M Ferrao, LFA Carvalho, EFV Roberto-Neto, O Machado, FBC Truhlar, DG
+! A product branching ratio controlled by vibrational adiabaticity and variational effects: Kinetics of the H+trans-N2H2 reactions
+! J. Chem. Phys. 18 184310 2012
+! rough fit to 600-1500 K
+!
+N2H2+O=NNH+OH                        3.3E08   1.500     497 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+N2H2+O=NH2+NO                        1.0E13   0.000       0 ! 
+! JAM est
+!
+N2H2+OH=NNH+H2O                      5.9E01   3.400    1360 ! 
+! Linder DP Duan X Page M JCP 104:6298 1996
+!
+N2H2+NH2=NNH+NH3                     8.8E-2   4.050    1610 ! 
+! Linder DP Duan X Page M JCP 104:6298 1996
+!
+N2H2+NH=NNH+NH2                      2.4E06   2.000   -1192 !  
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+N2H2+NO=N2O+NH2                      4.0E12   0.000   11922 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+!
+H2NN=NNH+H                           3.4E26  -4.830   46228 !  1 ATM 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+H2NN=N2+H2                           2.5E14   0.000   52785 !  
+! D.-Y. Hwang, A.M. Mebel, J. Phys. Chem. A 2003, 107, 2865-2874 
+! 
+H2NN=N2H2                            1.3E14   0.000   46931 !  
+! D.-Y. Hwang, A.M. Mebel, J. Phys. Chem. A 2003, 107, 2865-2874 
+! 
+H2NN+H=NNH+H2                        4.8E08   1.500    -894 !  
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+H2NN+H=N2H2+H                        7.0E13   0.000       0 !  
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+H2NN+O=NNH+OH                        3.3E08   1.500    -894 !  
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+H2NN+O=NH2+NO                        7.0E13   0.000       0 !  
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+H2NN+OH=NNH+H2O                      2.4E06   2.000   -1192 !  
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+H2NN+OH=>NH2+NO+H                    2.0E12   0.000       0 !  
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+H2NN+HO2=>NH2+NO+OH                  9.0E12   0.000       0 !  
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+H2NN+HO2=NNH+H2O2                    2.9E04   2.690   -1600 !  
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+H2NN+O2=NH2+NO2                      1.5E12   0.000    5961 ! 
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+H2NN+NH2=NNH+NH3                     1.8E06   1.940   -1152 !  
+! Dean AM Bozzelli JW (Gardiner WC) Gas Phase Combustion Chemistry, Springer 2000
+!
+!
+END

@@ -1,0 +1,78 @@
+# MECHANISM AND THERMODYNAMIC DATA ###########################################
+
+Mechanism file :             /home/ns1962/MyWorkspace/TestingTheModels/glarborg/nh3_h2_glarborg/glarborg_chem.txt
+Thermodata file :            /home/ns1962/MyWorkspace/TestingTheModels/glarborg/nh3_h2_glarborg/glarborg_thermo.txt
+Transdata file :             /home/ns1962/MyWorkspace/TestingTheModels/glarborg/nh3_h2_glarborg/glarborg_transport.txt
+
+Mechanism format : CK
+
+# DISSRATE DATA ##############################################################
+#File for dissrate : .false.
+#Dissrate file : /scratch/gpfs/MUELLER/srzepka/ICNC24_data/20nh3/20nh3_r218_pdrs_chi.txt
+#File for curvature : .false.
+#Curvature file : /scratch/gpfs/MUELLER/srzepka/ICNC24_data/20nh3/20nh3_r218_pdrs_kappa.txt
+#Grid in files : 48
+
+# MANIFOLD TYPE ###############################################################
+
+Manifold type :              Lambda
+
+# INITIAL CONDITIONS ##########################################################
+
+Pressure :           101325.0
+
+Oxidizer temperature :           300.0
+Oxidizer composition :           O2    0.2328821
+                                N2    0.7671179
+
+Fuel temperature :           300.0
+Fuel composition :           NH3    0.95
+                            H2    0.05
+
+Fuel species :           NH3
+                        H2
+
+Equivalence ratio :           1.0
+
+#Mixture fraction :           N/A
+
+Scalar dissipation rate :            1.0E+01
+
+#Curvature :              -185.19
+
+# LN listed in order of species in Thermo data file:
+#Lewis Numbers : 0.16892 0.282247 0.654755 1.01378 0.667218 0.751042 1.06149 1.01086 1.01763 0.667218 0.736396 1.02826 1.15339 1.2707 0.823705 1.01339 1.02085 1.04472 0.634158 0.621278 1.05322 1.18876 1.31011 1.05322 1.01339 1.3795 1.3795 1.56653 1.56275 1.02085
+#Lewis Tuning : 1.0
+
+# GRID ##########################################################################
+
+Number of grid points :           255
+#Grid stretching type :      power
+#Stretching factor :         0.8
+
+Reference species :              H2O
+#Start profile :              r433_files/june/TD_0.0.Y
+
+Relative tolerance :             1.0e-6
+Absolute tolerance :             1.0e-12
+
+End time :           1.0
+
+Use steady :             .false.
+
+Solver :             0
+Iterations :             10000
+
+# OUTPUT #########################################################################
+
+Output directory :           /home/ns1962/MyWorkspace/TestingTheModels/output/Glarborg/Cracked/95-5/
+Pick Output Name :           .true.
+Output Name :           Cracked_95-5_GlarborgAtm_E1-0
+
+Data overwrite:            .true.
+
+Write to screen :            .true.
+Write mass fractions :           .true.
+Write mole fractions :           .true.
+Write flamelet file :            .true.
+                    

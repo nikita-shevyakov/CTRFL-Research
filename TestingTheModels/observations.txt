@@ -1,0 +1,58 @@
+The H2 Graphs for Atmospheric conditions have no distinctions between the Gotama and Glarborg models (for elements H2,OH,NH3,NO,NO2, and for temperature they are practically the same hard to judge tiny variations though)
+For the H2 graphs of Turbine conditions the tempearature graphs seemd about the same between Gotama and Glarborg, but the element concentrations had differences. While the general trends were the same, the Glarborg model for E0.7 had a peak OH concentration of 0.0117 while the Gotama model only had 0.0106. Similarly for E1.4, while the H2 concentrations were the same the whole time the OH concentration for Glarborg peaked at 0.011 and actually intersects the H2 line, while the Gotama model peaks at 0.0093 for OH. Then when comparing the E1.0, the H2 and OH lines intersect at L=0.691 for Glarborg but intersects later at L=0.704 for Gotama.
+All the H2 Graphs have the weird sudden spike of NO right at the very end which is aparentally correct becasue for non-ammonia reactions NO only forms when N2 breaks down at very high temperatures.
+Overall conclusion: Glarborg and Gotama models predict H2 combustion pretty similarly, more deviation under higher tempertaure and pressure conditions.
+
+For NH3:
+Actually has less NO formaton than the 80-20
+The NH3 concentrations are the same across models.
+Glarborg and Gotama have more differences. For atmospheric E0.7 the peak NO concentration was 0.00586 for Glarborg and 0.00382 for Gotama, same thing with OH for Glarborg it is higher at 0.00256 at the peak but for Gotama its only 0.00182 for peak (that's a pretty big difference). The shapes of each concentration graphs relative to the other elements s nearly identical tho so that's weird. And same with OH, 0.00055 peak for Glarborg while Gotama has only 0.00038 at peak. When I add the other elements like H2O, N2, and O2, they have linear increase or decreases and basically the same concentrations among the 2 models.   
+Looking at E1.0, similar cases where Glarborg just has higher element concentrations for everything: Glarborg 0.006 for NO vs 0.0045 for Gotama for peak, for OH peak is 0.00378 for Glarborg but 0.0031 for Gotama, H2 has a peak of 0.0023 for Glarborg but only 0.0018 for Gotama.
+Looking at E1.4 the OH concnetration is basically 0 the whole time which is interesting, but the H2 concentration rises exponentially at different rates for Glarborg (faster) and slower for Gotama but ends at the same spot. The NO is pretty small for both models too but Glarborg still has a higher peak of 0.0006 and gotam with 0.00035.
+As for tempeature, they are nearly identical among models, with slight differences:  for E1.0 where Glarborg was 1300K at L=0.5 while Gotama was 1288K at L=0.5. For E0.7 1060K for Glarborg, 1086K for Gotamaat L=0.5, for E1.4 1160K Glarborg vs 1146K for Gotama L-0.5.
+Now if we look at the same graphs under Turbine conditions, the shapes are still generally the same but the H2 concentration maybe varies teh most in shape between the models where for E1.0 the hill is sharper for Gotama and same with OH. While for E1.4 the Glarborg just has a larger hill shape for NO than for Gotama. All of the Glarborg concentrations are higher than the Gotama ones by at least 33%. Final note, the NO concentration makes a sudden dip at the end for every model and Equivlane ratio except for Gotama E0.7 maybe it needed more data points though/
+Overall Conclusions: the models differ quite a bit for NH3 fuel, with Glarborg predicting higher element concentratoins for elements like NO, H2 and OH. However, the trends/shapes of the graphs are almost exactly the same its almost like thyre just using different scales. Looking at the overall major elemtns those are the same too, and the tempeatures are just about the same with Glarborg being maybe 10-20K hotter at most (small difference compared to it being over a thousand degrees at times).
+
+For cracked 80-20:
+the OH peak magnitude slightgly differs between Gotama and Glarborg again, it differs more and more as the equivlance ratio goes up where for E0.7 it only differed by ~0.0003 for atmospheric, it differed by 0.0006 for E1.0, and by 0.001 (it was double for Glarborg tha nfor Gotama) for E1.4. Glarborg consistently predicts higher NO concentrations. The bigger differene is that OH has a sharper decrease for Glarborg with a more pointy tip at the stoichiometric point.
+The NO concentration also has similar trends to OH, the Glarborg has pointier peaks as the equivlance rato gets bigger than Gotama, but interestingly enough for at E1.0 Gotama predicts more peak NO (0.0144) than Glarborg (0.0132) but for E1.4 Glarborg predicts more NO (0.0062) than Gotama (0.0054).
+The H2 concentratio is about the same for the 2 models in all the case and same with NH3. 
+Basically no NO2
+When looking at turbine conditions, NO2 is non-zero in the bgining where it goes up to about 0.0015 at ~L=0.15 and then dips back to 0, although the concentration is higher in Glarboirg than Gotama each time. The turbine conditions also have sharper peaks for NO than the atmosphierc ones. And once again Glarborg has higher peak concentratoins of NO and OH than Gotama by about 15% for OH and 25-45% for NO.
+Also overall, the NO concentration is higher the leanaer the fuel is for E0.7 and E1.0 and it's significantly smaller for E1.4 (more than 50% less towards higher L values). Also same thing for OH, where OH is practically 0 for E1.4
+
+For 40-60:
+the NH3 and H2 are the same between models.
+the OH peaks are almost exactly the same bewteen models too.
+Interestingly enough, the Gotama model predicts slightly higher values for peak NO consistently among each E (15% more for E0.7, 20% for E1.0, 30% for E1.4)
+The NO concentration does not dip massively for E1.4 in this 40-60 fuel ratio comapred to 80-20.
+For turbine conditions, the NO2 is once again a lot more pronounced (neglible for atmospheric) around that L=0.15-0.2 range this time reaching higher concentrations for E0.7 than E1.0 and even less for E1.4. There is a bigger difference on OH peaks than for atmospheric where Glarborg has more OH by about 10%. Unlike for atmopsheric where OH was the same for Glarborg and Gotama and NO differed, for tubrine the NO is just about the same between the models for different E's but it is the OH that varies now.
+
+For 20-80: NH3 and H2 graphs same between models, and ammonnia has a slow decay until it runs out
+For atmospheric, NO2 is once again barely present.
+NO has a slight increase in peak for higher E's. And has a sharper decrease at the end for higher e's too.
+This time for NO, it increases slightly for higher E's instead of being higher for lower E's like it was in 80-20.
+OH is the same between models, and slightly decreases for larger Equivalence ratios (but E1.0 somtimes sometimes goes slightly up)
+Biggest difference between Glarborg and Gotama is for the E1.4 cases wehre the OH and NO concentrations overlap or if thhey overlap at all.
+
+10-90:
+NH3 concentration is very low and relatively flat throughout the whole time as until it dips down in around L=0.5 to 0
+A lot less NO (makes sense less NH3), it rises around L0 and plateus before a sharp peak at the end. The NO peaks and shapes are the same across all the E's.
+OH is reaching high magnitudes overall with up to 0.0083 for ATM E0.7 and E1.4 and 0.01 for E1.0.
+The 2 models are almost exactly the same which makes sense since they were very similar when it came to H2 to begin with and now the fuel is majority hydrogen.
+Under turbine conditions, the NO2 is no longer as high as it was before, and the OH does have a larger and sharper peak compared to atmospheric
+
+5-95:
+Small amount of NH3 pretty flat at dups around L0.5 as it gradually goes to 0 by L1.0. the OH has a high peak again since a lot of H2 fuel, and reaches a peak of 0.01406 for Turbine E1.0 conditions. The Glarborg and Gotama models show about the same for each case not much of any difference which once again makes sense since they agree on hydrogen and the fuel is already majority hydrogen.
+Very small amount of NO2 around L0.2 for Turbine conditions (basically neglible for atmospheric).
+Majority molecule is OH and is pressure-dependent
+
+ Claude trends:
+  - The NO is linearly dependent on the NH3 concentration (as NH3 decreases so did NO)
+  - The OH mainly increases between the 20-40% H2 concentration then it mainly plaetus and there is not a huge increase for more H2, perhaps the O2 pool is already saturated.
+   - NO and OH are in competition, when there is more NH3 the NO dominates, and as NH3 concentration goes so does the NO, while instead OH goes up due less N compeitition and more H2.
+   - For 20-80 higher Equivlance ratios give more NO rather than lean which is backwards from everything else.
+   - For NH3 < 10% the NO chemistry is not significant.
+   - NO2 really only occurs under Turbine pressure condiitons
+   - Turbine conditions cause the molecule peaks to be sharper
+   - Gotama and glarborg differ the more NH3 there is

@@ -1,0 +1,8 @@
+Please add the following note to the supplementary materials:
+
+Gas-Phase-Kinetics_Detailed.inp: Detailed Gas-Phase-Kinetics File
+Gas-Phase-Kinetics_Reduced.inp: Reduced Gas-Phase-Kinetics File
+Thermodynamics_Detailed.dat: Detailed Thermodynamics file
+Thermodynamics_Reduced.dat: Reduced Thermodynamics file
+Transport_Detailed.dat: Detailed Transport file
+Transport_Reduced.dat: Reduced Transport file
